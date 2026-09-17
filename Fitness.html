@@ -1,0 +1,2485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fitness N.B | Nitesh Banjare</title>
+
+<meta name="description"
+content="Fitness N.B — Nitesh Banjare. Fitness, calisthenics, strength training and content creation.">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+    --red: #ff2020;
+    --red-dark: #b00000;
+    --black: #050505;
+    --dark: #090909;
+    --card: #101010;
+    --card2: #151515;
+    --white: #ffffff;
+    --gray: #999999;
+    --border: rgba(255,255,255,0.09);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--black);
+    color: white;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--red);
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: 1000;
+
+    background: rgba(5,5,5,0.82);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    max-width: 1250px;
+    height: 76px;
+
+    margin: auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.nav-links {
+    list-style: none;
+
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: #ccc;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--red);
+}
+
+.menu-btn {
+    display: none;
+
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding: 120px 7% 80px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(255,0,0,0.12),
+            transparent 28%
+        ),
+        #050505;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    right: -280px;
+    top: 100px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,0,0,0.13);
+
+    box-shadow:
+        0 0 100px rgba(255,0,0,0.08);
+
+    animation: spin 18s linear infinite;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    left: -180px;
+    bottom: -150px;
+
+    border-radius: 50%;
+
+    background: rgba(255,0,0,0.06);
+
+    filter: blur(50px);
+}
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.hero-content {
+    max-width: 1250px;
+    width: 100%;
+
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+
+    gap: 70px;
+
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero-text small {
+    color: var(--red);
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 5px;
+}
+
+.hero-text h1 {
+    font-size: clamp(58px, 8vw, 105px);
+
+    line-height: 0.88;
+
+    letter-spacing: -5px;
+
+    margin: 22px 0;
+
+    font-weight: 1000;
+}
+
+.hero-text h1 span {
+    color: var(--red);
+}
+
+.hero-subtitle {
+    color: #aaa;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    letter-spacing: 4px;
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 35px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    padding: 15px 25px;
+
+    border: 1px solid var(--red);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: white;
+    color: black;
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: var(--red);
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   HERO JOURNEY PANEL
+========================================================= */
+
+.journey-visual {
+    width: min(480px, 100%);
+
+    min-height: 510px;
+
+    margin-left: auto;
+
+    padding: 50px 45px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181818,
+            #080808
+        );
+
+    border: 1px solid rgba(255,30,30,0.35);
+
+    box-shadow:
+        0 0 80px rgba(255,0,0,0.10);
+}
+
+.journey-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: -120px;
+    top: -120px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,30,30,0.3);
+
+    box-shadow:
+        0 0 50px rgba(255,0,0,0.12);
+}
+
+.journey-visual::after {
+    content: "N.B";
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 5px;
+
+    font-size: 110px;
+
+    font-weight: 1000;
+
+    color: rgba(255,255,255,0.025);
+
+    line-height: 1;
+}
+
+.visual-number {
+    color: var(--red);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+}
+
+.visual-line {
+    width: 60px;
+    height: 2px;
+
+    background: var(--red);
+
+    margin: 20px 0;
+}
+
+.visual-label {
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+.journey-visual h2 {
+    font-size: clamp(43px, 6vw, 68px);
+
+    line-height: 0.92;
+
+    letter-spacing: -3px;
+
+    margin: 27px 0;
+}
+
+.journey-visual h2 span {
+    color: var(--red);
+}
+
+.visual-quote {
+    color: #999;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    letter-spacing: 2px;
+}
+
+.visual-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 35px;
+}
+
+.visual-tags span {
+    border: 1px solid #292929;
+
+    padding: 8px 11px;
+
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section {
+    padding: 110px 7%;
+}
+
+.section-header {
+    max-width: 1250px;
+
+    margin: 0 auto 55px;
+}
+
+.section-header small {
+    color: var(--red);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+.section-header h2 {
+    font-size: clamp(42px, 6vw, 75px);
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    margin-top: 12px;
+}
+
+.section-header p {
+    max-width: 650px;
+
+    color: var(--gray);
+
+    line-height: 1.8;
+
+    margin-top: 17px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about {
+    background: #080808;
+}
+
+.about-grid {
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+}
+
+.about-text {
+    color: #aaa;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+.about-text strong {
+    color: white;
+}
+
+.about-box {
+    padding: 35px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    transition: 0.4s;
+}
+
+.about-box:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(255,0,0,0.5);
+}
+
+.about-box h3 {
+    color: var(--red);
+
+    margin-bottom: 15px;
+}
+
+.about-box p {
+    color: #999;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   JOURNEY CARDS
+========================================================= */
+
+.journey-grid {
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.journey-card {
+    min-height: 235px;
+
+    padding: 32px 25px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    transition: 0.4s;
+}
+
+.journey-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    right: -50px;
+    bottom: -50px;
+
+    background: var(--red);
+
+    border-radius: 50%;
+
+    filter: blur(45px);
+
+    opacity: 0.12;
+}
+
+.journey-card:hover {
+    transform: translateY(-10px);
+
+    border-color: var(--red);
+
+    box-shadow:
+        0 20px 60px rgba(255,0,0,0.10);
+}
+
+.journey-number {
+    color: var(--red);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.journey-card h3 {
+    font-size: 22px;
+
+    margin: 30px 0 12px;
+}
+
+.journey-card p {
+    color: #888;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+    background: #080808;
+}
+
+.stats-grid {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.stat {
+    padding: 35px;
+
+    text-align: center;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+}
+
+.stat-number {
+    color: var(--red);
+
+    font-size: 50px;
+
+    font-weight: 1000;
+}
+
+.stat p {
+    color: #777;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   DAILY CHALLENGE
+========================================================= */
+
+.challenge-box {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 55px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171717,
+            #080808
+        );
+
+    border: 1px solid rgba(255,0,0,0.35);
+
+    box-shadow:
+        0 20px 80px rgba(255,0,0,0.07);
+}
+
+#challengeNumber {
+    color: var(--red);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+.challenge-box h3 {
+    font-size: 38px;
+
+    margin: 17px 0;
+}
+
+.challenge-box p {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #999;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   TRACKER
+========================================================= */
+
+.tracker {
+    background: #080808;
+}
+
+.tracker-container {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.tracker-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+
+    flex-wrap: wrap;
+}
+
+.streak {
+    font-size: 18px;
+}
+
+.streak span {
+    color: var(--red);
+
+    font-weight: 900;
+}
+
+.reset-btn {
+    padding: 10px 16px;
+
+    background: transparent;
+
+    color: #999;
+
+    border: 1px solid #333;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.reset-btn:hover {
+    color: var(--red);
+
+    border-color: var(--red);
+}
+
+.days-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(10, 1fr);
+
+    gap: 8px;
+}
+
+.day {
+    aspect-ratio: 1;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+
+    border: 1px solid var(--border);
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    transition: 0.25s;
+}
+
+.day:hover {
+    border-color: var(--red);
+}
+
+.day.completed {
+    background: var(--red);
+
+    border-color: var(--red);
+
+    color: white;
+}
+
+
+/* =========================================================
+   WORKOUTS
+========================================================= */
+
+.workouts-grid {
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.workout-card {
+    padding: 30px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+.workout-card:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--red);
+}
+
+.icon {
+    font-size: 32px;
+}
+
+.workout-card h3 {
+    margin: 20px 0 10px;
+}
+
+.workout-card p {
+    color: #888;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SOCIAL
+========================================================= */
+
+.social {
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,0,0.08),
+            transparent 40%
+        ),
+        #050505;
+}
+
+.social-content {
+    max-width: 850px;
+
+    margin: auto;
+}
+
+.social-label {
+    color: var(--red);
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+}
+
+.social-content h2 {
+    font-size: clamp(45px, 7vw, 85px);
+
+    margin-top: 12px;
+
+    letter-spacing: -3px;
+}
+
+.social-content h2 span {
+    color: var(--red);
+}
+
+.social-content p {
+    color: #999;
+
+    line-height: 1.8;
+
+    margin: 20px auto 35px;
+}
+
+.social-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 30px 7%;
+
+    text-align: center;
+
+    background: #030303;
+
+    border-top: 1px solid var(--border);
+
+    color: #666;
+}
+
+footer strong {
+    color: white;
+}
+
+footer span {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 3000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,0.85);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: min(600px, 100%);
+
+    padding: 40px;
+
+    position: relative;
+
+    background: #111;
+
+    border: 1px solid rgba(255,0,0,0.4);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.8);
+}
+
+.modal-box h2 {
+    color: var(--red);
+
+    margin-bottom: 15px;
+}
+
+.modal-box p {
+    color: #aaa;
+
+    line-height: 1.8;
+}
+
+.close-modal {
+    position: absolute;
+
+    right: 18px;
+    top: 10px;
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+
+        top: 76px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        display: none;
+
+        flex-direction: column;
+
+        gap: 22px;
+
+        background: rgba(5,5,5,0.97);
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        margin: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .journey-visual {
+        margin: auto;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .journey-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .workouts-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    section {
+        padding: 80px 5%;
+    }
+
+    .hero {
+        padding:
+            120px 5%
+            70px;
+    }
+
+    .hero-text h1 {
+        font-size: 57px;
+
+        letter-spacing: -4px;
+    }
+
+    .hero-subtitle {
+        font-size: 13px;
+
+        letter-spacing: 2px;
+    }
+
+    .journey-visual {
+        min-height: 450px;
+
+        padding: 38px 28px;
+    }
+
+    .journey-visual h2 {
+        font-size: 45px;
+    }
+
+    .journey-grid,
+    .workouts-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .days-grid {
+        grid-template-columns:
+            repeat(6, 1fr);
+    }
+
+    .challenge-box {
+        padding: 35px 20px;
+    }
+
+    .challenge-box h3 {
+        font-size: 28px;
+    }
+
+    .modal-box {
+        padding: 30px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header>
+
+<nav class="navbar">
+
+<a href="#home" class="logo">
+    FITNESS<span>.N.B</span>
+</a>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#home">HOME</a></li>
+<li><a href="#about">ABOUT</a></li>
+<li><a href="#journey">JOURNEY</a></li>
+<li><a href="#challenge">CHALLENGE</a></li>
+<li><a href="#workouts">WORKOUTS</a></li>
+<li><a href="#social">SOCIAL</a></li>
+
+</ul>
+
+<div class="menu-btn" id="menuBtn">
+    ☰
+</div>
+
+</nav>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+
+<div class="hero-text reveal">
+
+<small>FITNESS CREATOR</small>
+
+<h1>
+NITESH<br>
+<span>BANJARE</span>
+</h1>
+
+<p class="hero-subtitle">
+BUILDING STRENGTH.<br>
+ONE DAY AT A TIME.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#journey" class="btn btn-primary">
+MY JOURNEY
+</a>
+
+<a
+href="https://youtube.com/@fitnessgym-v1r"
+target="_blank"
+class="btn btn-outline">
+WATCH MY VIDEOS
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     REPLACEMENT FOR PHOTO
+===================================================== -->
+
+<div class="hero-visual reveal">
+
+<div class="journey-visual">
+
+<div class="visual-number">
+01
+</div>
+
+<div class="visual-line"></div>
+
+<p class="visual-label">
+THE JOURNEY
+</p>
+
+<h2>
+TRAIN.<br>
+LEARN.<br>
+<span>IMPROVE.</span><br>
+REPEAT.
+</h2>
+
+<p class="visual-quote">
+NO SHORTCUTS.<br>
+JUST CONSISTENT PROGRESS.
+</p>
+
+<div class="visual-tags">
+
+<span>STRENGTH</span>
+<span>CALISTHENICS</span>
+<span>DISCIPLINE</span>
+<span>CREATION</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section class="about" id="about">
+
+<div class="section-header reveal">
+
+<small>ABOUT ME</small>
+
+<h2>THE JOURNEY.</h2>
+
+<p>
+Fitness is not just about one workout.
+It is about learning, showing up and improving
+over time.
+</p>
+
+</div>
+
+
+<div class="about-grid">
+
+<div class="about-text reveal">
+
+<p>
+I am <strong>Nitesh Banjare</strong>,
+also known as <strong>Fitness N.B</strong>.
+</p>
+
+<br>
+
+<p>
+I create fitness content around home workouts,
+calisthenics, strength training and personal
+progress.
+</p>
+
+<br>
+
+<p>
+This website represents my journey —
+training, learning, experimenting and creating
+content along the way.
+</p>
+
+</div>
+
+
+<div class="about-box reveal">
+
+<h3>MY MISSION</h3>
+
+<p>
+Build strength, learn new skills, stay consistent
+and share the process through creative fitness
+content.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     JOURNEY
+========================================================= -->
+
+<section id="journey">
+
+<div class="section-header reveal">
+
+<small>WHAT I DO</small>
+
+<h2>MY JOURNEY.</h2>
+
+</div>
+
+
+<div class="journey-grid">
+
+
+<div class="journey-card reveal">
+
+<div class="journey-number">01</div>
+
+<h3>HOME WORKOUTS</h3>
+
+<p>
+Training with a home setup and making the most
+of available equipment.
+</p>
+
+</div>
+
+
+<div class="journey-card reveal">
+
+<div class="journey-number">02</div>
+
+<h3>CALISTHENICS</h3>
+
+<p>
+Learning bodyweight movements while improving
+control, strength and technique.
+</p>
+
+</div>
+
+
+<div class="journey-card reveal">
+
+<div class="journey-number">03</div>
+
+<h3>GYM TRAINING</h3>
+
+<p>
+Exploring strength training and building better
+training habits.
+</p>
+
+</div>
+
+
+<div class="journey-card reveal">
+
+<div class="journey-number">04</div>
+
+<h3>CONTENT CREATION</h3>
+
+<p>
+Turning training sessions and progress into
+creative fitness content.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+
+<section class="stats">
+
+<div class="stats-grid">
+
+
+<div class="stat reveal">
+
+<div
+class="stat-number"
+data-target="365">
+0
+</div>
+
+<p>DAYS OF LEARNING</p>
+
+</div>
+
+
+<div class="stat reveal">
+
+<div
+class="stat-number"
+data-target="100">
+0
+</div>
+
+<p>CONSISTENCY GOAL</p>
+
+</div>
+
+
+<div class="stat reveal">
+
+<div
+class="stat-number"
+data-target="1">
+0
+</div>
+
+<p>JOURNEY</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DAILY CHALLENGE
+========================================================= -->
+
+<section id="challenge">
+
+<div class="section-header reveal">
+
+<small>DAILY SYSTEM</small>
+
+<h2>TODAY'S CHALLENGE.</h2>
+
+</div>
+
+
+<div class="challenge-box reveal">
+
+<div id="challengeNumber">
+CHALLENGE
+</div>
+
+<h3 id="challengeTitle">
+Loading...
+</h3>
+
+<p id="challengeDescription">
+Loading today's challenge...
+</p>
+
+<br>
+
+<button
+class="btn btn-primary"
+id="challengeDetails">
+VIEW DETAILS
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TRACKER
+========================================================= -->
+
+<section class="tracker">
+
+<div class="section-header reveal">
+
+<small>PROGRESS SYSTEM</small>
+
+<h2>30 DAY TRACKER.</h2>
+
+<p>
+Tap a day when you complete your planned training
+or recovery goal.
+</p>
+
+</div>
+
+
+<div class="tracker-container reveal">
+
+<div class="tracker-top">
+
+<div class="streak">
+Current streak:
+<span id="streakCount">0</span>
+days
+</div>
+
+<button
+class="reset-btn"
+id="resetTracker">
+RESET TRACKER
+</button>
+
+</div>
+
+
+<div
+class="days-grid"
+id="daysGrid">
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     WORKOUTS
+========================================================= -->
+
+<section id="workouts">
+
+<div class="section-header reveal">
+
+<small>TRAINING</small>
+
+<h2>WORKOUT SYSTEM.</h2>
+
+<p>
+Select a category to learn more about the training focus.
+</p>
+
+</div>
+
+
+<div class="workouts-grid">
+
+
+<div
+class="workout-card reveal"
+data-workout="push">
+
+<div class="icon">⚡</div>
+
+<h3>PUSH</h3>
+
+<p>
+Chest, shoulders and triceps focused training.
+</p>
+
+</div>
+
+
+<div
+class="workout-card reveal"
+data-workout="pull">
+
+<div class="icon">🔥</div>
+
+<h3>PULL</h3>
+
+<p>
+Pulling strength, back control and technique.
+</p>
+
+</div>
+
+
+<div
+class="workout-card reveal"
+data-workout="legs">
+
+<div class="icon">🦵</div>
+
+<h3>LEGS</h3>
+
+<p>
+Lower-body strength, balance and controlled movement.
+</p>
+
+</div>
+
+
+<div
+class="workout-card reveal"
+data-workout="core">
+
+<div class="icon">🎯</div>
+
+<h3>CORE</h3>
+
+<p>
+Core control and stability for better movement.
+</p>
+
+</div>
+
+
+<div
+class="workout-card reveal"
+data-workout="skills">
+
+<div class="icon">🚀</div>
+
+<h3>SKILLS</h3>
+
+<p>
+Gradually learning calisthenics skills with control.
+</p>
+
+</div>
+
+
+<div
+class="workout-card reveal"
+data-workout="recovery">
+
+<div class="icon">🧘</div>
+
+<h3>RECOVERY</h3>
+
+<p>
+Rest, mobility and recovery are part of training.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SOCIAL
+========================================================= -->
+
+<section class="social" id="social">
+
+<div class="social-content reveal">
+
+<div class="social-label">
+FOLLOW THE JOURNEY
+</div>
+
+<h2>
+FITNESS <span>N.B</span>
+</h2>
+
+<p>
+Training. Learning. Creating.
+Follow the journey and watch the progress.
+</p>
+
+
+<div class="social-buttons">
+
+<a
+href="https://youtube.com/@fitnessgym-v1r"
+target="_blank"
+class="btn btn-primary">
+YOUTUBE
+</a>
+
+<a
+href="https://www.instagram.com/fitnessn.b/"
+target="_blank"
+class="btn btn-outline">
+INSTAGRAM
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section>
+
+<div class="challenge-box reveal">
+
+<div id="challengeNumber">
+KEEP MOVING
+</div>
+
+<h3>
+BUILD YOUR OWN JOURNEY.
+</h3>
+
+<p>
+Small improvements repeated consistently can become
+something much bigger over time.
+</p>
+
+<br>
+
+<a href="#home" class="btn btn-primary">
+BACK TO TOP
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+<p>
+<strong>Fitness <span>N.B</span></strong>
+| Nitesh Banjare
+</p>
+
+<p style="margin-top:10px;">
+© 2026 Fitness N.B. All rights reserved.
+</p>
+
+</footer>
+
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<button
+class="close-modal"
+id="closeModal">
+×
+</button>
+
+<h2 id="modalTitle">
+Details
+</h2>
+
+<p id="modalText">
+Details will appear here.
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const navLinks =
+document.getElementById("navLinks");
+
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("active");
+
+});
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+    });
+
+});
+
+
+
+/* =========================================================
+   DAILY CHALLENGES
+========================================================= */
+
+const challenges = [
+
+{
+title: "Controlled Push Session",
+
+description:
+"Focus on controlled push movements and clean technique.",
+
+details:
+"Choose a push-up variation that matches your current ability. Focus on smooth repetitions, controlled movement and good form."
+},
+
+{
+title: "Pull Practice",
+
+description:
+"Work on pulling strength with a movement you can perform safely.",
+
+details:
+"Practice a suitable pulling movement such as assisted pull-ups, rows or another controlled variation. Quality matters more than chasing a number."
+},
+
+{
+title: "Leg Strength",
+
+description:
+"Train your lower body with controlled movements.",
+
+details:
+"Choose a suitable lower-body movement and focus on controlled technique. Allow recovery when your body needs it."
+},
+
+{
+title: "Core Control",
+
+description:
+"Practice core stability and controlled movement.",
+
+details:
+"Choose a core exercise appropriate for your ability and focus on maintaining control."
+},
+
+{
+title: "Skill Practice",
+
+description:
+"Spend some time learning a calisthenics skill.",
+
+details:
+"Practice a beginner-appropriate progression. Prioritize technique, safety and recovery."
+},
+
+{
+title: "Recovery Day",
+
+description:
+"Give your body time to recover and prepare for future training.",
+
+details:
+"Recovery is part of training. Use the day for normal movement, mobility and rest."
+}
+
+];
+
+
+const today =
+new Date().getDate() % challenges.length;
+
+const todayChallenge =
+challenges[today];
+
+
+document
+.getElementById("challengeNumber")
+.textContent =
+"CHALLENGE " + (today + 1);
+
+
+document
+.getElementById("challengeTitle")
+.textContent =
+todayChallenge.title;
+
+
+document
+.getElementById("challengeDescription")
+.textContent =
+todayChallenge.description;
+
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+const modal =
+document.getElementById("modal");
+
+const modalTitle =
+document.getElementById("modalTitle");
+
+const modalText =
+document.getElementById("modalText");
+
+const closeModal =
+document.getElementById("closeModal");
+
+
+function openModal(title, text) {
+
+    modalTitle.textContent = title;
+
+    modalText.textContent = text;
+
+    modal.classList.add("active");
+
+}
+
+
+function closeModalFunction() {
+
+    modal.classList.remove("active");
+
+}
+
+
+document
+.getElementById("challengeDetails")
+.addEventListener("click", () => {
+
+    openModal(
+        todayChallenge.title,
+        todayChallenge.details
+    );
+
+});
+
+
+closeModal.addEventListener(
+    "click",
+    closeModalFunction
+);
+
+
+modal.addEventListener("click", event => {
+
+    if (event.target === modal) {
+
+        closeModalFunction();
+
+    }
+
+});
+
+
+
+/* =========================================================
+   WORKOUT DATA
+========================================================= */
+
+const workoutData = {
+
+push: {
+title: "PUSH TRAINING",
+text:
+"Push training focuses on movements involving the chest, shoulders and triceps. Choose a variation that matches your current ability and focus on controlled technique."
+},
+
+pull: {
+title: "PULL TRAINING",
+text:
+"Pull training develops pulling strength through suitable exercises such as rows, assisted pull-ups or other controlled movements."
+},
+
+legs: {
+title: "LEG TRAINING",
+text:
+"Leg training focuses on lower-body strength and control. Choose suitable movements according to your ability."
+},
+
+core: {
+title: "CORE TRAINING",
+text:
+"Core training focuses on stability and control. Choose exercises that you can perform with good technique."
+},
+
+skills: {
+title: "CALISTHENICS SKILLS",
+text:
+"Skill training is about gradual progress. Break difficult movements into easier progressions and practice technique without rushing."
+},
+
+recovery: {
+title: "RECOVERY",
+text:
+"Recovery helps your body adapt to training. Rest, normal movement, sleep and adequate nutrition are all part of sustainable training."
+}
+
+};
+
+
+document
+.querySelectorAll(".workout-card")
+.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const type =
+        card.dataset.workout;
+
+        const workout =
+        workoutData[type];
+
+        openModal(
+            workout.title,
+            workout.text
+        );
+
+    });
+
+});
+
+
+
+/* =========================================================
+   30 DAY TRACKER
+========================================================= */
+
+const daysGrid =
+document.getElementById("daysGrid");
+
+const streakCount =
+document.getElementById("streakCount");
+
+const resetTracker =
+document.getElementById("resetTracker");
+
+
+let completedDays =
+JSON.parse(
+localStorage.getItem("fitnessNBTracker")
+) || [];
+
+
+for (let i = 1; i <= 30; i++) {
+
+    const day =
+    document.createElement("div");
+
+    day.className = "day";
+
+    day.textContent = i;
+
+
+    if (completedDays.includes(i)) {
+
+        day.classList.add("completed");
+
+    }
+
+
+    day.addEventListener("click", () => {
+
+        if (completedDays.includes(i)) {
+
+            completedDays =
+            completedDays.filter(
+                number => number !== i
+            );
+
+            day.classList.remove("completed");
+
+        } else {
+
+            completedDays.push(i);
+
+            day.classList.add("completed");
+
+        }
+
+
+        localStorage.setItem(
+            "fitnessNBTracker",
+            JSON.stringify(completedDays)
+        );
+
+
+        updateStreak();
+
+    });
+
+
+    daysGrid.appendChild(day);
+
+}
+
+
+
+/* =========================================================
+   STREAK
+========================================================= */
+
+function updateStreak() {
+
+    let streak = 0;
+
+
+    for (
+        let i = 1;
+        i <= 30;
+        i++
+    ) {
+
+        if (completedDays.includes(i)) {
+
+            streak++;
+
+        } else {
+
+            break;
+
+        }
+
+    }
+
+
+    streakCount.textContent = streak;
+
+}
+
+
+updateStreak();
+
+
+
+/* =========================================================
+   RESET TRACKER
+========================================================= */
+
+resetTracker.addEventListener(
+"click",
+() => {
+
+    const confirmReset =
+    confirm(
+    "Reset your 30-day tracker?"
+    );
+
+
+    if (!confirmReset) return;
+
+
+    completedDays = [];
+
+
+    localStorage.removeItem(
+    "fitnessNBTracker"
+    );
+
+
+    document
+    .querySelectorAll(".day")
+    .forEach(day => {
+
+        day.classList.remove(
+        "completed"
+        );
+
+    });
+
+
+    updateStreak();
+
+});
+
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+
+const observer =
+new IntersectionObserver(
+entries => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target
+            .classList
+            .add("show");
+
+            observer.unobserve(
+            entry.target
+            );
+
+        }
+
+    });
+
+},
+{
+threshold: 0.12
+}
+);
+
+
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+
+/* =========================================================
+   ANIMATED STATS
+========================================================= */
+
+const statNumbers =
+document.querySelectorAll(
+".stat-number"
+);
+
+
+let statsStarted = false;
+
+
+function animateStats() {
+
+    if (statsStarted) return;
+
+    statsStarted = true;
+
+
+    statNumbers.forEach(stat => {
+
+        const target =
+        Number(
+        stat.dataset.target
+        );
+
+
+        let current = 0;
+
+
+        const increment =
+        Math.max(
+        1,
+        Math.ceil(target / 60)
+        );
+
+
+        const timer =
+        setInterval(() => {
+
+            current += increment;
+
+
+            if (current >= target) {
+
+                current = target;
+
+                clearInterval(timer);
+
+            }
+
+
+            stat.textContent =
+            current;
+
+        }, 25);
+
+    });
+
+}
+
+
+const statsSection =
+document.querySelector(".stats");
+
+
+const statsObserver =
+new IntersectionObserver(
+entries => {
+
+    if (
+        entries[0].isIntersecting
+    ) {
+
+        animateStats();
+
+        statsObserver.disconnect();
+
+    }
+
+});
+
+
+statsObserver.observe(statsSection);
+
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+"keydown",
+event => {
+
+    if (event.key === "Escape") {
+
+        closeModalFunction();
+
+    }
+
+});
+
+
+</script>
+
+</body>
+</html>
