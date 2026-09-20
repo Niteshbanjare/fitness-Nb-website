@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta name="google-site-verification" content="WHYRgrpkef_dkmR7g9cQn16t5QkQ17cGQhZzkKf5PD0" />
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google-site-verification"
+content="WHYRgrpkef_dkmR7g9cQn16t5QkQ17cGQhZzkKf5PD0">
 
 <title>Fitness N.B | Nitesh Banjare</title>
 
 <meta name="description"
-content="Fitness N.B — Nitesh Banjare. Fitness, calisthenics, strength training and content creation.">
+content="Fitness N.B by Nitesh Banjare — workouts, calisthenics, fitness planning, progress tracking and fitness knowledge.">
 
 <style>
 
@@ -16,16 +19,23 @@ content="Fitness N.B — Nitesh Banjare. Fitness, calisthenics, strength trainin
    ROOT
 ========================================================= */
 
-:root {
-    --red: #ff2020;
-    --red-dark: #b00000;
-    --black: #050505;
-    --dark: #090909;
-    --card: #101010;
-    --card2: #151515;
-    --white: #ffffff;
-    --gray: #999999;
-    --border: rgba(255,255,255,0.09);
+:root{
+    --red:#ff2020;
+    --red2:#ff4a4a;
+    --red-dark:#a90000;
+
+    --black:#050505;
+    --dark:#080808;
+    --card:#101010;
+    --card2:#151515;
+
+    --white:#fff;
+    --gray:#999;
+    --gray2:#666;
+
+    --border:rgba(255,255,255,.09);
+
+    --shadow:0 25px 80px rgba(0,0,0,.55);
 }
 
 
@@ -33,30 +43,32 @@ content="Fitness N.B — Nitesh Banjare. Fitness, calisthenics, strength trainin
    RESET
 ========================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--black);
-    color: white;
-    overflow-x: hidden;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--black);
+    color:white;
+    overflow-x:hidden;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
-button {
-    font-family: inherit;
+button,
+input,
+select{
+    font-family:inherit;
 }
 
 
@@ -64,17 +76,61 @@ button {
    SCROLLBAR
 ========================================================= */
 
-::-webkit-scrollbar {
-    width: 8px;
+::-webkit-scrollbar{
+    width:8px;
 }
 
-::-webkit-scrollbar-track {
-    background: #050505;
+::-webkit-scrollbar-track{
+    background:#050505;
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--red);
-    border-radius: 20px;
+::-webkit-scrollbar-thumb{
+    background:var(--red);
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.container{
+    width:min(1250px,90%);
+    margin:auto;
+}
+
+section{
+    padding:110px 5%;
+}
+
+.section-head{
+    width:min(1250px,100%);
+    margin:0 auto 55px;
+}
+
+.section-head small{
+    color:var(--red);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.section-head h2{
+    font-size:clamp(42px,6vw,78px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-top:15px;
+}
+
+.section-head p{
+    max-width:650px;
+    color:#999;
+    line-height:1.8;
+    margin-top:18px;
+}
+
+.red{
+    color:var(--red);
 }
 
 
@@ -82,211 +138,61 @@ button {
    NAVBAR
 ========================================================= */
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:2000;
 
-    z-index: 1000;
+    background:rgba(5,5,5,.82);
+    backdrop-filter:blur(20px);
 
-    background: rgba(5,5,5,0.82);
-    backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
-.navbar {
-    max-width: 1250px;
-    height: 76px;
+.navbar{
+    width:min(1250px,92%);
+    height:76px;
+    margin:auto;
 
-    margin: auto;
-    padding: 0 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.logo {
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: 2px;
+.logo{
+    font-size:22px;
+    font-weight:1000;
+    letter-spacing:2px;
 }
 
-.logo span {
-    color: var(--red);
+.logo span{
+    color:var(--red);
 }
 
-.nav-links {
-    list-style: none;
-
-    display: flex;
-    gap: 30px;
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:28px;
 }
 
-.nav-links a {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 1px;
-
-    color: #ccc;
-
-    transition: 0.3s;
+.nav-links a{
+    color:#bbb;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+    transition:.3s;
 }
 
-.nav-links a:hover {
-    color: var(--red);
+.nav-links a:hover{
+    color:var(--red);
 }
 
-.menu-btn {
-    display: none;
-
-    font-size: 28px;
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: 100vh;
-
-    padding: 120px 7% 80px;
-
-    position: relative;
-    overflow: hidden;
-
-    display: flex;
-    align-items: center;
-
-    background:
-        radial-gradient(
-            circle at 75% 45%,
-            rgba(255,0,0,0.12),
-            transparent 28%
-        ),
-        #050505;
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 600px;
-    height: 600px;
-
-    right: -280px;
-    top: 100px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,0,0,0.13);
-
-    box-shadow:
-        0 0 100px rgba(255,0,0,0.08);
-
-    animation: spin 18s linear infinite;
-}
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    left: -180px;
-    bottom: -150px;
-
-    border-radius: 50%;
-
-    background: rgba(255,0,0,0.06);
-
-    filter: blur(50px);
-}
-
-@keyframes spin {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
-.hero-content {
-    max-width: 1250px;
-    width: 100%;
-
-    margin: auto;
-
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-
-    gap: 70px;
-
-    align-items: center;
-
-    position: relative;
-    z-index: 2;
-}
-
-
-/* =========================================================
-   HERO TEXT
-========================================================= */
-
-.hero-text small {
-    color: var(--red);
-
-    font-size: 12px;
-    font-weight: 900;
-
-    letter-spacing: 5px;
-}
-
-.hero-text h1 {
-    font-size: clamp(58px, 8vw, 105px);
-
-    line-height: 0.88;
-
-    letter-spacing: -5px;
-
-    margin: 22px 0;
-
-    font-weight: 1000;
-}
-
-.hero-text h1 span {
-    color: var(--red);
-}
-
-.hero-subtitle {
-    color: #aaa;
-
-    font-size: 17px;
-
-    line-height: 1.8;
-
-    letter-spacing: 4px;
-}
-
-.hero-buttons {
-    display: flex;
-
-    gap: 14px;
-
-    margin-top: 35px;
-
-    flex-wrap: wrap;
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
 }
 
 
@@ -294,236 +200,250 @@ header {
    BUTTONS
 ========================================================= */
 
-.btn {
-    padding: 15px 25px;
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-    border: 1px solid var(--red);
+    padding:15px 23px;
 
-    font-size: 12px;
+    border:1px solid var(--red);
 
-    font-weight: 900;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
 
-    letter-spacing: 1px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.btn-primary {
-    background: var(--red);
-    color: white;
+.btn-primary{
+    background:var(--red);
+    color:white;
 }
 
-.btn-primary:hover {
-    background: white;
-    color: black;
-    border-color: white;
-
-    transform: translateY(-4px);
+.btn-primary:hover{
+    background:white;
+    border-color:white;
+    color:black;
+    transform:translateY(-4px);
+    box-shadow:0 12px 35px rgba(255,0,0,.25);
 }
 
-.btn-outline {
-    background: transparent;
-    color: white;
+.btn-outline{
+    background:transparent;
+    color:white;
 }
 
-.btn-outline:hover {
-    background: var(--red);
+.btn-outline:hover{
+    background:var(--red);
+    transform:translateY(-4px);
+}
 
-    transform: translateY(-4px);
+.btn-small{
+    padding:11px 15px;
 }
 
 
 /* =========================================================
-   HERO JOURNEY PANEL
+   HERO
 ========================================================= */
 
-.journey-visual {
-    width: min(480px, 100%);
+.hero{
+    min-height:100vh;
+    padding:140px 5% 80px;
 
-    min-height: 510px;
+    position:relative;
+    overflow:hidden;
 
-    margin-left: auto;
-
-    padding: 50px 45px;
-
-    position: relative;
-
-    overflow: hidden;
+    display:flex;
+    align-items:center;
 
     background:
-        linear-gradient(
-            145deg,
-            #181818,
-            #080808
-        );
+        radial-gradient(circle at 80% 45%,rgba(255,0,0,.14),transparent 25%),
+        radial-gradient(circle at 10% 80%,rgba(255,0,0,.05),transparent 30%),
+        #050505;
+}
 
-    border: 1px solid rgba(255,30,30,0.35);
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    right:-300px;
+    top:100px;
+
+    border:1px solid rgba(255,0,0,.15);
+    border-radius:50%;
 
     box-shadow:
-        0 0 80px rgba(255,0,0,0.10);
+        0 0 120px rgba(255,0,0,.08);
+
+    animation:spin 20s linear infinite;
 }
 
-.journey-visual::before {
-    content: "";
+.hero::after{
+    content:"FITNESS";
 
-    position: absolute;
+    position:absolute;
 
-    width: 280px;
-    height: 280px;
+    right:-30px;
+    bottom:40px;
 
-    right: -120px;
-    top: -120px;
+    font-size:15vw;
+    font-weight:1000;
 
-    border-radius: 50%;
+    color:rgba(255,255,255,.018);
 
-    border: 1px solid rgba(255,30,30,0.3);
-
-    box-shadow:
-        0 0 50px rgba(255,0,0,0.12);
+    pointer-events:none;
 }
 
-.journey-visual::after {
-    content: "N.B";
-
-    position: absolute;
-
-    right: 25px;
-    bottom: 5px;
-
-    font-size: 110px;
-
-    font-weight: 1000;
-
-    color: rgba(255,255,255,0.025);
-
-    line-height: 1;
+@keyframes spin{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
 }
 
-.visual-number {
-    color: var(--red);
+.hero-content{
+    width:min(1250px,100%);
+    margin:auto;
 
-    font-size: 13px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:70px;
 
-    font-weight: 900;
+    align-items:center;
 
-    letter-spacing: 5px;
+    position:relative;
+    z-index:2;
 }
 
-.visual-line {
-    width: 60px;
-    height: 2px;
-
-    background: var(--red);
-
-    margin: 20px 0;
+.hero-small{
+    color:var(--red);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:5px;
 }
 
-.visual-label {
-    color: #777;
+.hero h1{
+    font-size:clamp(60px,9vw,115px);
+    line-height:.84;
 
-    font-size: 11px;
+    letter-spacing:-7px;
 
-    font-weight: 900;
-
-    letter-spacing: 4px;
+    margin:25px 0;
+    font-weight:1000;
 }
 
-.journey-visual h2 {
-    font-size: clamp(43px, 6vw, 68px);
-
-    line-height: 0.92;
-
-    letter-spacing: -3px;
-
-    margin: 27px 0;
+.hero h1 span{
+    color:var(--red);
 }
 
-.journey-visual h2 span {
-    color: var(--red);
+.hero-subtitle{
+    color:#aaa;
+    font-size:16px;
+    line-height:1.8;
+    letter-spacing:4px;
 }
 
-.visual-quote {
-    color: #999;
-
-    font-size: 12px;
-
-    line-height: 1.8;
-
-    letter-spacing: 2px;
+.hero-buttons{
+    display:flex;
+    gap:13px;
+    flex-wrap:wrap;
+    margin-top:35px;
 }
 
-.visual-tags {
-    display: flex;
+.hero-card{
+    min-height:520px;
 
-    flex-wrap: wrap;
+    position:relative;
+    overflow:hidden;
 
-    gap: 8px;
+    padding:45px;
 
-    margin-top: 35px;
+    background:
+        linear-gradient(145deg,#191919,#080808);
+
+    border:1px solid rgba(255,0,0,.3);
+
+    box-shadow:0 30px 100px rgba(255,0,0,.08);
 }
 
-.visual-tags span {
-    border: 1px solid #292929;
+.hero-card::before{
+    content:"";
 
-    padding: 8px 11px;
+    position:absolute;
 
-    color: #777;
+    width:300px;
+    height:300px;
 
-    font-size: 9px;
+    right:-150px;
+    top:-150px;
 
-    letter-spacing: 1px;
+    border:1px solid rgba(255,0,0,.3);
+    border-radius:50%;
 }
 
+.hero-card::after{
+    content:"N.B";
 
-/* =========================================================
-   SECTION
-========================================================= */
+    position:absolute;
 
-section {
-    padding: 110px 7%;
+    right:20px;
+    bottom:-10px;
+
+    font-size:130px;
+    font-weight:1000;
+
+    color:rgba(255,255,255,.025);
 }
 
-.section-header {
-    max-width: 1250px;
-
-    margin: 0 auto 55px;
+.card-number{
+    color:var(--red);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:5px;
 }
 
-.section-header small {
-    color: var(--red);
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 4px;
+.card-line{
+    width:60px;
+    height:2px;
+    background:var(--red);
+    margin:20px 0;
 }
 
-.section-header h2 {
-    font-size: clamp(42px, 6vw, 75px);
-
-    line-height: 1;
-
-    letter-spacing: -3px;
-
-    margin-top: 12px;
+.hero-card h2{
+    font-size:58px;
+    line-height:.9;
+    letter-spacing:-4px;
+    margin:25px 0;
 }
 
-.section-header p {
-    max-width: 650px;
+.hero-card h2 span{
+    color:var(--red);
+}
 
-    color: var(--gray);
+.hero-card p{
+    color:#999;
+    line-height:1.8;
+    font-size:13px;
+}
 
-    line-height: 1.8;
+.hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:30px;
+}
 
-    margin-top: 17px;
+.hero-tags span{
+    padding:8px 10px;
+    border:1px solid #292929;
+    color:#777;
+    font-size:9px;
+    letter-spacing:1px;
 }
 
 
@@ -531,195 +451,322 @@ section {
    ABOUT
 ========================================================= */
 
-.about {
-    background: #080808;
+.about{
+    background:#080808;
 }
 
-.about-grid {
-    max-width: 1250px;
+.about-grid{
+    width:min(1250px,100%);
+    margin:auto;
 
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 60px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
 }
 
-.about-text {
-    color: #aaa;
+.about-text{
+    padding:40px;
 
-    font-size: 17px;
-
-    line-height: 1.9;
+    background:#0d0d0d;
+    border:1px solid var(--border);
 }
 
-.about-text strong {
-    color: white;
+.about-text p{
+    color:#999;
+    line-height:1.9;
+    font-size:16px;
 }
 
-.about-box {
-    padding: 35px;
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
-
-    transition: 0.4s;
+.about-text strong{
+    color:white;
 }
 
-.about-box:hover {
-    transform: translateY(-6px);
+.mission{
+    padding:40px;
 
-    border-color: rgba(255,0,0,0.5);
+    background:
+        linear-gradient(145deg,#171717,#090909);
+
+    border:1px solid rgba(255,0,0,.25);
 }
 
-.about-box h3 {
-    color: var(--red);
-
-    margin-bottom: 15px;
+.mission h3{
+    color:var(--red);
+    margin-bottom:18px;
 }
 
-.about-box p {
-    color: #999;
-
-    line-height: 1.8;
+.mission p{
+    color:#999;
+    line-height:1.8;
 }
 
 
 /* =========================================================
-   JOURNEY CARDS
+   FITNESS PLANNER
 ========================================================= */
 
-.journey-grid {
-    max-width: 1250px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 18px;
+.planner{
+    background:#050505;
 }
 
-.journey-card {
-    min-height: 235px;
+.planner-box{
+    width:min(1000px,100%);
+    margin:auto;
 
-    padding: 32px 25px;
+    padding:45px;
 
-    position: relative;
+    background:
+        linear-gradient(145deg,#151515,#090909);
 
-    overflow: hidden;
+    border:1px solid rgba(255,0,0,.3);
 
-    background: var(--card);
-
-    border: 1px solid var(--border);
-
-    transition: 0.4s;
+    box-shadow:var(--shadow);
 }
 
-.journey-card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 110px;
-    height: 110px;
-
-    right: -50px;
-    bottom: -50px;
-
-    background: var(--red);
-
-    border-radius: 50%;
-
-    filter: blur(45px);
-
-    opacity: 0.12;
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
 }
 
-.journey-card:hover {
-    transform: translateY(-10px);
+.form-group label{
+    display:block;
+    color:#888;
 
-    border-color: var(--red);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
 
-    box-shadow:
-        0 20px 60px rgba(255,0,0,0.10);
+    margin-bottom:9px;
 }
 
-.journey-number {
-    color: var(--red);
+.form-group input,
+.form-group select{
+    width:100%;
 
-    font-size: 12px;
+    padding:15px;
 
-    font-weight: 900;
+    background:#090909;
 
-    letter-spacing: 2px;
+    color:white;
+
+    border:1px solid #292929;
+    outline:none;
 }
 
-.journey-card h3 {
-    font-size: 22px;
-
-    margin: 30px 0 12px;
+.form-group input:focus,
+.form-group select:focus{
+    border-color:var(--red);
 }
 
-.journey-card p {
-    color: #888;
+.planner-actions{
+    margin-top:25px;
+}
 
-    line-height: 1.7;
+.plan-result{
+    display:none;
+
+    margin-top:35px;
+
+    padding:30px;
+
+    background:#080808;
+    border:1px solid rgba(255,0,0,.25);
+}
+
+.plan-result.active{
+    display:block;
+}
+
+.plan-result h3{
+    color:var(--red);
+    margin-bottom:15px;
+}
+
+.plan-days{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:20px;
+}
+
+.plan-day{
+    padding:20px;
+
+    background:#111;
+    border:1px solid var(--border);
+}
+
+.plan-day strong{
+    display:block;
+    color:white;
+    margin-bottom:8px;
+}
+
+.plan-day span{
+    color:#888;
+    font-size:12px;
 }
 
 
 /* =========================================================
-   STATS
+   JOURNEY
 ========================================================= */
 
-.stats {
-    background: #080808;
+.journey{
+    background:#080808;
 }
 
-.stats-grid {
-    max-width: 1100px;
+.journey-grid{
+    width:min(1250px,100%);
+    margin:auto;
 
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
-.stat {
-    padding: 35px;
+.journey-card{
+    min-height:240px;
 
-    text-align: center;
+    padding:30px;
 
-    background: var(--card);
+    background:#101010;
+    border:1px solid var(--border);
 
-    border: 1px solid var(--border);
+    transition:.4s;
 }
 
-.stat-number {
-    color: var(--red);
-
-    font-size: 50px;
-
-    font-weight: 1000;
+.journey-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--red);
 }
 
-.stat p {
-    color: #777;
+.journey-card .number{
+    color:var(--red);
+    font-weight:900;
+    font-size:12px;
+}
 
-    margin-top: 8px;
+.journey-card h3{
+    margin:30px 0 12px;
+}
 
-    font-size: 12px;
+.journey-card p{
+    color:#888;
+    line-height:1.7;
+}
 
-    letter-spacing: 1px;
+
+/* =========================================================
+   WORKOUT FINDER
+========================================================= */
+
+.workouts{
+    background:#050505;
+}
+
+.workout-grid{
+    width:min(1250px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.workout-card{
+    padding:30px;
+
+    background:#101010;
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.workout-card:hover{
+    transform:translateY(-7px);
+    border-color:var(--red);
+    box-shadow:0 20px 50px rgba(255,0,0,.08);
+}
+
+.workout-icon{
+    font-size:32px;
+}
+
+.workout-card h3{
+    margin:20px 0 10px;
+}
+
+.workout-card p{
+    color:#888;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.difficulty{
+    display:inline-block;
+
+    margin-top:18px;
+
+    color:var(--red);
+
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+
+/* =========================================================
+   EXERCISE LIBRARY
+========================================================= */
+
+.library{
+    background:#080808;
+}
+
+.exercise-grid{
+    width:min(1250px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.exercise{
+    padding:25px;
+
+    background:#101010;
+    border:1px solid var(--border);
+}
+
+.exercise-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.exercise h3{
+    font-size:19px;
+}
+
+.exercise small{
+    color:var(--red);
+    font-weight:900;
+}
+
+.exercise p{
+    color:#888;
+    line-height:1.7;
+    font-size:13px;
+    margin-top:15px;
+}
+
+.exercise button{
+    margin-top:18px;
 }
 
 
@@ -727,52 +774,60 @@ section {
    DAILY CHALLENGE
 ========================================================= */
 
-.challenge-box {
-    max-width: 1000px;
+.challenge{
+    background:#050505;
+}
 
-    margin: auto;
+.challenge-box{
+    width:min(1000px,100%);
+    margin:auto;
 
-    padding: 55px;
+    padding:60px 40px;
 
-    text-align: center;
+    text-align:center;
 
     background:
-        linear-gradient(
-            135deg,
-            #171717,
-            #080808
-        );
+        radial-gradient(circle at center,rgba(255,0,0,.09),transparent 50%),
+        linear-gradient(145deg,#171717,#080808);
 
-    border: 1px solid rgba(255,0,0,0.35);
+    border:1px solid rgba(255,0,0,.3);
 
-    box-shadow:
-        0 20px 80px rgba(255,0,0,0.07);
+    box-shadow:var(--shadow);
 }
 
-#challengeNumber {
-    color: var(--red);
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    letter-spacing: 4px;
+.challenge-label{
+    color:var(--red);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:4px;
 }
 
-.challenge-box h3 {
-    font-size: 38px;
-
-    margin: 17px 0;
+.challenge-box h3{
+    font-size:42px;
+    margin:18px 0;
 }
 
-.challenge-box p {
-    max-width: 650px;
+.challenge-box p{
+    max-width:650px;
+    margin:auto;
+    color:#999;
+    line-height:1.8;
+}
 
-    margin: auto;
+.challenge-meta{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:25px 0;
+}
 
-    color: #999;
-
-    line-height: 1.8;
+.challenge-meta span{
+    padding:8px 13px;
+    background:#111;
+    border:1px solid #292929;
+    color:#888;
+    font-size:10px;
 }
 
 
@@ -780,238 +835,255 @@ section {
    TRACKER
 ========================================================= */
 
-.tracker {
-    background: #080808;
+.tracker{
+    background:#080808;
 }
 
-.tracker-container {
-    max-width: 1100px;
-
-    margin: auto;
+.tracker-box{
+    width:min(1100px,100%);
+    margin:auto;
 }
 
-.tracker-top {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    margin-bottom: 30px;
-
-    flex-wrap: wrap;
+.tracker-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
 }
 
-.streak {
-    font-size: 18px;
+.progress-info{
+    color:#aaa;
 }
 
-.streak span {
-    color: var(--red);
-
-    font-weight: 900;
+.progress-info strong{
+    color:var(--red);
 }
 
-.reset-btn {
-    padding: 10px 16px;
+.progress-bar{
+    height:8px;
+    margin:18px 0 30px;
 
-    background: transparent;
-
-    color: #999;
-
-    border: 1px solid #333;
-
-    cursor: pointer;
-
-    transition: 0.3s;
+    background:#171717;
+    overflow:hidden;
 }
 
-.reset-btn:hover {
-    color: var(--red);
+.progress-fill{
+    width:0;
+    height:100%;
 
-    border-color: var(--red);
+    background:var(--red);
+
+    transition:.5s;
 }
 
-.days-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(10, 1fr);
-
-    gap: 8px;
+.days{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:8px;
 }
 
-.day {
-    aspect-ratio: 1;
+.day{
+    aspect-ratio:1;
 
-    display: flex;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    align-items: center;
-    justify-content: center;
+    background:#111;
+    border:1px solid var(--border);
 
-    background: #111;
+    cursor:pointer;
 
-    border: 1px solid var(--border);
+    font-size:12px;
+    font-weight:900;
 
-    cursor: pointer;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    transition: 0.25s;
+    transition:.25s;
 }
 
-.day:hover {
-    border-color: var(--red);
+.day:hover{
+    border-color:var(--red);
 }
 
-.day.completed {
-    background: var(--red);
-
-    border-color: var(--red);
-
-    color: white;
+.day.completed{
+    background:var(--red);
+    border-color:var(--red);
 }
 
 
 /* =========================================================
-   WORKOUTS
+   ACHIEVEMENTS
 ========================================================= */
 
-.workouts-grid {
-    max-width: 1250px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
+.achievements{
+    background:#050505;
 }
 
-.workout-card {
-    padding: 30px;
+.achievement-grid{
+    width:min(1100px,100%);
+    margin:auto;
 
-    background: var(--card);
-
-    border: 1px solid var(--border);
-
-    cursor: pointer;
-
-    transition: 0.4s;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
-.workout-card:hover {
-    transform: translateY(-8px);
+.badge{
+    padding:25px;
+    text-align:center;
 
-    border-color: var(--red);
+    background:#101010;
+    border:1px solid var(--border);
+
+    opacity:.35;
+    filter:grayscale(1);
+
+    transition:.4s;
 }
 
-.icon {
-    font-size: 32px;
+.badge.unlocked{
+    opacity:1;
+    filter:none;
+    border-color:rgba(255,0,0,.4);
 }
 
-.workout-card h3 {
-    margin: 20px 0 10px;
+.badge-icon{
+    font-size:35px;
+    margin-bottom:12px;
 }
 
-.workout-card p {
-    color: #888;
+.badge h3{
+    font-size:14px;
+}
 
-    line-height: 1.7;
+.badge p{
+    color:#777;
+    font-size:11px;
+    margin-top:8px;
 }
 
 
 /* =========================================================
-   SOCIAL
+   KNOWLEDGE
 ========================================================= */
 
-.social {
-    text-align: center;
+.knowledge{
+    background:#080808;
+}
+
+.knowledge-grid{
+    width:min(1100px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.knowledge-card{
+    padding:30px;
+
+    background:#101010;
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.knowledge-card:hover{
+    border-color:var(--red);
+    transform:translateY(-5px);
+}
+
+.knowledge-card h3{
+    color:white;
+}
+
+.knowledge-card p{
+    color:#888;
+    line-height:1.7;
+    margin-top:10px;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    background:#050505;
+}
+
+.stats-grid{
+    width:min(1100px,100%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.stat{
+    padding:35px;
+    text-align:center;
+
+    background:#101010;
+    border:1px solid var(--border);
+}
+
+.stat-number{
+    color:var(--red);
+    font-size:52px;
+    font-weight:1000;
+}
+
+.stat p{
+    color:#777;
+    font-size:11px;
+    letter-spacing:2px;
+    margin-top:8px;
+}
+
+
+/* =========================================================
+   YOUTUBE
+========================================================= */
+
+.social{
+    text-align:center;
 
     background:
-        radial-gradient(
-            circle at center,
-            rgba(255,0,0,0.08),
-            transparent 40%
-        ),
+        radial-gradient(circle at center,rgba(255,0,0,.09),transparent 45%),
         #050505;
 }
 
-.social-content {
-    max-width: 850px;
-
-    margin: auto;
+.social-content{
+    max-width:850px;
+    margin:auto;
 }
 
-.social-label {
-    color: var(--red);
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 4px;
+.social h2{
+    font-size:clamp(45px,7vw,85px);
+    letter-spacing:-4px;
+    margin-top:15px;
 }
 
-.social-content h2 {
-    font-size: clamp(45px, 7vw, 85px);
-
-    margin-top: 12px;
-
-    letter-spacing: -3px;
+.social h2 span{
+    color:var(--red);
 }
 
-.social-content h2 span {
-    color: var(--red);
+.social p{
+    color:#999;
+    line-height:1.8;
+    margin:20px auto 35px;
 }
 
-.social-content p {
-    color: #999;
-
-    line-height: 1.8;
-
-    margin: 20px auto 35px;
-}
-
-.social-buttons {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding: 30px 7%;
-
-    text-align: center;
-
-    background: #030303;
-
-    border-top: 1px solid var(--border);
-
-    color: #666;
-}
-
-footer strong {
-    color: white;
-}
-
-footer span {
-    color: var(--red);
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 
@@ -1019,69 +1091,59 @@ footer span {
    MODAL
 ========================================================= */
 
-.modal {
-    position: fixed;
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:5000;
 
-    inset: 0;
+    display:none;
+    align-items:center;
+    justify-content:center;
 
-    z-index: 3000;
+    padding:20px;
 
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(0,0,0,0.85);
+    background:rgba(0,0,0,.86);
 }
 
-.modal.active {
-    display: flex;
+.modal.active{
+    display:flex;
 }
 
-.modal-box {
-    width: min(600px, 100%);
+.modal-box{
+    width:min(600px,100%);
 
-    padding: 40px;
+    padding:40px;
 
-    position: relative;
+    position:relative;
 
-    background: #111;
+    background:#111;
+    border:1px solid rgba(255,0,0,.4);
 
-    border: 1px solid rgba(255,0,0,0.4);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,0.8);
+    box-shadow:0 30px 100px rgba(0,0,0,.8);
 }
 
-.modal-box h2 {
-    color: var(--red);
-
-    margin-bottom: 15px;
+.modal-box h2{
+    color:var(--red);
+    margin-bottom:15px;
 }
 
-.modal-box p {
-    color: #aaa;
-
-    line-height: 1.8;
+.modal-box p{
+    color:#aaa;
+    line-height:1.8;
 }
 
-.close-modal {
-    position: absolute;
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
 
-    right: 18px;
-    top: 10px;
+    background:none;
+    border:0;
 
-    border: none;
+    color:white;
+    font-size:30px;
 
-    background: transparent;
-
-    color: white;
-
-    font-size: 30px;
-
-    cursor: pointer;
+    cursor:pointer;
 }
 
 
@@ -1089,20 +1151,56 @@ footer span {
    REVEAL
 ========================================================= */
 
-.reveal {
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:.8s ease;
 }
 
-.reveal.show {
-    opacity: 1;
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
 
-    transform: translateY(0);
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:35px 5%;
+
+    text-align:center;
+
+    background:#030303;
+
+    border-top:1px solid var(--border);
+
+    color:#666;
+}
+
+footer strong{
+    color:white;
+}
+
+footer span{
+    color:var(--red);
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:15px;
+}
+
+.footer-links a{
+    color:#777;
+    font-size:12px;
+}
+
+.footer-links a:hover{
+    color:var(--red);
 }
 
 
@@ -1110,131 +1208,130 @@ footer span {
    MOBILE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media(max-width:950px){
 
-    .menu-btn {
-        display: block;
+    .menu-btn{
+        display:block;
     }
 
-    .nav-links {
-        position: fixed;
+    .nav-links{
+        position:fixed;
 
-        top: 76px;
-        left: 0;
+        top:76px;
+        left:0;
 
-        width: 100%;
+        width:100%;
 
-        padding: 25px;
+        padding:25px;
 
-        display: none;
+        display:none;
 
-        flex-direction: column;
+        flex-direction:column;
+        gap:20px;
 
-        gap: 22px;
+        background:#070707;
 
-        background: rgba(5,5,5,0.97);
-
-        border-bottom: 1px solid var(--border);
+        border-bottom:1px solid var(--border);
     }
 
-    .nav-links.active {
-        display: flex;
+    .nav-links.active{
+        display:flex;
     }
 
-    .hero-content {
-        grid-template-columns: 1fr;
-
-        text-align: center;
+    .hero-content{
+        grid-template-columns:1fr;
     }
 
-    .hero-subtitle {
-        margin: auto;
+    .hero{
+        padding-top:120px;
     }
 
-    .hero-buttons {
-        justify-content: center;
+    .hero-card{
+        margin:auto;
+        width:min(500px,100%);
     }
 
-    .journey-visual {
-        margin: auto;
+    .journey-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .about-grid {
-        grid-template-columns: 1fr;
+    .workout-grid,
+    .exercise-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .journey-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .workouts-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+    .achievement-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
+@media(max-width:650px){
 
-@media (max-width: 600px) {
-
-    section {
-        padding: 80px 5%;
+    section{
+        padding:80px 5%;
     }
 
-    .hero {
-        padding:
-            120px 5%
-            70px;
+    .hero{
+        padding:120px 5% 70px;
     }
 
-    .hero-text h1 {
-        font-size: 57px;
-
-        letter-spacing: -4px;
+    .hero h1{
+        font-size:57px;
+        letter-spacing:-4px;
     }
 
-    .hero-subtitle {
-        font-size: 13px;
-
-        letter-spacing: 2px;
+    .hero-subtitle{
+        font-size:13px;
+        letter-spacing:2px;
     }
 
-    .journey-visual {
-        min-height: 450px;
-
-        padding: 38px 28px;
+    .hero-card{
+        min-height:450px;
+        padding:35px 28px;
     }
 
-    .journey-visual h2 {
-        font-size: 45px;
+    .hero-card h2{
+        font-size:46px;
     }
 
+    .about-grid,
+    .form-grid,
     .journey-grid,
-    .workouts-grid,
-    .stats-grid {
-        grid-template-columns: 1fr;
+    .workout-grid,
+    .exercise-grid,
+    .knowledge-grid,
+    .stats-grid{
+        grid-template-columns:1fr;
     }
 
-    .days-grid {
-        grid-template-columns:
-            repeat(6, 1fr);
+    .plan-days{
+        grid-template-columns:1fr;
     }
 
-    .challenge-box {
-        padding: 35px 20px;
+    .days{
+        grid-template-columns:repeat(6,1fr);
     }
 
-    .challenge-box h3 {
-        font-size: 28px;
+    .achievement-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .modal-box {
-        padding: 30px 20px;
+    .challenge-box{
+        padding:40px 20px;
+    }
+
+    .challenge-box h3{
+        font-size:30px;
+    }
+
+    .planner-box{
+        padding:25px 20px;
+    }
+
+    .modal-box{
+        padding:30px 20px;
     }
 
 }
@@ -1255,23 +1352,22 @@ footer span {
 <nav class="navbar">
 
 <a href="#home" class="logo">
-    FITNESS<span>.N.B</span>
+FITNESS<span>.N.B</span>
 </a>
 
 <ul class="nav-links" id="navLinks">
 
 <li><a href="#home">HOME</a></li>
 <li><a href="#about">ABOUT</a></li>
-<li><a href="#journey">JOURNEY</a></li>
-<li><a href="#challenge">CHALLENGE</a></li>
+<li><a href="#planner">PLAN</a></li>
 <li><a href="#workouts">WORKOUTS</a></li>
+<li><a href="#tracker">TRACKER</a></li>
+<li><a href="#knowledge">LEARN</a></li>
 <li><a href="#social">SOCIAL</a></li>
 
 </ul>
 
-<div class="menu-btn" id="menuBtn">
-    ☰
-</div>
+<div class="menu-btn" id="menuBtn">☰</div>
 
 </nav>
 
@@ -1289,10 +1385,11 @@ footer span {
 
 <div class="hero-content">
 
-
 <div class="hero-text reveal">
 
-<small>FITNESS CREATOR</small>
+<div class="hero-small">
+FITNESS CREATOR • CALISTHENICS
+</div>
 
 <h1>
 NITESH<br>
@@ -1300,21 +1397,19 @@ NITESH<br>
 </h1>
 
 <p class="hero-subtitle">
-BUILDING STRENGTH.<br>
-ONE DAY AT A TIME.
+TRAIN.<br>
+LEARN.<br>
+IMPROVE.
 </p>
 
 <div class="hero-buttons">
 
-<a href="#journey" class="btn btn-primary">
-MY JOURNEY
+<a href="#planner" class="btn btn-primary">
+BUILD YOUR PLAN
 </a>
 
-<a
-href="https://youtube.com/@fitnessgym-v1r"
-target="_blank"
-class="btn btn-outline">
-WATCH MY VIDEOS
+<a href="#workouts" class="btn btn-outline">
+EXPLORE WORKOUTS
 </a>
 
 </div>
@@ -1322,46 +1417,35 @@ WATCH MY VIDEOS
 </div>
 
 
+<div class="hero-card reveal">
 
-<!-- =====================================================
-     REPLACEMENT FOR PHOTO
-===================================================== -->
-
-<div class="hero-visual reveal">
-
-<div class="journey-visual">
-
-<div class="visual-number">
-01
+<div class="card-number">
+01 — FITNESS N.B
 </div>
 
-<div class="visual-line"></div>
+<div class="card-line"></div>
 
-<p class="visual-label">
+<small style="color:#777;letter-spacing:3px;">
 THE JOURNEY
-</p>
+</small>
 
 <h2>
-TRAIN.<br>
-LEARN.<br>
-<span>IMPROVE.</span><br>
-REPEAT.
+BUILD<br>
+<span>YOUR</span><br>
+STRENGTH.
 </h2>
 
-<p class="visual-quote">
-NO SHORTCUTS.<br>
-JUST CONSISTENT PROGRESS.
+<p>
+A simple fitness platform for learning,
+planning workouts, tracking progress and
+building better training habits.
 </p>
 
-<div class="visual-tags">
-
+<div class="hero-tags">
 <span>STRENGTH</span>
 <span>CALISTHENICS</span>
 <span>DISCIPLINE</span>
-<span>CREATION</span>
-
-</div>
-
+<span>PROGRESS</span>
 </div>
 
 </div>
@@ -1378,16 +1462,16 @@ JUST CONSISTENT PROGRESS.
 
 <section class="about" id="about">
 
-<div class="section-header reveal">
+<div class="section-head reveal">
 
-<small>ABOUT ME</small>
+<small>ABOUT FITNESS N.B</small>
 
-<h2>THE JOURNEY.</h2>
+<h2>THE PERSON<br>BEHIND THE <span class="red">JOURNEY.</span></h2>
 
 <p>
-Fitness is not just about one workout.
-It is about learning, showing up and improving
-over time.
+Fitness N.B is a personal fitness project created by
+Nitesh Banjare to document training, learn new skills
+and create useful fitness content.
 </p>
 
 </div>
@@ -1398,38 +1482,211 @@ over time.
 <div class="about-text reveal">
 
 <p>
-I am <strong>Nitesh Banjare</strong>,
-also known as <strong>Fitness N.B</strong>.
+I am <strong>Nitesh Banjare</strong>, also known as
+<strong>Fitness N.B</strong>.
 </p>
 
 <br>
 
 <p>
-I create fitness content around home workouts,
-calisthenics, strength training and personal
-progress.
+My journey focuses on home training, strength,
+calisthenics, learning new movements and creating
+fitness content.
 </p>
 
 <br>
 
 <p>
-This website represents my journey —
-training, learning, experimenting and creating
-content along the way.
+This website is not only a portfolio. It is designed
+to give visitors simple tools that can help them
+organize their own fitness journey.
 </p>
 
 </div>
 
 
-<div class="about-box reveal">
+<div class="mission reveal">
 
-<h3>MY MISSION</h3>
+<h3>THE MISSION</h3>
 
 <p>
-Build strength, learn new skills, stay consistent
-and share the process through creative fitness
-content.
+Make fitness simpler.
+
+Learn the basics.
+Choose realistic goals.
+Train consistently.
+Track progress.
+Give your body time to recover.
+Keep improving.
 </p>
+
+<br>
+
+<a href="#planner" class="btn btn-primary">
+START HERE
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FITNESS PLANNER
+========================================================= -->
+
+<section class="planner" id="planner">
+
+<div class="section-head reveal">
+
+<small>PERSONAL FITNESS TOOL</small>
+
+<h2>BUILD YOUR<br><span class="red">PLAN.</span></h2>
+
+<p>
+Choose a goal, experience level and equipment.
+The website will generate a simple sample weekly plan.
+</p>
+
+</div>
+
+
+<div class="planner-box reveal">
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>YOUR NAME</label>
+
+<input
+type="text"
+id="userName"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>YOUR GOAL</label>
+
+<select id="goal">
+
+<option value="general">
+General Fitness
+</option>
+
+<option value="strength">
+Build Strength
+</option>
+
+<option value="calisthenics">
+Learn Calisthenics
+</option>
+
+<option value="endurance">
+Improve Endurance
+</option>
+
+<option value="mobility">
+Mobility & Movement
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>EXPERIENCE</label>
+
+<select id="level">
+
+<option value="beginner">
+Beginner
+</option>
+
+<option value="intermediate">
+Intermediate
+</option>
+
+<option value="advanced">
+Advanced
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>EQUIPMENT</label>
+
+<select id="equipment">
+
+<option value="home">
+Bodyweight / Home
+</option>
+
+<option value="dumbbells">
+Dumbbells
+</option>
+
+<option value="full">
+Full Home Setup
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>TRAINING DAYS</label>
+
+<select id="daysPerWeek">
+
+<option value="2">2 Days</option>
+<option value="3">3 Days</option>
+<option value="4">4 Days</option>
+<option value="5">5 Days</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="planner-actions">
+
+<button
+class="btn btn-primary"
+id="generatePlan">
+
+GENERATE MY PLAN
+</button>
+
+</div>
+
+
+<div class="plan-result" id="planResult">
+
+<h3 id="planTitle">
+Your Plan
+</h3>
+
+<p id="planDescription" style="color:#999;">
+</p>
+
+<div class="plan-days" id="planDays"></div>
 
 </div>
 
@@ -1443,29 +1700,28 @@ content.
      JOURNEY
 ========================================================= -->
 
-<section id="journey">
+<section class="journey" id="journey">
 
-<div class="section-header reveal">
+<div class="section-head reveal">
 
-<small>WHAT I DO</small>
+<small>MY TRAINING JOURNEY</small>
 
-<h2>MY JOURNEY.</h2>
+<h2>WHAT I<br><span class="red">DO.</span></h2>
 
 </div>
 
 
 <div class="journey-grid">
 
-
 <div class="journey-card reveal">
 
-<div class="journey-number">01</div>
+<div class="number">01</div>
 
-<h3>HOME WORKOUTS</h3>
+<h3>HOME TRAINING</h3>
 
 <p>
-Training with a home setup and making the most
-of available equipment.
+Making the most of a simple training setup and
+available equipment.
 </p>
 
 </div>
@@ -1473,13 +1729,13 @@ of available equipment.
 
 <div class="journey-card reveal">
 
-<div class="journey-number">02</div>
+<div class="number">02</div>
 
 <h3>CALISTHENICS</h3>
 
 <p>
-Learning bodyweight movements while improving
-control, strength and technique.
+Learning bodyweight movements through gradual
+progressions and better control.
 </p>
 
 </div>
@@ -1487,13 +1743,13 @@ control, strength and technique.
 
 <div class="journey-card reveal">
 
-<div class="journey-number">03</div>
+<div class="number">03</div>
 
-<h3>GYM TRAINING</h3>
+<h3>STRENGTH</h3>
 
 <p>
-Exploring strength training and building better
-training habits.
+Building strength through consistent and controlled
+training.
 </p>
 
 </div>
@@ -1501,17 +1757,620 @@ training habits.
 
 <div class="journey-card reveal">
 
-<div class="journey-number">04</div>
+<div class="number">04</div>
 
-<h3>CONTENT CREATION</h3>
+<h3>CONTENT</h3>
 
 <p>
-Turning training sessions and progress into
-creative fitness content.
+Turning training sessions, experiments and progress
+into creative fitness content.
 </p>
 
 </div>
 
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     WORKOUT FINDER
+========================================================= -->
+
+<section class="workouts" id="workouts">
+
+<div class="section-head reveal">
+
+<small>WORKOUT FINDER</small>
+
+<h2>CHOOSE YOUR<br><span class="red">FOCUS.</span></h2>
+
+<p>
+Select a category to learn what the training focus is
+and open a simple explanation.
+</p>
+
+</div>
+
+
+<div class="workout-grid">
+
+<div class="workout-card reveal" data-workout="push">
+
+<div class="workout-icon">⚡</div>
+
+<h3>PUSH</h3>
+
+<p>
+Chest, shoulders and triceps focused movements.
+</p>
+
+<span class="difficulty">
+BEGINNER FRIENDLY
+</span>
+
+</div>
+
+
+<div class="workout-card reveal" data-workout="pull">
+
+<div class="workout-icon">🔥</div>
+
+<h3>PULL</h3>
+
+<p>
+Back and pulling strength through controlled movements.
+</p>
+
+<span class="difficulty">
+STRENGTH
+</span>
+
+</div>
+
+
+<div class="workout-card reveal" data-workout="legs">
+
+<div class="workout-icon">🦵</div>
+
+<h3>LEGS</h3>
+
+<p>
+Lower-body strength, balance and movement control.
+</p>
+
+<span class="difficulty">
+LOWER BODY
+</span>
+
+</div>
+
+
+<div class="workout-card reveal" data-workout="core">
+
+<div class="workout-icon">🎯</div>
+
+<h3>CORE</h3>
+
+<p>
+Stability and control for stronger movement.
+</p>
+
+<span class="difficulty">
+CONTROL
+</span>
+
+</div>
+
+
+<div class="workout-card reveal" data-workout="skills">
+
+<div class="workout-icon">🚀</div>
+
+<h3>SKILLS</h3>
+
+<p>
+Progressive calisthenics skill practice.
+</p>
+
+<span class="difficulty">
+PROGRESSION
+</span>
+
+</div>
+
+
+<div class="workout-card reveal" data-workout="recovery">
+
+<div class="workout-icon">🧘</div>
+
+<h3>RECOVERY</h3>
+
+<p>
+Rest, mobility and recovery as part of training.
+</p>
+
+<span class="difficulty">
+RECOVERY
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     EXERCISE LIBRARY
+========================================================= -->
+
+<section class="library" id="library">
+
+<div class="section-head reveal">
+
+<small>EXERCISE LIBRARY</small>
+
+<h2>LEARN THE<br><span class="red">MOVEMENT.</span></h2>
+
+<p>
+Start with movements you can perform with control.
+Quality comes before chasing numbers.
+</p>
+
+</div>
+
+
+<div class="exercise-grid">
+
+<div class="exercise reveal">
+
+<div class="exercise-top">
+
+<h3>Push-Up</h3>
+
+<small>PUSH</small>
+
+</div>
+
+<p>
+A bodyweight pushing movement involving the chest,
+shoulders and triceps.
+</p>
+
+<button
+class="btn btn-outline btn-small exercise-btn"
+data-title="PUSH-UP"
+data-text="Keep your body controlled, maintain a stable position and use a variation that matches your current ability. Focus on smooth repetitions rather than rushing.">
+
+LEARN
+
+</button>
+
+</div>
+
+
+<div class="exercise reveal">
+
+<div class="exercise-top">
+
+<h3>Bodyweight Squat</h3>
+
+<small>LEGS</small>
+
+</div>
+
+<p>
+A basic lower-body movement for learning control,
+balance and strength.
+</p>
+
+<button
+class="btn btn-outline btn-small exercise-btn"
+data-title="BODYWEIGHT SQUAT"
+data-text="Use a comfortable stance, control the movement and keep the exercise within a range you can perform comfortably.">
+
+LEARN
+
+</button>
+
+</div>
+
+
+<div class="exercise reveal">
+
+<div class="exercise-top">
+
+<h3>Plank</h3>
+
+<small>CORE</small>
+
+</div>
+
+<p>
+A simple isometric movement for learning trunk stability.
+</p>
+
+<button
+class="btn btn-outline btn-small exercise-btn"
+data-title="PLANK"
+data-text="Keep your body controlled and avoid rushing. Start with a manageable hold and gradually improve your control over time.">
+
+LEARN
+
+</button>
+
+</div>
+
+
+<div class="exercise reveal">
+
+<div class="exercise-top">
+
+<h3>Row</h3>
+
+<small>PULL</small>
+
+</div>
+
+<p>
+A pulling movement that can be performed with suitable
+equipment or a safe setup.
+</p>
+
+<button
+class="btn btn-outline btn-small exercise-btn"
+data-title="ROW"
+data-text="Use a safe setup and controlled movement. Focus on pulling with control instead of using momentum.">
+
+LEARN
+
+</button>
+
+</div>
+
+
+<div class="exercise reveal">
+
+<div class="exercise-top">
+
+<h3>Dead Hang</h3>
+
+<small>GRIP</small>
+
+</div>
+
+<p>
+A grip and hanging practice movement when a suitable
+and secure setup is available.
+</p>
+
+<button
+class="btn btn-outline btn-small exercise-btn"
+data-title="DEAD HANG"
+data-text="Only use a secure setup that is designed for bodyweight use. Start with a comfortable duration and stop if you experience pain or discomfort.">
+
+LEARN
+
+</button>
+
+</div>
+
+
+<div class="exercise reveal">
+
+<div class="exercise-top">
+
+<h3>Mobility Flow</h3>
+
+<small>RECOVERY</small>
+
+</div>
+
+<p>
+Gentle movement can help you maintain normal mobility
+and prepare for training.
+</p>
+
+<button
+class="btn btn-outline btn-small exercise-btn"
+data-title="MOBILITY"
+data-text="Use slow, comfortable movements. Mobility work should not require forcing a painful range of motion.">
+
+LEARN
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DAILY CHALLENGE
+========================================================= -->
+
+<section class="challenge" id="challenge">
+
+<div class="section-head reveal">
+
+<small>DAILY SYSTEM</small>
+
+<h2>TODAY'S<br><span class="red">CHALLENGE.</span></h2>
+
+</div>
+
+
+<div class="challenge-box reveal">
+
+<div class="challenge-label" id="challengeNumber">
+CHALLENGE
+</div>
+
+<h3 id="challengeTitle">
+Loading...
+</h3>
+
+<p id="challengeDescription">
+Loading today's challenge...
+</p>
+
+<div class="challenge-meta">
+
+<span id="challengeDifficulty">
+MODERATE
+</span>
+
+<span id="challengeTime">
+10–20 MIN
+</span>
+
+</div>
+
+<button
+class="btn btn-primary"
+id="challengeDetails">
+
+VIEW DETAILS
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TRACKER
+========================================================= -->
+
+<section class="tracker" id="tracker">
+
+<div class="section-head reveal">
+
+<small>PROGRESS SYSTEM</small>
+
+<h2>30 DAY<br><span class="red">TRACKER.</span></h2>
+
+<p>
+Mark a day when you complete your planned training
+or recovery goal.
+</p>
+
+</div>
+
+
+<div class="tracker-box reveal">
+
+<div class="tracker-top">
+
+<div class="progress-info">
+Completed:
+<strong id="completedCount">0</strong>/30
+</div>
+
+<div class="progress-info">
+Streak:
+<strong id="streakCount">0</strong> days
+</div>
+
+<button
+class="btn btn-outline btn-small"
+id="resetTracker">
+
+RESET
+
+</button>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+id="progressFill">
+</div>
+
+</div>
+
+
+<div class="days" id="days"></div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ACHIEVEMENTS
+========================================================= -->
+
+<section class="achievements">
+
+<div class="section-head reveal">
+
+<small>PROGRESS MILESTONES</small>
+
+<h2>EARN YOUR<br><span class="red">BADGES.</span></h2>
+
+<p>
+Complete tracker milestones to unlock achievements.
+</p>
+
+</div>
+
+
+<div class="achievement-grid">
+
+<div class="badge" id="badge1">
+
+<div class="badge-icon">🌱</div>
+
+<h3>FIRST STEP</h3>
+
+<p>Complete 1 day</p>
+
+</div>
+
+
+<div class="badge" id="badge2">
+
+<div class="badge-icon">🔥</div>
+
+<h3>7 DAY RUN</h3>
+
+<p>Complete 7 days</p>
+
+</div>
+
+
+<div class="badge" id="badge3">
+
+<div class="badge-icon">⚡</div>
+
+<h3>HALFWAY</h3>
+
+<p>Complete 15 days</p>
+
+</div>
+
+
+<div class="badge" id="badge4">
+
+<div class="badge-icon">🏆</div>
+
+<h3>30 DAY FINISHER</h3>
+
+<p>Complete all 30 days</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     KNOWLEDGE
+========================================================= -->
+
+<section class="knowledge" id="knowledge">
+
+<div class="section-head reveal">
+
+<small>FITNESS KNOWLEDGE</small>
+
+<h2>LEARN BEFORE<br>YOU <span class="red">TRAIN.</span></h2>
+
+<p>
+Simple fitness concepts that can help beginners understand
+training better.
+</p>
+
+</div>
+
+
+<div class="knowledge-grid">
+
+<div class="knowledge-card reveal">
+
+<h3>Why Warm Up?</h3>
+
+<p>
+A gradual warm-up can prepare you for movement and help
+you transition into your training session.
+</p>
+
+</div>
+
+
+<div class="knowledge-card reveal">
+
+<h3>Why Recovery Matters</h3>
+
+<p>
+Training is only one part of progress. Rest, sleep and
+adequate nutrition also support adaptation.
+</p>
+
+</div>
+
+
+<div class="knowledge-card reveal">
+
+<h3>Progressive Improvement</h3>
+
+<p>
+Instead of rushing, gradually improve your repetitions,
+control, technique or training difficulty.
+</p>
+
+</div>
+
+
+<div class="knowledge-card reveal">
+
+<h3>Consistency</h3>
+
+<p>
+A realistic routine that you can maintain is more useful
+than constantly chasing extreme challenges.
+</p>
+
+</div>
+
+
+<div class="knowledge-card reveal">
+
+<h3>Technique First</h3>
+
+<p>
+Learn the movement and control it before trying to make
+the exercise harder.
+</p>
+
+</div>
+
+
+<div class="knowledge-card reveal">
+
+<h3>Listen To Your Body</h3>
+
+<p>
+Normal training effort and pain are not the same thing.
+Stop and get appropriate help if something feels wrong.
+</p>
+
+</div>
 
 </div>
 
@@ -1526,7 +2385,6 @@ creative fitness content.
 <section class="stats">
 
 <div class="stats-grid">
-
 
 <div class="stat reveal">
 
@@ -1545,11 +2403,11 @@ data-target="365">
 
 <div
 class="stat-number"
-data-target="100">
+data-target="30">
 0
 </div>
 
-<p>CONSISTENCY GOAL</p>
+<p>DAY TRACKER</p>
 
 </div>
 
@@ -1558,225 +2416,13 @@ data-target="100">
 
 <div
 class="stat-number"
-data-target="1">
+data-target="6">
 0
 </div>
 
-<p>JOURNEY</p>
+<p>TRAINING CATEGORIES</p>
 
 </div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     DAILY CHALLENGE
-========================================================= -->
-
-<section id="challenge">
-
-<div class="section-header reveal">
-
-<small>DAILY SYSTEM</small>
-
-<h2>TODAY'S CHALLENGE.</h2>
-
-</div>
-
-
-<div class="challenge-box reveal">
-
-<div id="challengeNumber">
-CHALLENGE
-</div>
-
-<h3 id="challengeTitle">
-Loading...
-</h3>
-
-<p id="challengeDescription">
-Loading today's challenge...
-</p>
-
-<br>
-
-<button
-class="btn btn-primary"
-id="challengeDetails">
-VIEW DETAILS
-</button>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     TRACKER
-========================================================= -->
-
-<section class="tracker">
-
-<div class="section-header reveal">
-
-<small>PROGRESS SYSTEM</small>
-
-<h2>30 DAY TRACKER.</h2>
-
-<p>
-Tap a day when you complete your planned training
-or recovery goal.
-</p>
-
-</div>
-
-
-<div class="tracker-container reveal">
-
-<div class="tracker-top">
-
-<div class="streak">
-Current streak:
-<span id="streakCount">0</span>
-days
-</div>
-
-<button
-class="reset-btn"
-id="resetTracker">
-RESET TRACKER
-</button>
-
-</div>
-
-
-<div
-class="days-grid"
-id="daysGrid">
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     WORKOUTS
-========================================================= -->
-
-<section id="workouts">
-
-<div class="section-header reveal">
-
-<small>TRAINING</small>
-
-<h2>WORKOUT SYSTEM.</h2>
-
-<p>
-Select a category to learn more about the training focus.
-</p>
-
-</div>
-
-
-<div class="workouts-grid">
-
-
-<div
-class="workout-card reveal"
-data-workout="push">
-
-<div class="icon">⚡</div>
-
-<h3>PUSH</h3>
-
-<p>
-Chest, shoulders and triceps focused training.
-</p>
-
-</div>
-
-
-<div
-class="workout-card reveal"
-data-workout="pull">
-
-<div class="icon">🔥</div>
-
-<h3>PULL</h3>
-
-<p>
-Pulling strength, back control and technique.
-</p>
-
-</div>
-
-
-<div
-class="workout-card reveal"
-data-workout="legs">
-
-<div class="icon">🦵</div>
-
-<h3>LEGS</h3>
-
-<p>
-Lower-body strength, balance and controlled movement.
-</p>
-
-</div>
-
-
-<div
-class="workout-card reveal"
-data-workout="core">
-
-<div class="icon">🎯</div>
-
-<h3>CORE</h3>
-
-<p>
-Core control and stability for better movement.
-</p>
-
-</div>
-
-
-<div
-class="workout-card reveal"
-data-workout="skills">
-
-<div class="icon">🚀</div>
-
-<h3>SKILLS</h3>
-
-<p>
-Gradually learning calisthenics skills with control.
-</p>
-
-</div>
-
-
-<div
-class="workout-card reveal"
-data-workout="recovery">
-
-<div class="icon">🧘</div>
-
-<h3>RECOVERY</h3>
-
-<p>
-Rest, mobility and recovery are part of training.
-</p>
-
-</div>
-
 
 </div>
 
@@ -1792,7 +2438,7 @@ Rest, mobility and recovery are part of training.
 
 <div class="social-content reveal">
 
-<div class="social-label">
+<div class="challenge-label">
 FOLLOW THE JOURNEY
 </div>
 
@@ -1802,7 +2448,7 @@ FITNESS <span>N.B</span>
 
 <p>
 Training. Learning. Creating.
-Follow the journey and watch the progress.
+Follow Nitesh's fitness journey and watch the progress.
 </p>
 
 
@@ -1811,15 +2457,22 @@ Follow the journey and watch the progress.
 <a
 href="https://youtube.com/@fitnessgym-v1r"
 target="_blank"
+rel="noopener noreferrer"
 class="btn btn-primary">
+
 YOUTUBE
+
 </a>
+
 
 <a
 href="https://www.instagram.com/fitnessn.b/"
 target="_blank"
+rel="noopener noreferrer"
 class="btn btn-outline">
+
 INSTAGRAM
+
 </a>
 
 </div>
@@ -1838,23 +2491,24 @@ INSTAGRAM
 
 <div class="challenge-box reveal">
 
-<div id="challengeNumber">
-KEEP MOVING
+<div class="challenge-label">
+FITNESS N.B
 </div>
 
 <h3>
-BUILD YOUR OWN JOURNEY.
+START SMALL.<br>
+KEEP IMPROVING.
 </h3>
 
 <p>
-Small improvements repeated consistently can become
-something much bigger over time.
+Your fitness journey does not need to start perfectly.
+Start with what you can do, learn and improve over time.
 </p>
 
 <br>
 
-<a href="#home" class="btn btn-primary">
-BACK TO TOP
+<a href="#planner" class="btn btn-primary">
+BUILD MY PLAN
 </a>
 
 </div>
@@ -1880,6 +2534,16 @@ BACK TO TOP
 © 2026 Fitness N.B. All rights reserved.
 </p>
 
+<div class="footer-links">
+
+<a href="#home">Home</a>
+<a href="#planner">Plan</a>
+<a href="#workouts">Workouts</a>
+<a href="#tracker">Tracker</a>
+<a href="#social">Social</a>
+
+</div>
+
 </footer>
 
 
@@ -1892,9 +2556,7 @@ BACK TO TOP
 
 <div class="modal-box">
 
-<button
-class="close-modal"
-id="closeModal">
+<button class="close" id="closeModal">
 ×
 </button>
 
@@ -1912,12 +2574,7 @@ Details will appear here.
 
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script>
-
 
 /* =========================================================
    MOBILE MENU
@@ -1929,121 +2586,23 @@ document.getElementById("menuBtn");
 const navLinks =
 document.getElementById("navLinks");
 
-
-menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click",()=>{
 
     navLinks.classList.toggle("active");
 
 });
 
-
 document
 .querySelectorAll(".nav-links a")
-.forEach(link => {
+.forEach(link=>{
 
-    link.addEventListener("click", () => {
+    link.addEventListener("click",()=>{
 
         navLinks.classList.remove("active");
 
     });
 
 });
-
-
-
-/* =========================================================
-   DAILY CHALLENGES
-========================================================= */
-
-const challenges = [
-
-{
-title: "Controlled Push Session",
-
-description:
-"Focus on controlled push movements and clean technique.",
-
-details:
-"Choose a push-up variation that matches your current ability. Focus on smooth repetitions, controlled movement and good form."
-},
-
-{
-title: "Pull Practice",
-
-description:
-"Work on pulling strength with a movement you can perform safely.",
-
-details:
-"Practice a suitable pulling movement such as assisted pull-ups, rows or another controlled variation. Quality matters more than chasing a number."
-},
-
-{
-title: "Leg Strength",
-
-description:
-"Train your lower body with controlled movements.",
-
-details:
-"Choose a suitable lower-body movement and focus on controlled technique. Allow recovery when your body needs it."
-},
-
-{
-title: "Core Control",
-
-description:
-"Practice core stability and controlled movement.",
-
-details:
-"Choose a core exercise appropriate for your ability and focus on maintaining control."
-},
-
-{
-title: "Skill Practice",
-
-description:
-"Spend some time learning a calisthenics skill.",
-
-details:
-"Practice a beginner-appropriate progression. Prioritize technique, safety and recovery."
-},
-
-{
-title: "Recovery Day",
-
-description:
-"Give your body time to recover and prepare for future training.",
-
-details:
-"Recovery is part of training. Use the day for normal movement, mobility and rest."
-}
-
-];
-
-
-const today =
-new Date().getDate() % challenges.length;
-
-const todayChallenge =
-challenges[today];
-
-
-document
-.getElementById("challengeNumber")
-.textContent =
-"CHALLENGE " + (today + 1);
-
-
-document
-.getElementById("challengeTitle")
-.textContent =
-todayChallenge.title;
-
-
-document
-.getElementById("challengeDescription")
-.textContent =
-todayChallenge.description;
-
 
 
 /* =========================================================
@@ -2063,27 +2622,409 @@ const closeModal =
 document.getElementById("closeModal");
 
 
-function openModal(title, text) {
+function openModal(title,text){
 
-    modalTitle.textContent = title;
+    modalTitle.textContent=title;
 
-    modalText.textContent = text;
+    modalText.textContent=text;
 
     modal.classList.add("active");
 
 }
 
 
-function closeModalFunction() {
+function closeModalFunction(){
 
     modal.classList.remove("active");
 
 }
 
 
+closeModal.addEventListener(
+"click",
+closeModalFunction
+);
+
+
+modal.addEventListener("click",event=>{
+
+    if(event.target===modal){
+
+        closeModalFunction();
+
+    }
+
+});
+
+
+document.addEventListener("keydown",event=>{
+
+    if(event.key==="Escape"){
+
+        closeModalFunction();
+
+    }
+
+});
+
+
+/* =========================================================
+   FITNESS PLANNER
+========================================================= */
+
+const generatePlan =
+document.getElementById("generatePlan");
+
+
+generatePlan.addEventListener("click",()=>{
+
+    const name =
+    document.getElementById("userName")
+    .value.trim();
+
+    const goal =
+    document.getElementById("goal")
+    .value;
+
+    const level =
+    document.getElementById("level")
+    .value;
+
+    const equipment =
+    document.getElementById("equipment")
+    .value;
+
+    const days =
+    Number(
+        document.getElementById("daysPerWeek")
+        .value
+    );
+
+
+    const planResult =
+    document.getElementById("planResult");
+
+    const planTitle =
+    document.getElementById("planTitle");
+
+    const planDescription =
+    document.getElementById("planDescription");
+
+    const planDays =
+    document.getElementById("planDays");
+
+
+    const goalNames = {
+
+        general:"General Fitness",
+
+        strength:"Strength Building",
+
+        calisthenics:"Calisthenics",
+
+        endurance:"Endurance",
+
+        mobility:"Mobility & Movement"
+
+    };
+
+
+    planTitle.textContent =
+    (name ? name + "'s " : "") +
+    "Sample " +
+    goalNames[goal] +
+    " Plan";
+
+
+    planDescription.textContent =
+    "Level: " +
+    level +
+    " • Equipment: " +
+    equipment +
+    " • Training days: " +
+    days;
+
+
+    planDays.innerHTML="";
+
+
+    let workouts=[];
+
+
+    if(goal==="strength"){
+
+        workouts=[
+            "Full Body Strength",
+            "Upper Body",
+            "Lower Body",
+            "Full Body Strength",
+            "Recovery"
+
+        ];
+
+    }
+    else if(goal==="calisthenics"){
+
+        workouts=[
+            "Push + Core",
+            "Pull Practice",
+            "Skill Practice",
+            "Legs + Core",
+            "Recovery"
+
+        ];
+
+    }
+    else if(goal==="endurance"){
+
+        workouts=[
+            "Full Body Circuit",
+            "Active Movement",
+            "Full Body Circuit",
+            "Cardio / Movement",
+            "Recovery"
+
+        ];
+
+    }
+    else if(goal==="mobility"){
+
+        workouts=[
+            "Mobility",
+            "Light Full Body",
+            "Mobility",
+            "Movement Practice",
+            "Recovery"
+
+        ];
+
+    }
+    else{
+
+        workouts=[
+            "Full Body",
+            "Recovery / Mobility",
+            "Full Body",
+            "Movement",
+            "Recovery"
+
+        ];
+
+    }
+
+
+    const dayNames=[
+        "MONDAY",
+        "TUESDAY",
+        "WEDNESDAY",
+        "THURSDAY",
+        "FRIDAY"
+    ];
+
+
+    for(let i=0;i<days;i++){
+
+        const div =
+        document.createElement("div");
+
+        div.className="plan-day";
+
+        div.innerHTML=`
+
+        <strong>${dayNames[i]}</strong>
+
+        <span>${workouts[i]}</span>
+
+        `;
+
+        planDays.appendChild(div);
+
+    }
+
+
+    planResult.classList.add("active");
+
+
+    planResult.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+});
+
+
+/* =========================================================
+   WORKOUT DATA
+========================================================= */
+
+const workoutData={
+
+    push:{
+        title:"PUSH TRAINING",
+        text:"Push training focuses on chest, shoulders and triceps. Choose a movement variation that matches your current ability and focus on controlled technique."
+    },
+
+    pull:{
+        title:"PULL TRAINING",
+        text:"Pull training focuses on pulling strength. Suitable options can include rows or assisted pulling movements depending on your equipment and ability."
+    },
+
+    legs:{
+        title:"LEG TRAINING",
+        text:"Leg training develops lower-body strength, balance and movement control. Use suitable movements and a comfortable range of motion."
+    },
+
+    core:{
+        title:"CORE TRAINING",
+        text:"Core training focuses on stability and control. Choose exercises you can perform with good technique instead of chasing long holds."
+    },
+
+    skills:{
+        title:"CALISTHENICS SKILLS",
+        text:"Skill training works best through gradual progressions. Break difficult movements into manageable steps and focus on technique."
+    },
+
+    recovery:{
+        title:"RECOVERY",
+        text:"Recovery is part of training. Rest, sleep, nutrition and normal movement all contribute to sustainable progress."
+    }
+
+};
+
+
+document
+.querySelectorAll(".workout-card")
+.forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        const type =
+        card.dataset.workout;
+
+        openModal(
+            workoutData[type].title,
+            workoutData[type].text
+        );
+
+    });
+
+});
+
+
+/* =========================================================
+   EXERCISE BUTTONS
+========================================================= */
+
+document
+.querySelectorAll(".exercise-btn")
+.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        openModal(
+            button.dataset.title,
+            button.dataset.text
+        );
+
+    });
+
+});
+
+
+/* =========================================================
+   DAILY CHALLENGE
+========================================================= */
+
+const challenges=[
+
+{
+title:"Controlled Push Session",
+description:"Practice a suitable pushing movement with controlled repetitions.",
+difficulty:"TECHNIQUE",
+time:"10–20 MIN",
+details:"Choose a push movement that matches your ability. Focus on smooth, controlled repetitions and stop when your technique starts to break down."
+},
+
+{
+title:"Pull Practice",
+description:"Work on a suitable pulling movement with controlled technique.",
+difficulty:"STRENGTH",
+time:"10–20 MIN",
+details:"Use a safe pulling variation such as a suitable row or assisted movement. Focus on control rather than chasing a number."
+},
+
+{
+title:"Lower Body Session",
+description:"Train your lower body with controlled movements.",
+difficulty:"LOWER BODY",
+time:"10–20 MIN",
+details:"Choose suitable lower-body movements and focus on balance, control and a comfortable range of motion."
+},
+
+{
+title:"Core Control",
+description:"Practice core stability with a movement you can control.",
+difficulty:"CONTROL",
+time:"5–15 MIN",
+details:"Choose a manageable core exercise and focus on maintaining good control throughout the movement."
+},
+
+{
+title:"Skill Practice",
+description:"Spend some time learning a suitable calisthenics progression.",
+difficulty:"SKILL",
+time:"10–20 MIN",
+details:"Practice a beginner-appropriate progression. Do not rush difficult skills. Technique and safe progressions come first."
+},
+
+{
+title:"Recovery Day",
+description:"Give your body time to recover.",
+difficulty:"RECOVERY",
+time:"EASY",
+details:"Use the day for normal movement, gentle mobility and recovery. Rest is part of a sustainable training routine."
+}
+
+];
+
+
+const challengeIndex =
+new Date().getDate() %
+challenges.length;
+
+const todayChallenge =
+challenges[challengeIndex];
+
+
+document.getElementById("challengeNumber")
+.textContent=
+"CHALLENGE " +
+(challengeIndex+1);
+
+
+document.getElementById("challengeTitle")
+.textContent=
+todayChallenge.title;
+
+
+document.getElementById("challengeDescription")
+.textContent=
+todayChallenge.description;
+
+
+document.getElementById("challengeDifficulty")
+.textContent=
+todayChallenge.difficulty;
+
+
+document.getElementById("challengeTime")
+.textContent=
+todayChallenge.time;
+
+
 document
 .getElementById("challengeDetails")
-.addEventListener("click", () => {
+.addEventListener("click",()=>{
 
     openModal(
         todayChallenge.title,
@@ -2093,186 +3034,129 @@ document
 });
 
 
-closeModal.addEventListener(
-    "click",
-    closeModalFunction
-);
-
-
-modal.addEventListener("click", event => {
-
-    if (event.target === modal) {
-
-        closeModalFunction();
-
-    }
-
-});
-
-
-
-/* =========================================================
-   WORKOUT DATA
-========================================================= */
-
-const workoutData = {
-
-push: {
-title: "PUSH TRAINING",
-text:
-"Push training focuses on movements involving the chest, shoulders and triceps. Choose a variation that matches your current ability and focus on controlled technique."
-},
-
-pull: {
-title: "PULL TRAINING",
-text:
-"Pull training develops pulling strength through suitable exercises such as rows, assisted pull-ups or other controlled movements."
-},
-
-legs: {
-title: "LEG TRAINING",
-text:
-"Leg training focuses on lower-body strength and control. Choose suitable movements according to your ability."
-},
-
-core: {
-title: "CORE TRAINING",
-text:
-"Core training focuses on stability and control. Choose exercises that you can perform with good technique."
-},
-
-skills: {
-title: "CALISTHENICS SKILLS",
-text:
-"Skill training is about gradual progress. Break difficult movements into easier progressions and practice technique without rushing."
-},
-
-recovery: {
-title: "RECOVERY",
-text:
-"Recovery helps your body adapt to training. Rest, normal movement, sleep and adequate nutrition are all part of sustainable training."
-}
-
-};
-
-
-document
-.querySelectorAll(".workout-card")
-.forEach(card => {
-
-    card.addEventListener("click", () => {
-
-        const type =
-        card.dataset.workout;
-
-        const workout =
-        workoutData[type];
-
-        openModal(
-            workout.title,
-            workout.text
-        );
-
-    });
-
-});
-
-
-
 /* =========================================================
    30 DAY TRACKER
 ========================================================= */
 
-const daysGrid =
-document.getElementById("daysGrid");
+const daysContainer =
+document.getElementById("days");
+
+const completedCount =
+document.getElementById("completedCount");
 
 const streakCount =
 document.getElementById("streakCount");
 
-const resetTracker =
-document.getElementById("resetTracker");
+const progressFill =
+document.getElementById("progressFill");
 
 
-let completedDays =
+let completedDays=
 JSON.parse(
-localStorage.getItem("fitnessNBTracker")
-) || [];
+localStorage.getItem(
+"fitnessNBTracker"
+)
+)||[];
 
 
-for (let i = 1; i <= 30; i++) {
+function renderTracker(){
 
-    const day =
-    document.createElement("div");
-
-    day.className = "day";
-
-    day.textContent = i;
+    daysContainer.innerHTML="";
 
 
-    if (completedDays.includes(i)) {
+    for(let i=1;i<=30;i++){
 
-        day.classList.add("completed");
+        const day =
+        document.createElement("div");
 
-    }
+        day.className="day";
+
+        day.textContent=i;
 
 
-    day.addEventListener("click", () => {
-
-        if (completedDays.includes(i)) {
-
-            completedDays =
-            completedDays.filter(
-                number => number !== i
-            );
-
-            day.classList.remove("completed");
-
-        } else {
-
-            completedDays.push(i);
+        if(completedDays.includes(i)){
 
             day.classList.add("completed");
 
         }
 
 
-        localStorage.setItem(
-            "fitnessNBTracker",
-            JSON.stringify(completedDays)
-        );
+        day.addEventListener("click",()=>{
+
+            if(completedDays.includes(i)){
+
+                completedDays=
+                completedDays.filter(
+                    n=>n!==i
+                );
+
+            }
+            else{
+
+                completedDays.push(i);
+
+            }
 
 
-        updateStreak();
+            completedDays.sort(
+                (a,b)=>a-b
+            );
 
-    });
+
+            localStorage.setItem(
+                "fitnessNBTracker",
+                JSON.stringify(
+                    completedDays
+                )
+            );
 
 
-    daysGrid.appendChild(day);
+            renderTracker();
+
+        });
+
+
+        daysContainer.appendChild(day);
+
+    }
+
+
+    updateProgress();
 
 }
 
 
+function updateProgress(){
 
-/* =========================================================
-   STREAK
-========================================================= */
-
-function updateStreak() {
-
-    let streak = 0;
+    const total =
+    completedDays.length;
 
 
-    for (
-        let i = 1;
-        i <= 30;
-        i++
-    ) {
+    completedCount.textContent=
+    total;
 
-        if (completedDays.includes(i)) {
+
+    const percentage =
+    (total/30)*100;
+
+
+    progressFill.style.width=
+    percentage+"%";
+
+
+    let streak=0;
+
+
+    for(let i=1;i<=30;i++){
+
+        if(
+            completedDays.includes(i)
+        ){
 
             streak++;
 
-        } else {
+        }
+        else{
 
             break;
 
@@ -2281,59 +3165,86 @@ function updateStreak() {
     }
 
 
-    streakCount.textContent = streak;
+    streakCount.textContent=
+    streak;
+
+
+    updateBadges(total);
 
 }
 
 
-updateStreak();
+function updateBadges(total){
 
+    document
+    .getElementById("badge1")
+    .classList.toggle(
+        "unlocked",
+        total>=1
+    );
+
+
+    document
+    .getElementById("badge2")
+    .classList.toggle(
+        "unlocked",
+        total>=7
+    );
+
+
+    document
+    .getElementById("badge3")
+    .classList.toggle(
+        "unlocked",
+        total>=15
+    );
+
+
+    document
+    .getElementById("badge4")
+    .classList.toggle(
+        "unlocked",
+        total>=30
+    );
+
+}
+
+
+renderTracker();
 
 
 /* =========================================================
    RESET TRACKER
 ========================================================= */
 
-resetTracker.addEventListener(
-"click",
-() => {
+document
+.getElementById("resetTracker")
+.addEventListener("click",()=>{
 
-    const confirmReset =
+    const answer=
     confirm(
-    "Reset your 30-day tracker?"
+        "Reset your 30-day progress?"
     );
 
 
-    if (!confirmReset) return;
+    if(!answer)return;
 
 
-    completedDays = [];
+    completedDays=[];
 
 
     localStorage.removeItem(
-    "fitnessNBTracker"
+        "fitnessNBTracker"
     );
 
 
-    document
-    .querySelectorAll(".day")
-    .forEach(day => {
-
-        day.classList.remove(
-        "completed"
-        );
-
-    });
-
-
-    updateStreak();
+    renderTracker();
 
 });
 
 
-
 /* =========================================================
-   SCROLL REVEAL
+   REVEAL ANIMATION
 ========================================================= */
 
 const revealElements =
@@ -2342,18 +3253,18 @@ document.querySelectorAll(".reveal");
 
 const observer =
 new IntersectionObserver(
-entries => {
+entries=>{
 
-    entries.forEach(entry => {
+    entries.forEach(entry=>{
 
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting){
 
             entry.target
             .classList
             .add("show");
 
             observer.unobserve(
-            entry.target
+                entry.target
             );
 
         }
@@ -2362,21 +3273,19 @@ entries => {
 
 },
 {
-threshold: 0.12
-}
-);
+    threshold:.12
+});
 
 
-revealElements.forEach(element => {
+revealElements.forEach(element=>{
 
     observer.observe(element);
 
 });
 
 
-
 /* =========================================================
-   ANIMATED STATS
+   STATS ANIMATION
 ========================================================= */
 
 const statNumbers =
@@ -2384,54 +3293,51 @@ document.querySelectorAll(
 ".stat-number"
 );
 
-
-let statsStarted = false;
-
-
-function animateStats() {
-
-    if (statsStarted) return;
-
-    statsStarted = true;
+let statsStarted=false;
 
 
-    statNumbers.forEach(stat => {
+function animateStats(){
+
+    if(statsStarted)return;
+
+    statsStarted=true;
+
+
+    statNumbers.forEach(stat=>{
 
         const target =
         Number(
-        stat.dataset.target
+            stat.dataset.target
         );
 
-
-        let current = 0;
-
+        let current=0;
 
         const increment =
         Math.max(
-        1,
-        Math.ceil(target / 60)
+            1,
+            Math.ceil(target/60)
         );
 
 
         const timer =
-        setInterval(() => {
+        setInterval(()=>{
 
-            current += increment;
+            current+=increment;
 
 
-            if (current >= target) {
+            if(current>=target){
 
-                current = target;
+                current=target;
 
                 clearInterval(timer);
 
             }
 
 
-            stat.textContent =
+            stat.textContent=
             current;
 
-        }, 25);
+        },25);
 
     });
 
@@ -2444,11 +3350,11 @@ document.querySelector(".stats");
 
 const statsObserver =
 new IntersectionObserver(
-entries => {
+entries=>{
 
-    if (
+    if(
         entries[0].isIntersecting
-    ) {
+    ){
 
         animateStats();
 
@@ -2460,25 +3366,6 @@ entries => {
 
 
 statsObserver.observe(statsSection);
-
-
-
-/* =========================================================
-   ESC KEY
-========================================================= */
-
-document.addEventListener(
-"keydown",
-event => {
-
-    if (event.key === "Escape") {
-
-        closeModalFunction();
-
-    }
-
-});
-
 
 </script>
 
