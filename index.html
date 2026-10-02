@@ -1,52 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<meta name="google-site-verification"
-content="WHYRgrpkef_dkmR7g9cQn16t5QkQ17cGQhZzkKf5PD0">
-
-<title>Fitness N.B | Nitesh Banjare</title>
-
-<meta name="description"
-content="Fitness N.B by Nitesh Banjare — workouts, calisthenics, fitness planning, progress tracking and fitness knowledge.">
+<title>Fitness N.B | AI Fitness Platform</title>
 
 <style>
 
-/* =========================================================
+/* =========================
    ROOT
-========================================================= */
+========================= */
 
 :root{
-    --red:#ff2020;
-    --red2:#ff4a4a;
-    --red-dark:#a90000;
+    --bg:#05070b;
+    --panel:#0b1119;
+    --panel2:#101923;
+    --line:#1d2a38;
 
-    --black:#050505;
-    --dark:#080808;
-    --card:#101010;
-    --card2:#151515;
+    --text:#f4fbff;
+    --muted:#8d9aaa;
 
-    --white:#fff;
-    --gray:#999;
-    --gray2:#666;
+    --cyan:#00d9ff;
+    --blue:#176bff;
 
-    --border:rgba(255,255,255,.09);
-
-    --shadow:0 25px 80px rgba(0,0,0,.55);
+    --green:#37dc87;
+    --gold:#ffd166;
+    --danger:#ff5577;
 }
 
 
-/* =========================================================
+/* =========================
    RESET
-========================================================= */
+========================= */
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -54,9 +45,9 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--black);
-    color:white;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
     overflow-x:hidden;
 }
 
@@ -68,93 +59,135 @@ a{
 button,
 input,
 select{
-    font-family:inherit;
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
 }
 
 
-/* =========================================================
+/* =========================
    SCROLLBAR
-========================================================= */
+========================= */
 
 ::-webkit-scrollbar{
     width:8px;
 }
 
 ::-webkit-scrollbar-track{
-    background:#050505;
+    background:#05070b;
 }
 
 ::-webkit-scrollbar-thumb{
-    background:var(--red);
+    background:#1e5d7a;
     border-radius:20px;
 }
 
 
-/* =========================================================
+/* =========================
    GLOBAL
-========================================================= */
+========================= */
 
 .container{
-    width:min(1250px,90%);
+    width:min(1180px,92%);
     margin:auto;
 }
 
 section{
-    padding:110px 5%;
+    padding:100px 0;
 }
 
-.section-head{
-    width:min(1250px,100%);
-    margin:0 auto 55px;
-}
-
-.section-head small{
-    color:var(--red);
+.kicker{
+    color:var(--cyan);
     font-size:11px;
     font-weight:900;
     letter-spacing:4px;
 }
 
-.section-head h2{
-    font-size:clamp(42px,6vw,78px);
-    line-height:.95;
+.section-title{
+    font-size:clamp(42px,6vw,76px);
+    line-height:.92;
     letter-spacing:-4px;
-    margin-top:15px;
+    margin:14px 0;
 }
 
-.section-head p{
+.section-title span{
+    color:var(--cyan);
+}
+
+.section-copy{
+    color:var(--muted);
     max-width:650px;
-    color:#999;
     line-height:1.8;
-    margin-top:18px;
-}
-
-.red{
-    color:var(--red);
 }
 
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:13px 19px;
+
+    border:1px solid var(--cyan);
+
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    background:transparent;
+    color:white;
+
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 40px rgba(0,217,255,.12);
+}
+
+.btn.primary{
+    background:var(--cyan);
+    color:#001018;
+}
+
+.btn.blue{
+    border-color:var(--blue);
+    background:var(--blue);
+}
+
+.btn.small{
+    padding:10px 13px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
     position:fixed;
+    z-index:1000;
+
     top:0;
     left:0;
+
     width:100%;
-    z-index:2000;
 
-    background:rgba(5,5,5,.82);
-    backdrop-filter:blur(20px);
+    background:rgba(5,7,11,.82);
+    backdrop-filter:blur(18px);
 
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--line);
 }
 
-.navbar{
-    width:min(1250px,92%);
-    height:76px;
-    margin:auto;
+nav{
+    height:72px;
 
     display:flex;
     align-items:center;
@@ -162,156 +195,96 @@ header{
 }
 
 .logo{
-    font-size:22px;
+    font-size:21px;
     font-weight:1000;
     letter-spacing:2px;
 }
 
 .logo span{
-    color:var(--red);
+    color:var(--cyan);
 }
 
-.nav-links{
+.nav{
     display:flex;
+    gap:24px;
     list-style:none;
-    gap:28px;
 }
 
-.nav-links a{
-    color:#bbb;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:1px;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:var(--red);
-}
-
-.menu-btn{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:15px 23px;
-
-    border:1px solid var(--red);
-
+.nav a{
     font-size:11px;
-    font-weight:900;
-    letter-spacing:1px;
-
-    cursor:pointer;
-    transition:.3s;
+    font-weight:800;
+    color:#aeb9c5;
 }
 
-.btn-primary{
-    background:var(--red);
-    color:white;
+.nav a:hover{
+    color:var(--cyan);
 }
 
-.btn-primary:hover{
-    background:white;
-    border-color:white;
-    color:black;
-    transform:translateY(-4px);
-    box-shadow:0 12px 35px rgba(255,0,0,.25);
-}
-
-.btn-outline{
-    background:transparent;
-    color:white;
-}
-
-.btn-outline:hover{
-    background:var(--red);
-    transform:translateY(-4px);
-}
-
-.btn-small{
-    padding:11px 15px;
+.menu{
+    display:none;
+    font-size:26px;
 }
 
 
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
     min-height:100vh;
-    padding:140px 5% 80px;
+
+    padding:140px 0 70px;
+
+    display:flex;
+    align-items:center;
 
     position:relative;
     overflow:hidden;
 
-    display:flex;
-    align-items:center;
-
     background:
-        radial-gradient(circle at 80% 45%,rgba(255,0,0,.14),transparent 25%),
-        radial-gradient(circle at 10% 80%,rgba(255,0,0,.05),transparent 30%),
-        #050505;
+        radial-gradient(
+            circle at 80% 40%,
+            rgba(0,217,255,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(23,107,255,.1),
+            transparent 30%
+        );
 }
 
-.hero::before{
+.hero:before{
     content:"";
 
     position:absolute;
 
-    width:650px;
-    height:650px;
+    width:620px;
+    height:620px;
 
-    right:-300px;
+    right:-280px;
     top:100px;
 
-    border:1px solid rgba(255,0,0,.15);
+    border:1px solid rgba(0,217,255,.18);
+
     border-radius:50%;
 
-    box-shadow:
-        0 0 120px rgba(255,0,0,.08);
-
-    animation:spin 20s linear infinite;
-}
-
-.hero::after{
-    content:"FITNESS";
-
-    position:absolute;
-
-    right:-30px;
-    bottom:40px;
-
-    font-size:15vw;
-    font-weight:1000;
-
-    color:rgba(255,255,255,.018);
-
-    pointer-events:none;
+    animation:spin 22s linear infinite;
 }
 
 @keyframes spin{
-    from{transform:rotate(0)}
-    to{transform:rotate(360deg)}
+
+    to{
+        transform:rotate(360deg);
+    }
+
 }
 
-.hero-content{
-    width:min(1250px,100%);
-    margin:auto;
-
+.hero-grid{
     display:grid;
-    grid-template-columns:1.1fr .9fr;
+
+    grid-template-columns:1.05fr .95fr;
+
     gap:70px;
 
     align-items:center;
@@ -320,1018 +293,1469 @@ header{
     z-index:2;
 }
 
-.hero-small{
-    color:var(--red);
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:5px;
-}
-
 .hero h1{
-    font-size:clamp(60px,9vw,115px);
-    line-height:.84;
+    font-size:clamp(65px,9vw,118px);
+
+    line-height:.82;
 
     letter-spacing:-7px;
 
-    margin:25px 0;
-    font-weight:1000;
+    margin:22px 0;
 }
 
 .hero h1 span{
-    color:var(--red);
+    color:var(--cyan);
 }
 
-.hero-subtitle{
-    color:#aaa;
-    font-size:16px;
-    line-height:1.8;
-    letter-spacing:4px;
-}
+.hero-sub{
+    color:#aeb9c5;
 
-.hero-buttons{
-    display:flex;
-    gap:13px;
-    flex-wrap:wrap;
-    margin-top:35px;
-}
-
-.hero-card{
-    min-height:520px;
-
-    position:relative;
-    overflow:hidden;
-
-    padding:45px;
-
-    background:
-        linear-gradient(145deg,#191919,#080808);
-
-    border:1px solid rgba(255,0,0,.3);
-
-    box-shadow:0 30px 100px rgba(255,0,0,.08);
-}
-
-.hero-card::before{
-    content:"";
-
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    right:-150px;
-    top:-150px;
-
-    border:1px solid rgba(255,0,0,.3);
-    border-radius:50%;
-}
-
-.hero-card::after{
-    content:"N.B";
-
-    position:absolute;
-
-    right:20px;
-    bottom:-10px;
-
-    font-size:130px;
-    font-weight:1000;
-
-    color:rgba(255,255,255,.025);
-}
-
-.card-number{
-    color:var(--red);
-    font-size:12px;
-    font-weight:900;
     letter-spacing:5px;
+
+    line-height:1.9;
 }
 
-.card-line{
-    width:60px;
-    height:2px;
-    background:var(--red);
-    margin:20px 0;
-}
-
-.hero-card h2{
-    font-size:58px;
-    line-height:.9;
-    letter-spacing:-4px;
-    margin:25px 0;
-}
-
-.hero-card h2 span{
-    color:var(--red);
-}
-
-.hero-card p{
-    color:#999;
-    line-height:1.8;
-    font-size:13px;
-}
-
-.hero-tags{
+.hero-actions{
     display:flex;
+
+    gap:12px;
+
     flex-wrap:wrap;
-    gap:8px;
+
     margin-top:30px;
 }
 
-.hero-tags span{
-    padding:8px 10px;
-    border:1px solid #292929;
-    color:#777;
-    font-size:9px;
-    letter-spacing:1px;
-}
 
+/* =========================
+   HERO PANEL
+========================= */
 
-/* =========================================================
-   ABOUT
-========================================================= */
+.hero-panel{
 
-.about{
-    background:#080808;
-}
+    min-height:510px;
 
-.about-grid{
-    width:min(1250px,100%);
-    margin:auto;
+    padding:34px;
 
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-}
-
-.about-text{
-    padding:40px;
-
-    background:#0d0d0d;
-    border:1px solid var(--border);
-}
-
-.about-text p{
-    color:#999;
-    line-height:1.9;
-    font-size:16px;
-}
-
-.about-text strong{
-    color:white;
-}
-
-.mission{
-    padding:40px;
+    border:1px solid rgba(0,217,255,.25);
 
     background:
-        linear-gradient(145deg,#171717,#090909);
+        linear-gradient(
+            145deg,
+            #111b25,
+            #070b10
+        );
 
-    border:1px solid rgba(255,0,0,.25);
-}
+    box-shadow:
+        0 0 40px rgba(0,217,255,.12);
 
-.mission h3{
-    color:var(--red);
-    margin-bottom:18px;
-}
+    position:relative;
 
-.mission p{
-    color:#999;
-    line-height:1.8;
-}
-
-
-/* =========================================================
-   FITNESS PLANNER
-========================================================= */
-
-.planner{
-    background:#050505;
-}
-
-.planner-box{
-    width:min(1000px,100%);
-    margin:auto;
-
-    padding:45px;
-
-    background:
-        linear-gradient(145deg,#151515,#090909);
-
-    border:1px solid rgba(255,0,0,.3);
-
-    box-shadow:var(--shadow);
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-}
-
-.form-group label{
-    display:block;
-    color:#888;
-
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:2px;
-
-    margin-bottom:9px;
-}
-
-.form-group input,
-.form-group select{
-    width:100%;
-
-    padding:15px;
-
-    background:#090909;
-
-    color:white;
-
-    border:1px solid #292929;
-    outline:none;
-}
-
-.form-group input:focus,
-.form-group select:focus{
-    border-color:var(--red);
-}
-
-.planner-actions{
-    margin-top:25px;
-}
-
-.plan-result{
-    display:none;
-
-    margin-top:35px;
-
-    padding:30px;
-
-    background:#080808;
-    border:1px solid rgba(255,0,0,.25);
-}
-
-.plan-result.active{
-    display:block;
-}
-
-.plan-result h3{
-    color:var(--red);
-    margin-bottom:15px;
-}
-
-.plan-days{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-top:20px;
-}
-
-.plan-day{
-    padding:20px;
-
-    background:#111;
-    border:1px solid var(--border);
-}
-
-.plan-day strong{
-    display:block;
-    color:white;
-    margin-bottom:8px;
-}
-
-.plan-day span{
-    color:#888;
-    font-size:12px;
-}
-
-
-/* =========================================================
-   JOURNEY
-========================================================= */
-
-.journey{
-    background:#080808;
-}
-
-.journey-grid{
-    width:min(1250px,100%);
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-
-.journey-card{
-    min-height:240px;
-
-    padding:30px;
-
-    background:#101010;
-    border:1px solid var(--border);
-
-    transition:.4s;
-}
-
-.journey-card:hover{
-    transform:translateY(-8px);
-    border-color:var(--red);
-}
-
-.journey-card .number{
-    color:var(--red);
-    font-weight:900;
-    font-size:12px;
-}
-
-.journey-card h3{
-    margin:30px 0 12px;
-}
-
-.journey-card p{
-    color:#888;
-    line-height:1.7;
-}
-
-
-/* =========================================================
-   WORKOUT FINDER
-========================================================= */
-
-.workouts{
-    background:#050505;
-}
-
-.workout-grid{
-    width:min(1250px,100%);
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.workout-card{
-    padding:30px;
-
-    background:#101010;
-    border:1px solid var(--border);
-
-    cursor:pointer;
-
-    transition:.4s;
-}
-
-.workout-card:hover{
-    transform:translateY(-7px);
-    border-color:var(--red);
-    box-shadow:0 20px 50px rgba(255,0,0,.08);
-}
-
-.workout-icon{
-    font-size:32px;
-}
-
-.workout-card h3{
-    margin:20px 0 10px;
-}
-
-.workout-card p{
-    color:#888;
-    line-height:1.7;
-    font-size:14px;
-}
-
-.difficulty{
-    display:inline-block;
-
-    margin-top:18px;
-
-    color:var(--red);
-
-    font-size:10px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-
-/* =========================================================
-   EXERCISE LIBRARY
-========================================================= */
-
-.library{
-    background:#080808;
-}
-
-.exercise-grid{
-    width:min(1250px,100%);
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.exercise{
-    padding:25px;
-
-    background:#101010;
-    border:1px solid var(--border);
-}
-
-.exercise-top{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.exercise h3{
-    font-size:19px;
-}
-
-.exercise small{
-    color:var(--red);
-    font-weight:900;
-}
-
-.exercise p{
-    color:#888;
-    line-height:1.7;
-    font-size:13px;
-    margin-top:15px;
-}
-
-.exercise button{
-    margin-top:18px;
-}
-
-
-/* =========================================================
-   DAILY CHALLENGE
-========================================================= */
-
-.challenge{
-    background:#050505;
-}
-
-.challenge-box{
-    width:min(1000px,100%);
-    margin:auto;
-
-    padding:60px 40px;
-
-    text-align:center;
-
-    background:
-        radial-gradient(circle at center,rgba(255,0,0,.09),transparent 50%),
-        linear-gradient(145deg,#171717,#080808);
-
-    border:1px solid rgba(255,0,0,.3);
-
-    box-shadow:var(--shadow);
-}
-
-.challenge-label{
-    color:var(--red);
-    font-size:11px;
-    font-weight:900;
-    letter-spacing:4px;
-}
-
-.challenge-box h3{
-    font-size:42px;
-    margin:18px 0;
-}
-
-.challenge-box p{
-    max-width:650px;
-    margin:auto;
-    color:#999;
-    line-height:1.8;
-}
-
-.challenge-meta{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin:25px 0;
-}
-
-.challenge-meta span{
-    padding:8px 13px;
-    background:#111;
-    border:1px solid #292929;
-    color:#888;
-    font-size:10px;
-}
-
-
-/* =========================================================
-   TRACKER
-========================================================= */
-
-.tracker{
-    background:#080808;
-}
-
-.tracker-box{
-    width:min(1100px,100%);
-    margin:auto;
-}
-
-.tracker-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:20px;
-}
-
-.progress-info{
-    color:#aaa;
-}
-
-.progress-info strong{
-    color:var(--red);
-}
-
-.progress-bar{
-    height:8px;
-    margin:18px 0 30px;
-
-    background:#171717;
     overflow:hidden;
 }
 
-.progress-fill{
-    width:0;
-    height:100%;
+.hero-panel:after{
+    content:"AI";
 
-    background:var(--red);
+    position:absolute;
 
-    transition:.5s;
+    right:-25px;
+    bottom:-60px;
+
+    font-size:220px;
+
+    font-weight:1000;
+
+    color:rgba(0,217,255,.025);
 }
 
-.days{
-    display:grid;
-    grid-template-columns:repeat(10,1fr);
-    gap:8px;
-}
-
-.day{
-    aspect-ratio:1;
+.panel-top{
 
     display:flex;
-    align-items:center;
-    justify-content:center;
 
-    background:#111;
-    border:1px solid var(--border);
+    justify-content:space-between;
 
-    cursor:pointer;
+    color:var(--muted);
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+.status{
+    color:var(--green);
+}
+
+.orb{
+
+    width:250px;
+    height:250px;
+
+    margin:65px auto 35px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            rgba(0,217,255,.65) 8%,
+            rgba(23,107,255,.25) 35%,
+            transparent 68%
+        );
+
+    box-shadow:
+        0 0 80px rgba(0,217,255,.22);
+
+    animation:pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.06);
+        filter:brightness(1.2);
+    }
+
+}
+
+.hero-stat{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+}
+
+.stat{
+
+    padding:15px;
+
+    background:#0b121a;
+
+    border:1px solid var(--line);
+}
+
+.stat b{
+    font-size:20px;
+}
+
+.stat small{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    margin-top:5px;
+}
+
+
+/* =========================
+   DARK SECTION
+========================= */
+
+.dark{
+    background:#070a0f;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.grid2{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:22px;
+}
+
+.card{
+
+    background:var(--panel);
+
+    border:1px solid var(--line);
+
+    padding:30px;
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+
+    color:var(--muted);
+
+    line-height:1.75;
+}
+
+
+/* =========================
+   PLANNER
+========================= */
+
+.planner{
+    margin-top:45px;
+}
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+}
+
+.field label{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    margin-bottom:8px;
+}
+
+.field input,
+.field select{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#070b10;
+
+    color:white;
+
+    border:1px solid var(--line);
+
+    outline:none;
+}
+
+.field input:focus,
+.field select:focus{
+
+    border-color:var(--cyan);
+}
+
+.result{
+
+    display:none;
+
+    margin-top:22px;
+
+    padding:24px;
+
+    border:1px solid rgba(0,217,255,.25);
+
+    background:#081018;
+}
+
+.result.show{
+    display:block;
+}
+
+.plan-list{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:15px;
+}
+
+.plan-day{
+
+    padding:16px;
+
+    background:#0d151e;
+
+    border:1px solid var(--line);
+}
+
+.plan-day b{
+
+    display:block;
+
+    margin-bottom:6px;
+}
+
+.plan-day span{
 
     font-size:12px;
+
+    color:var(--muted);
+}
+
+
+/* =========================
+   EXERCISE LIBRARY
+========================= */
+
+.filterbar{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin:35px 0 22px;
+}
+
+.search{
+
+    flex:1;
+
+    min-width:220px;
+
+    padding:13px 15px;
+
+    background:#080c11;
+
+    border:1px solid var(--line);
+
+    color:white;
+
+    outline:none;
+}
+
+.chip{
+
+    padding:10px 13px;
+
+    background:#0a1017;
+
+    border:1px solid var(--line);
+
+    color:#9aa8b5;
+
+    font-size:10px;
+
     font-weight:900;
+}
+
+.chip.active,
+.chip:hover{
+
+    border-color:var(--cyan);
+
+    color:var(--cyan);
+}
+
+.exercise-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+}
+
+.exercise{
+
+    padding:23px;
+
+    background:var(--panel);
+
+    border:1px solid var(--line);
 
     transition:.25s;
 }
 
-.day:hover{
-    border-color:var(--red);
+.exercise:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#24506b;
 }
 
-.day.completed{
-    background:var(--red);
-    border-color:var(--red);
+.exercise-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+}
+
+.exercise-head small{
+
+    color:var(--cyan);
+
+    font-weight:900;
+
+    font-size:9px;
+}
+
+.exercise p{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.65;
+
+    margin:13px 0;
+}
+
+.tags{
+
+    display:flex;
+
+    gap:6px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:15px;
+}
+
+.tag{
+
+    font-size:9px;
+
+    padding:5px 7px;
+
+    background:#111a23;
+
+    color:#9aa8b5;
 }
 
 
-/* =========================================================
-   ACHIEVEMENTS
-========================================================= */
+/* =========================
+   AI VIDEO
+========================= */
 
-.achievements{
-    background:#050505;
+.ai{
+
+    background:
+        linear-gradient(
+            180deg,
+            #070a0f,
+            #05080d
+        );
 }
 
-.achievement-grid{
-    width:min(1100px,100%);
-    margin:auto;
+.ai-layout{
 
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+
+    grid-template-columns:
+        1.25fr .75fr;
+
+    gap:20px;
+
+    margin-top:40px;
 }
 
-.badge{
-    padding:25px;
-    text-align:center;
 
-    background:#101010;
-    border:1px solid var(--border);
+/* VIDEO STAGE */
 
-    opacity:.35;
-    filter:grayscale(1);
+.video-stage{
+
+    min-height:520px;
+
+    background:#020508;
+
+    border:1px solid rgba(0,217,255,.25);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.video-top{
+
+    position:absolute;
+
+    z-index:3;
+
+    top:16px;
+    left:16px;
+    right:16px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+.live{
+    color:var(--green);
+}
+
+.coach-canvas{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 38%,
+            rgba(0,217,255,.09),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            #03070b,
+            #07101a
+        );
+}
+
+.canvas-floor{
+
+    position:absolute;
+
+    bottom:15%;
+
+    left:10%;
+    right:10%;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 25px rgba(0,217,255,.4);
+}
+
+
+/* =========================
+   ANIMATED FIGURE
+========================= */
+
+.figure{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:15%;
+
+    width:180px;
+
+    height:330px;
+
+    transform:translateX(-50%);
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(0,217,255,.25)
+        );
+}
+
+.head{
+
+    position:absolute;
+
+    width:40px;
+    height:40px;
+
+    border:3px solid var(--cyan);
+
+    border-radius:50%;
+
+    left:70px;
+    top:5px;
+}
+
+.body{
+
+    position:absolute;
+
+    width:8px;
+    height:130px;
+
+    background:var(--cyan);
+
+    left:86px;
+    top:50px;
+
+    border-radius:10px;
+}
+
+.arm,
+.leg{
+
+    position:absolute;
+
+    width:8px;
+
+    background:var(--cyan);
+
+    border-radius:10px;
+
+    transform-origin:top center;
+}
+
+.arm{
+
+    height:105px;
+
+    top:55px;
+
+    left:85px;
+}
+
+.arm.l{
+    transform:rotate(38deg);
+}
+
+.arm.r{
+    transform:rotate(-38deg);
+}
+
+.leg{
+
+    height:135px;
+
+    top:172px;
+
+    left:86px;
+}
+
+.leg.l{
+    transform:rotate(14deg);
+}
+
+.leg.r{
+    transform:rotate(-14deg);
+}
+
+
+/* PUSH UP */
+
+.figure.pushup{
+
+    bottom:20%;
+
+    transform:
+        translateX(-50%)
+        rotate(0deg)
+        scale(.92);
+}
+
+.figure.pushup .head{
+
+    left:133px;
+    top:105px;
+}
+
+.figure.pushup .body{
+
+    left:45px;
+    top:120px;
+
+    width:115px;
+    height:8px;
+
+    transform:rotate(-10deg);
+}
+
+.figure.pushup .arm{
+
+    left:78px;
+    top:123px;
+
+    height:75px;
+}
+
+.figure.pushup .arm.l{
+
+    transform:rotate(70deg);
+}
+
+.figure.pushup .arm.r{
+
+    transform:rotate(110deg);
+}
+
+.figure.pushup .leg{
+
+    left:42px;
+    top:122px;
+
+    height:105px;
+}
+
+.figure.pushup .leg.l{
+
+    transform:rotate(-55deg);
+}
+
+.figure.pushup .leg.r{
+
+    transform:rotate(-25deg);
+}
+
+
+/* SQUAT */
+
+.figure.squat .body{
+
+    height:100px;
+}
+
+.figure.squat .leg{
+
+    top:145px;
+
+    height:105px;
+}
+
+.figure.squat .leg.l{
+
+    transform:rotate(45deg);
+}
+
+.figure.squat .leg.r{
+
+    transform:rotate(-45deg);
+}
+
+
+/* PLANK */
+
+.figure.plank .head{
+
+    left:130px;
+    top:100px;
+}
+
+.figure.plank .body{
+
+    left:45px;
+    top:115px;
+
+    width:120px;
+    height:8px;
+
+    transform:rotate(0);
+}
+
+.figure.plank .arm{
+
+    left:72px;
+    top:120px;
+
+    height:70px;
+}
+
+.figure.plank .arm.l{
+
+    transform:rotate(70deg);
+}
+
+.figure.plank .arm.r{
+
+    transform:rotate(110deg);
+}
+
+.figure.plank .leg{
+
+    left:42px;
+    top:116px;
+
+    height:100px;
+
+    transform:rotate(-65deg);
+}
+
+
+/* VIDEO LABEL */
+
+.rep-label{
+
+    position:absolute;
+
+    left:50%;
+    top:55%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-size:52px;
+
+    font-weight:1000;
+
+    color:rgba(255,255,255,.06);
+
+    letter-spacing:-3px;
+
+    pointer-events:none;
+}
+
+.video-bottom{
+
+    position:absolute;
+
+    bottom:18px;
+
+    left:18px;
+    right:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    z-index:3;
+}
+
+.video-title{
+
+    font-size:24px;
+
+    font-weight:900;
+}
+
+.video-step{
+
+    font-size:10px;
+
+    color:var(--cyan);
+
+    letter-spacing:2px;
+}
+
+
+/* =========================
+   AI SIDEBAR
+========================= */
+
+.ai-side{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.ai-card{
+
+    padding:20px;
+
+    background:var(--panel);
+
+    border:1px solid var(--line);
+}
+
+.ai-card h3{
+
+    font-size:16px;
+
+    margin-bottom:8px;
+}
+
+.ai-card p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+.ai-controls{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:8px;
+
+    margin-top:14px;
+}
+
+.ai-select{
+
+    width:100%;
+
+    padding:12px;
+
+    background:#070b10;
+
+    border:1px solid var(--line);
+
+    color:white;
+
+    margin-top:12px;
+}
+
+.progress{
+
+    height:5px;
+
+    background:#15202a;
+
+    margin-top:14px;
+}
+
+.progress i{
+
+    display:block;
+
+    width:0;
+
+    height:100%;
+
+    background:var(--cyan);
+
+    transition:.2s;
+}
+
+.steps{
+
+    display:grid;
+
+    gap:7px;
+
+    margin-top:12px;
+}
+
+.step{
+
+    padding:10px;
+
+    background:#0b1219;
+
+    border:1px solid var(--line);
+
+    font-size:11px;
+
+    color:#9aa8b5;
+}
+
+.step.active{
+
+    border-color:var(--cyan);
+
+    color:white;
+}
+
+
+/* =========================
+   TRACKER
+========================= */
+
+.tracker-box{
+
+    margin-top:40px;
+}
+
+.tracker-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+.progressbar{
+
+    height:8px;
+
+    background:#121b24;
+
+    margin:20px 0;
+}
+
+.progressbar i{
+
+    display:block;
+
+    height:100%;
+
+    width:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan)
+        );
 
     transition:.4s;
 }
 
+.days{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(10,1fr);
+
+    gap:7px;
+}
+
+.day{
+
+    aspect-ratio:1;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#0b1118;
+
+    border:1px solid var(--line);
+
+    font-size:11px;
+
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.day.done{
+
+    background:var(--cyan);
+
+    color:#001018;
+
+    border-color:var(--cyan);
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+.badges{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+
+    margin-top:35px;
+}
+
+.badge{
+
+    text-align:center;
+
+    padding:22px;
+
+    background:var(--panel);
+
+    border:1px solid var(--line);
+
+    opacity:.4;
+}
+
 .badge.unlocked{
+
     opacity:1;
-    filter:none;
-    border-color:rgba(255,0,0,.4);
+
+    border-color:
+        rgba(0,217,255,.35);
 }
 
-.badge-icon{
-    font-size:35px;
-    margin-bottom:12px;
-}
+.badge .icon{
 
-.badge h3{
-    font-size:14px;
+    font-size:28px;
+
+    margin-bottom:8px;
 }
 
 .badge p{
-    color:#777;
+
+    color:var(--muted);
+
     font-size:11px;
-    margin-top:8px;
+
+    margin-top:6px;
 }
 
 
-/* =========================================================
-   KNOWLEDGE
-========================================================= */
+/* =========================
+   COMING SOON
+========================= */
 
-.knowledge{
-    background:#080808;
-}
+.coming{
 
-.knowledge-grid{
-    width:min(1100px,100%);
-    margin:auto;
+    margin-top:45px;
 
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-}
+    padding:55px;
 
-.knowledge-card{
-    padding:30px;
-
-    background:#101010;
-    border:1px solid var(--border);
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.knowledge-card:hover{
-    border-color:var(--red);
-    transform:translateY(-5px);
-}
-
-.knowledge-card h3{
-    color:white;
-}
-
-.knowledge-card p{
-    color:#888;
-    line-height:1.7;
-    margin-top:10px;
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.stats{
-    background:#050505;
-}
-
-.stats-grid{
-    width:min(1100px,100%);
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.stat{
-    padding:35px;
-    text-align:center;
-
-    background:#101010;
-    border:1px solid var(--border);
-}
-
-.stat-number{
-    color:var(--red);
-    font-size:52px;
-    font-weight:1000;
-}
-
-.stat p{
-    color:#777;
-    font-size:11px;
-    letter-spacing:2px;
-    margin-top:8px;
-}
-
-
-/* =========================================================
-   YOUTUBE
-========================================================= */
-
-.social{
     text-align:center;
 
     background:
-        radial-gradient(circle at center,rgba(255,0,0,.09),transparent 45%),
-        #050505;
+        radial-gradient(
+            circle at center,
+            rgba(0,217,255,.1),
+            transparent 45%
+        ),
+        var(--panel);
+
+    border:1px solid rgba(0,217,255,.2);
 }
 
-.social-content{
-    max-width:850px;
-    margin:auto;
+.coming h3{
+
+    font-size:44px;
+
+    margin:12px 0;
 }
 
-.social h2{
-    font-size:clamp(45px,7vw,85px);
-    letter-spacing:-4px;
-    margin-top:15px;
-}
+.coming p{
 
-.social h2 span{
-    color:var(--red);
-}
+    color:var(--muted);
 
-.social p{
-    color:#999;
+    max-width:650px;
+
+    margin:0 auto 22px;
+
     line-height:1.8;
-    margin:20px auto 35px;
 }
 
-.social-buttons{
+.benefits{
+
     display:flex;
+
     justify-content:center;
-    gap:15px;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin:22px 0;
+}
+
+.benefits span{
+
+    padding:10px 13px;
+
+    border:1px solid var(--line);
+
+    font-size:10px;
+
+    color:#a8b4c0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    padding:50px 0;
+
+    border-top:1px solid var(--line);
+
+    color:#71808d;
+}
+
+.footer-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
     flex-wrap:wrap;
 }
 
+.footer-row b{
+    color:white;
+}
 
-/* =========================================================
+.socials{
+
+    display:flex;
+
+    gap:12px;
+}
+
+.socials a:hover{
+    color:var(--cyan);
+}
+
+
+/* =========================
    MODAL
-========================================================= */
+========================= */
 
 .modal{
+
     position:fixed;
+
     inset:0;
-    z-index:5000;
+
+    background:rgba(0,0,0,.78);
+
+    backdrop-filter:blur(10px);
 
     display:none;
+
     align-items:center;
+
     justify-content:center;
 
     padding:20px;
 
-    background:rgba(0,0,0,.86);
+    z-index:3000;
 }
 
-.modal.active{
+.modal.show{
     display:flex;
 }
 
 .modal-box{
-    width:min(600px,100%);
 
-    padding:40px;
+    width:min(620px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:#0a1118;
+
+    border:1px solid rgba(0,217,255,.3);
+
+    padding:30px;
 
     position:relative;
-
-    background:#111;
-    border:1px solid rgba(255,0,0,.4);
-
-    box-shadow:0 30px 100px rgba(0,0,0,.8);
-}
-
-.modal-box h2{
-    color:var(--red);
-    margin-bottom:15px;
-}
-
-.modal-box p{
-    color:#aaa;
-    line-height:1.8;
 }
 
 .close{
+
     position:absolute;
-    right:15px;
-    top:10px;
+
+    right:18px;
+    top:15px;
 
     background:none;
+
     border:0;
 
-    color:white;
+    color:#aab6c2;
+
+    font-size:24px;
+}
+
+.modal-box h2{
+
     font-size:30px;
 
-    cursor:pointer;
+    margin-bottom:8px;
 }
 
+.modal-box p{
 
-/* =========================================================
-   REVEAL
-========================================================= */
+    color:var(--muted);
 
-.reveal{
-    opacity:0;
-    transform:translateY(30px);
-    transition:.8s ease;
+    line-height:1.7;
 }
 
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
+.login-grid{
+
+    display:grid;
+
+    gap:12px;
+
+    margin-top:20px;
 }
 
+.login-grid input{
 
-/* =========================================================
-   FOOTER
-========================================================= */
+    padding:14px;
 
-footer{
-    padding:35px 5%;
+    background:#060a0f;
 
-    text-align:center;
+    border:1px solid var(--line);
 
-    background:#030303;
-
-    border-top:1px solid var(--border);
-
-    color:#666;
-}
-
-footer strong{
     color:white;
 }
 
-footer span{
-    color:var(--red);
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    z-index:4000;
+
+    padding:14px 18px;
+
+    background:#0c1720;
+
+    border:1px solid var(--cyan);
+
+    display:none;
 }
 
-.footer-links{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    margin-top:15px;
-}
-
-.footer-links a{
-    color:#777;
-    font-size:12px;
-}
-
-.footer-links a:hover{
-    color:var(--red);
+.toast.show{
+    display:block;
 }
 
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
-@media(max-width:950px){
+@media(max-width:900px){
 
-    .menu-btn{
-        display:block;
-    }
-
-    .nav-links{
-        position:fixed;
-
-        top:76px;
-        left:0;
-
-        width:100%;
-
-        padding:25px;
+    .nav{
 
         display:none;
 
+        position:absolute;
+
+        top:72px;
+
+        left:0;
+        right:0;
+
+        background:#070b10;
+
+        padding:20px;
+
         flex-direction:column;
-        gap:20px;
 
-        background:#070707;
-
-        border-bottom:1px solid var(--border);
+        border-bottom:1px solid var(--line);
     }
 
-    .nav-links.active{
+    .nav.open{
         display:flex;
     }
 
-    .hero-content{
+    .menu{
+        display:block;
+    }
+
+    .hero-grid,
+    .ai-layout,
+    .grid2{
         grid-template-columns:1fr;
     }
 
-    .hero{
-        padding-top:120px;
-    }
-
-    .hero-card{
-        margin:auto;
-        width:min(500px,100%);
-    }
-
-    .journey-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .workout-grid,
     .exercise-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .achievement-grid{
-        grid-template-columns:repeat(2,1fr);
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .plan-list{
+        grid-template-columns:1fr;
+    }
+
+    .badges{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 }
 
 
-@media(max-width:650px){
+@media(max-width:600px){
 
     section{
-        padding:80px 5%;
-    }
-
-    .hero{
-        padding:120px 5% 70px;
+        padding:75px 0;
     }
 
     .hero h1{
-        font-size:57px;
-        letter-spacing:-4px;
+
+        font-size:60px;
+
+        letter-spacing:-5px;
     }
 
-    .hero-subtitle{
-        font-size:13px;
-        letter-spacing:2px;
+    .hero-panel{
+
+        min-height:430px;
+
+        padding:24px;
     }
 
-    .hero-card{
-        min-height:450px;
-        padding:35px 28px;
+    .orb{
+
+        width:190px;
+        height:190px;
+
+        margin:45px auto 30px;
     }
 
-    .hero-card h2{
-        font-size:46px;
-    }
-
-    .about-grid,
-    .form-grid,
-    .journey-grid,
-    .workout-grid,
-    .exercise-grid,
-    .knowledge-grid,
-    .stats-grid{
-        grid-template-columns:1fr;
-    }
-
-    .plan-days{
+    .exercise-grid{
         grid-template-columns:1fr;
     }
 
     .days{
-        grid-template-columns:repeat(6,1fr);
+        grid-template-columns:
+            repeat(6,1fr);
     }
 
-    .achievement-grid{
-        grid-template-columns:repeat(2,1fr);
+    .video-stage{
+        min-height:470px;
     }
 
-    .challenge-box{
-        padding:40px 20px;
+    .video-title{
+        font-size:18px;
     }
 
-    .challenge-box h3{
-        font-size:30px;
+    .coming{
+        padding:35px 20px;
     }
 
-    .planner-box{
-        padding:25px 20px;
-    }
-
-    .modal-box{
-        padding:30px 20px;
+    .coming h3{
+        font-size:32px;
     }
 
 }
@@ -1343,52 +1767,70 @@ footer span{
 <body>
 
 
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-<nav class="navbar">
+<nav class="container">
 
-<a href="#home" class="logo">
+<a class="logo" href="#home">
 FITNESS<span>.N.B</span>
 </a>
 
-<ul class="nav-links" id="navLinks">
+<ul class="nav" id="nav">
 
-<li><a href="#home">HOME</a></li>
-<li><a href="#about">ABOUT</a></li>
-<li><a href="#planner">PLAN</a></li>
-<li><a href="#workouts">WORKOUTS</a></li>
-<li><a href="#tracker">TRACKER</a></li>
-<li><a href="#knowledge">LEARN</a></li>
-<li><a href="#social">SOCIAL</a></li>
+<li>
+<a href="#home">HOME</a>
+</li>
+
+<li>
+<a href="#planner">PLAN</a>
+</li>
+
+<li>
+<a href="#library">EXERCISES</a>
+</li>
+
+<li>
+<a href="#ai">AI VIDEO</a>
+</li>
+
+<li>
+<a href="#tracker">TRACKER</a>
+</li>
+
+<li>
+<a href="#membership">MEMBERSHIP</a>
+</li>
 
 </ul>
 
-<div class="menu-btn" id="menuBtn">☰</div>
+<div class="menu" id="menu">
+☰
+</div>
 
 </nav>
 
 </header>
 
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
 <main>
+
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="home">
 
-<div class="hero-content">
+<div class="container hero-grid">
 
-<div class="hero-text reveal">
+<div>
 
-<div class="hero-small">
-FITNESS CREATOR • CALISTHENICS
+<div class="kicker">
+FITNESS CREATOR • CALISTHENICS • AI COACH
 </div>
 
 <h1>
@@ -1396,204 +1838,129 @@ NITESH<br>
 <span>BANJARE</span>
 </h1>
 
-<p class="hero-subtitle">
-TRAIN.<br>
-LEARN.<br>
-IMPROVE.
+<p class="hero-sub">
+TRAIN. LEARN. IMPROVE.<br>
+BUILD A BETTER ROUTINE WITH FITNESS N.B
 </p>
 
-<div class="hero-buttons">
+<div class="hero-actions">
 
-<a href="#planner" class="btn btn-primary">
-BUILD YOUR PLAN
+<a
+class="btn primary"
+href="#ai">
+OPEN AI VIDEO
 </a>
 
-<a href="#workouts" class="btn btn-outline">
-EXPLORE WORKOUTS
+<a
+class="btn"
+href="#library">
+EXPLORE EXERCISES
 </a>
 
+<button
+class="btn"
+id="loginBtn">
+LOGIN / SIGN UP
+</button>
+
+</div>
+
+</div>
+
+
+<div class="hero-panel">
+
+<div class="panel-top">
+
+<span>
+FITNESS N.B / AI CORE
+</span>
+
+<span class="status">
+● ONLINE
+</span>
+
+</div>
+
+<div class="orb"></div>
+
+<div class="hero-stat">
+
+<div class="stat">
+<b>30+</b>
+<small>EXERCISES</small>
+</div>
+
+<div class="stat">
+<b>30</b>
+<small>DAY TRACKER</small>
+</div>
+
+<div class="stat">
+<b>AI</b>
+<small>VIDEO COACH</small>
 </div>
 
 </div>
 
-
-<div class="hero-card reveal">
-
-<div class="card-number">
-01 — FITNESS N.B
 </div>
 
-<div class="card-line"></div>
+</div>
 
-<small style="color:#777;letter-spacing:3px;">
-THE JOURNEY
-</small>
+</section>
 
-<h2>
-BUILD<br>
-<span>YOUR</span><br>
-STRENGTH.
+
+
+<!-- =========================
+     PLANNER
+========================= -->
+
+<section
+class="dark"
+id="planner">
+
+<div class="container">
+
+<div class="kicker">
+SMART PLANNER
+</div>
+
+<h2 class="section-title">
+BUILD YOUR <span>PLAN.</span>
 </h2>
 
-<p>
-A simple fitness platform for learning,
-planning workouts, tracking progress and
-building better training habits.
+<p class="section-copy">
+Choose your goal and training level.
+The website creates a simple starter plan.
 </p>
 
-<div class="hero-tags">
-<span>STRENGTH</span>
-<span>CALISTHENICS</span>
-<span>DISCIPLINE</span>
-<span>PROGRESS</span>
-</div>
 
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section class="about" id="about">
-
-<div class="section-head reveal">
-
-<small>ABOUT FITNESS N.B</small>
-
-<h2>THE PERSON<br>BEHIND THE <span class="red">JOURNEY.</span></h2>
-
-<p>
-Fitness N.B is a personal fitness project created by
-Nitesh Banjare to document training, learn new skills
-and create useful fitness content.
-</p>
-
-</div>
-
-
-<div class="about-grid">
-
-<div class="about-text reveal">
-
-<p>
-I am <strong>Nitesh Banjare</strong>, also known as
-<strong>Fitness N.B</strong>.
-</p>
-
-<br>
-
-<p>
-My journey focuses on home training, strength,
-calisthenics, learning new movements and creating
-fitness content.
-</p>
-
-<br>
-
-<p>
-This website is not only a portfolio. It is designed
-to give visitors simple tools that can help them
-organize their own fitness journey.
-</p>
-
-</div>
-
-
-<div class="mission reveal">
-
-<h3>THE MISSION</h3>
-
-<p>
-Make fitness simpler.
-
-Learn the basics.
-Choose realistic goals.
-Train consistently.
-Track progress.
-Give your body time to recover.
-Keep improving.
-</p>
-
-<br>
-
-<a href="#planner" class="btn btn-primary">
-START HERE
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FITNESS PLANNER
-========================================================= -->
-
-<section class="planner" id="planner">
-
-<div class="section-head reveal">
-
-<small>PERSONAL FITNESS TOOL</small>
-
-<h2>BUILD YOUR<br><span class="red">PLAN.</span></h2>
-
-<p>
-Choose a goal, experience level and equipment.
-The website will generate a simple sample weekly plan.
-</p>
-
-</div>
-
-
-<div class="planner-box reveal">
+<div class="card planner">
 
 <div class="form-grid">
 
-<div class="form-group">
+<div class="field">
 
-<label>YOUR NAME</label>
-
-<input
-type="text"
-id="userName"
-placeholder="Enter your name">
-
-</div>
-
-
-<div class="form-group">
-
-<label>YOUR GOAL</label>
+<label>
+GOAL
+</label>
 
 <select id="goal">
 
-<option value="general">
+<option>
+Strength
+</option>
+
+<option>
+Calisthenics
+</option>
+
+<option>
 General Fitness
 </option>
 
-<option value="strength">
-Build Strength
-</option>
-
-<option value="calisthenics">
-Learn Calisthenics
-</option>
-
-<option value="endurance">
-Improve Endurance
-</option>
-
-<option value="mobility">
-Mobility & Movement
+<option>
+Mobility
 </option>
 
 </select>
@@ -1601,21 +1968,23 @@ Mobility & Movement
 </div>
 
 
-<div class="form-group">
+<div class="field">
 
-<label>EXPERIENCE</label>
+<label>
+LEVEL
+</label>
 
 <select id="level">
 
-<option value="beginner">
+<option>
 Beginner
 </option>
 
-<option value="intermediate">
+<option>
 Intermediate
 </option>
 
-<option value="advanced">
+<option>
 Advanced
 </option>
 
@@ -1624,39 +1993,25 @@ Advanced
 </div>
 
 
-<div class="form-group">
+<div class="field">
 
-<label>EQUIPMENT</label>
+<label>
+DAYS / WEEK
+</label>
 
-<select id="equipment">
+<select id="freq">
 
-<option value="home">
-Bodyweight / Home
+<option>
+3
 </option>
 
-<option value="dumbbells">
-Dumbbells
+<option>
+4
 </option>
 
-<option value="full">
-Full Home Setup
+<option>
+5
 </option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>TRAINING DAYS</label>
-
-<select id="daysPerWeek">
-
-<option value="2">2 Days</option>
-<option value="3">3 Days</option>
-<option value="4">4 Days</option>
-<option value="5">5 Days</option>
 
 </select>
 
@@ -1664,29 +2019,21 @@ Full Home Setup
 
 </div>
 
-
-<div class="planner-actions">
 
 <button
-class="btn btn-primary"
-id="generatePlan">
+class="btn primary"
+style="margin-top:18px"
+id="makePlan">
 
-GENERATE MY PLAN
+GENERATE PLAN
+
 </button>
 
+
+<div
+class="result"
+id="planResult">
 </div>
-
-
-<div class="plan-result" id="planResult">
-
-<h3 id="planTitle">
-Your Plan
-</h3>
-
-<p id="planDescription" style="color:#999;">
-</p>
-
-<div class="plan-days" id="planDays"></div>
 
 </div>
 
@@ -1696,393 +2043,43 @@ Your Plan
 
 
 
-<!-- =========================================================
-     JOURNEY
-========================================================= -->
-
-<section class="journey" id="journey">
-
-<div class="section-head reveal">
-
-<small>MY TRAINING JOURNEY</small>
-
-<h2>WHAT I<br><span class="red">DO.</span></h2>
-
-</div>
-
-
-<div class="journey-grid">
-
-<div class="journey-card reveal">
-
-<div class="number">01</div>
-
-<h3>HOME TRAINING</h3>
-
-<p>
-Making the most of a simple training setup and
-available equipment.
-</p>
-
-</div>
-
-
-<div class="journey-card reveal">
-
-<div class="number">02</div>
-
-<h3>CALISTHENICS</h3>
-
-<p>
-Learning bodyweight movements through gradual
-progressions and better control.
-</p>
-
-</div>
-
-
-<div class="journey-card reveal">
-
-<div class="number">03</div>
-
-<h3>STRENGTH</h3>
-
-<p>
-Building strength through consistent and controlled
-training.
-</p>
-
-</div>
-
-
-<div class="journey-card reveal">
-
-<div class="number">04</div>
-
-<h3>CONTENT</h3>
-
-<p>
-Turning training sessions, experiments and progress
-into creative fitness content.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     WORKOUT FINDER
-========================================================= -->
-
-<section class="workouts" id="workouts">
-
-<div class="section-head reveal">
-
-<small>WORKOUT FINDER</small>
-
-<h2>CHOOSE YOUR<br><span class="red">FOCUS.</span></h2>
-
-<p>
-Select a category to learn what the training focus is
-and open a simple explanation.
-</p>
-
-</div>
-
-
-<div class="workout-grid">
-
-<div class="workout-card reveal" data-workout="push">
-
-<div class="workout-icon">⚡</div>
-
-<h3>PUSH</h3>
-
-<p>
-Chest, shoulders and triceps focused movements.
-</p>
-
-<span class="difficulty">
-BEGINNER FRIENDLY
-</span>
-
-</div>
-
-
-<div class="workout-card reveal" data-workout="pull">
-
-<div class="workout-icon">🔥</div>
-
-<h3>PULL</h3>
-
-<p>
-Back and pulling strength through controlled movements.
-</p>
-
-<span class="difficulty">
-STRENGTH
-</span>
-
-</div>
-
-
-<div class="workout-card reveal" data-workout="legs">
-
-<div class="workout-icon">🦵</div>
-
-<h3>LEGS</h3>
-
-<p>
-Lower-body strength, balance and movement control.
-</p>
-
-<span class="difficulty">
-LOWER BODY
-</span>
-
-</div>
-
-
-<div class="workout-card reveal" data-workout="core">
-
-<div class="workout-icon">🎯</div>
-
-<h3>CORE</h3>
-
-<p>
-Stability and control for stronger movement.
-</p>
-
-<span class="difficulty">
-CONTROL
-</span>
-
-</div>
-
-
-<div class="workout-card reveal" data-workout="skills">
-
-<div class="workout-icon">🚀</div>
-
-<h3>SKILLS</h3>
-
-<p>
-Progressive calisthenics skill practice.
-</p>
-
-<span class="difficulty">
-PROGRESSION
-</span>
-
-</div>
-
-
-<div class="workout-card reveal" data-workout="recovery">
-
-<div class="workout-icon">🧘</div>
-
-<h3>RECOVERY</h3>
-
-<p>
-Rest, mobility and recovery as part of training.
-</p>
-
-<span class="difficulty">
-RECOVERY
-</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
+<!-- =========================
      EXERCISE LIBRARY
-========================================================= -->
+========================= -->
 
-<section class="library" id="library">
+<section id="library">
 
-<div class="section-head reveal">
+<div class="container">
 
-<small>EXERCISE LIBRARY</small>
+<div class="kicker">
+EXERCISE LIBRARY
+</div>
 
-<h2>LEARN THE<br><span class="red">MOVEMENT.</span></h2>
+<h2 class="section-title">
+MOVE WITH <span>CONTROL.</span>
+</h2>
 
-<p>
-Start with movements you can perform with control.
-Quality comes before chasing numbers.
+<p class="section-copy">
+Search exercises, filter categories and open
+any exercise inside the AI video coach.
 </p>
 
-</div>
 
+<div class="filterbar">
 
-<div class="exercise-grid">
+<input
+class="search"
+id="search"
+placeholder="Search push-up, pull-up, squat...">
 
-<div class="exercise reveal">
-
-<div class="exercise-top">
-
-<h3>Push-Up</h3>
-
-<small>PUSH</small>
-
-</div>
-
-<p>
-A bodyweight pushing movement involving the chest,
-shoulders and triceps.
-</p>
-
-<button
-class="btn btn-outline btn-small exercise-btn"
-data-title="PUSH-UP"
-data-text="Keep your body controlled, maintain a stable position and use a variation that matches your current ability. Focus on smooth repetitions rather than rushing.">
-
-LEARN
-
-</button>
+<div id="chips"></div>
 
 </div>
 
 
-<div class="exercise reveal">
-
-<div class="exercise-top">
-
-<h3>Bodyweight Squat</h3>
-
-<small>LEGS</small>
-
-</div>
-
-<p>
-A basic lower-body movement for learning control,
-balance and strength.
-</p>
-
-<button
-class="btn btn-outline btn-small exercise-btn"
-data-title="BODYWEIGHT SQUAT"
-data-text="Use a comfortable stance, control the movement and keep the exercise within a range you can perform comfortably.">
-
-LEARN
-
-</button>
-
-</div>
-
-
-<div class="exercise reveal">
-
-<div class="exercise-top">
-
-<h3>Plank</h3>
-
-<small>CORE</small>
-
-</div>
-
-<p>
-A simple isometric movement for learning trunk stability.
-</p>
-
-<button
-class="btn btn-outline btn-small exercise-btn"
-data-title="PLANK"
-data-text="Keep your body controlled and avoid rushing. Start with a manageable hold and gradually improve your control over time.">
-
-LEARN
-
-</button>
-
-</div>
-
-
-<div class="exercise reveal">
-
-<div class="exercise-top">
-
-<h3>Row</h3>
-
-<small>PULL</small>
-
-</div>
-
-<p>
-A pulling movement that can be performed with suitable
-equipment or a safe setup.
-</p>
-
-<button
-class="btn btn-outline btn-small exercise-btn"
-data-title="ROW"
-data-text="Use a safe setup and controlled movement. Focus on pulling with control instead of using momentum.">
-
-LEARN
-
-</button>
-
-</div>
-
-
-<div class="exercise reveal">
-
-<div class="exercise-top">
-
-<h3>Dead Hang</h3>
-
-<small>GRIP</small>
-
-</div>
-
-<p>
-A grip and hanging practice movement when a suitable
-and secure setup is available.
-</p>
-
-<button
-class="btn btn-outline btn-small exercise-btn"
-data-title="DEAD HANG"
-data-text="Only use a secure setup that is designed for bodyweight use. Start with a comfortable duration and stop if you experience pain or discomfort.">
-
-LEARN
-
-</button>
-
-</div>
-
-
-<div class="exercise reveal">
-
-<div class="exercise-top">
-
-<h3>Mobility Flow</h3>
-
-<small>RECOVERY</small>
-
-</div>
-
-<p>
-Gentle movement can help you maintain normal mobility
-and prepare for training.
-</p>
-
-<button
-class="btn btn-outline btn-small exercise-btn"
-data-title="MOBILITY"
-data-text="Use slow, comfortable movements. Mobility work should not require forcing a painful range of motion.">
-
-LEARN
-
-</button>
-
+<div
+class="exercise-grid"
+id="exerciseGrid">
 </div>
 
 </div>
@@ -2091,54 +2088,213 @@ LEARN
 
 
 
-<!-- =========================================================
-     DAILY CHALLENGE
-========================================================= -->
+<!-- =========================
+     AI VIDEO
+========================= -->
 
-<section class="challenge" id="challenge">
+<section
+class="ai"
+id="ai">
 
-<div class="section-head reveal">
+<div class="container">
 
-<small>DAILY SYSTEM</small>
+<div class="kicker">
+AI VIDEO COACH
+</div>
 
-<h2>TODAY'S<br><span class="red">CHALLENGE.</span></h2>
+<h2 class="section-title">
+WATCH. LEARN. <span>TRAIN.</span>
+</h2>
+
+<p class="section-copy">
+
+This browser-based AI-style coach creates
+step-by-step exercise lessons with animation
+and optional voice narration.
+
+</p>
+
+
+<div class="ai-layout">
+
+
+<!-- VIDEO -->
+
+<div class="video-stage">
+
+<div class="video-top">
+
+<span>
+FITNESS N.B / AI LESSON
+</span>
+
+<span class="live">
+● LIVE COACH
+</span>
 
 </div>
 
 
-<div class="challenge-box reveal">
+<div class="coach-canvas">
 
-<div class="challenge-label" id="challengeNumber">
-CHALLENGE
+<div
+class="figure"
+id="figure">
+
+<div class="head"></div>
+
+<div class="body"></div>
+
+<div class="arm l"></div>
+
+<div class="arm r"></div>
+
+<div class="leg l"></div>
+
+<div class="leg r"></div>
+
 </div>
 
-<h3 id="challengeTitle">
-Loading...
+
+<div class="canvas-floor"></div>
+
+<div
+class="rep-label"
+id="repLabel">
+READY
+</div>
+
+</div>
+
+
+<div class="video-bottom">
+
+<div>
+
+<div
+class="video-step"
+id="videoStep">
+
+STEP 01 • SETUP
+
+</div>
+
+<div
+class="video-title"
+id="videoTitle">
+
+Choose an exercise
+
+</div>
+
+</div>
+
+
+<div
+class="video-step"
+id="videoTimer">
+
+00:00
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- AI SIDE -->
+
+<div class="ai-side">
+
+
+<div class="ai-card">
+
+<h3>
+AI Lesson Generator
 </h3>
 
-<p id="challengeDescription">
-Loading today's challenge...
+<p id="aiDescription">
+Select an exercise to generate its lesson.
 </p>
 
-<div class="challenge-meta">
 
-<span id="challengeDifficulty">
-MODERATE
-</span>
+<select
+class="ai-select"
+id="aiExercise">
+</select>
 
-<span id="challengeTime">
-10–20 MIN
-</span>
+
+<div class="ai-controls">
+
+<button
+class="btn primary small"
+id="generateAI">
+
+GENERATE
+
+</button>
+
+<button
+class="btn small"
+id="playAI">
+
+▶ PLAY
+
+</button>
 
 </div>
 
-<button
-class="btn btn-primary"
-id="challengeDetails">
+</div>
 
-VIEW DETAILS
+
+
+<div class="ai-card">
+
+<h3>
+Lesson Progress
+</h3>
+
+<div class="progress">
+
+<i id="aiProgress"></i>
+
+</div>
+
+<div
+class="steps"
+id="aiSteps">
+</div>
+
+</div>
+
+
+
+<div class="ai-card">
+
+<h3>
+Voice Coach
+</h3>
+
+<p>
+Uses your browser's built-in speech system.
+No voice API key required.
+</p>
+
+<button
+class="btn small"
+id="voiceBtn">
+
+🔊 SPEAK CURRENT STEP
 
 </button>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -2146,43 +2302,44 @@ VIEW DETAILS
 
 
 
-<!-- =========================================================
+<!-- =========================
      TRACKER
-========================================================= -->
+========================= -->
 
-<section class="tracker" id="tracker">
+<section
+class="dark"
+id="tracker">
 
-<div class="section-head reveal">
+<div class="container">
 
-<small>PROGRESS SYSTEM</small>
-
-<h2>30 DAY<br><span class="red">TRACKER.</span></h2>
-
-<p>
-Mark a day when you complete your planned training
-or recovery goal.
-</p>
-
+<div class="kicker">
+PROGRESS SYSTEM
 </div>
 
+<h2 class="section-title">
+30 DAY <span>TRACKER.</span>
+</h2>
 
-<div class="tracker-box reveal">
+<p class="section-copy">
+Your progress is stored in this browser.
+</p>
+
+
+<div class="tracker-box">
 
 <div class="tracker-top">
 
-<div class="progress-info">
+<div>
 Completed:
-<strong id="completedCount">0</strong>/30
-</div>
-
-<div class="progress-info">
+<b id="completed">0</b>/30
+&nbsp; • &nbsp;
 Streak:
-<strong id="streakCount">0</strong> days
+<b id="streak">0</b> days
 </div>
 
 <button
-class="btn btn-outline btn-small"
-id="resetTracker">
+class="btn small"
+id="reset">
 
 RESET
 
@@ -2191,184 +2348,97 @@ RESET
 </div>
 
 
-<div class="progress-bar">
+<div class="progressbar">
+
+<i id="trackerFill"></i>
+
+</div>
+
 
 <div
-class="progress-fill"
-id="progressFill">
+class="days"
+id="days">
 </div>
 
+
+<div class="badges">
+
+<div
+class="badge"
+id="b1">
+
+<div class="icon">
+🌱
 </div>
 
-
-<div class="days" id="days"></div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     ACHIEVEMENTS
-========================================================= -->
-
-<section class="achievements">
-
-<div class="section-head reveal">
-
-<small>PROGRESS MILESTONES</small>
-
-<h2>EARN YOUR<br><span class="red">BADGES.</span></h2>
+<b>
+FIRST STEP
+</b>
 
 <p>
-Complete tracker milestones to unlock achievements.
+1 day
 </p>
 
 </div>
 
 
-<div class="achievement-grid">
+<div
+class="badge"
+id="b2">
 
-<div class="badge" id="badge1">
-
-<div class="badge-icon">🌱</div>
-
-<h3>FIRST STEP</h3>
-
-<p>Complete 1 day</p>
-
+<div class="icon">
+🔥
 </div>
 
-
-<div class="badge" id="badge2">
-
-<div class="badge-icon">🔥</div>
-
-<h3>7 DAY RUN</h3>
-
-<p>Complete 7 days</p>
-
-</div>
-
-
-<div class="badge" id="badge3">
-
-<div class="badge-icon">⚡</div>
-
-<h3>HALFWAY</h3>
-
-<p>Complete 15 days</p>
-
-</div>
-
-
-<div class="badge" id="badge4">
-
-<div class="badge-icon">🏆</div>
-
-<h3>30 DAY FINISHER</h3>
-
-<p>Complete all 30 days</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     KNOWLEDGE
-========================================================= -->
-
-<section class="knowledge" id="knowledge">
-
-<div class="section-head reveal">
-
-<small>FITNESS KNOWLEDGE</small>
-
-<h2>LEARN BEFORE<br>YOU <span class="red">TRAIN.</span></h2>
+<b>
+7 DAY RUN
+</b>
 
 <p>
-Simple fitness concepts that can help beginners understand
-training better.
+7 days
 </p>
 
 </div>
 
 
-<div class="knowledge-grid">
+<div
+class="badge"
+id="b3">
 
-<div class="knowledge-card reveal">
+<div class="icon">
+⚡
+</div>
 
-<h3>Why Warm Up?</h3>
+<b>
+HALFWAY
+</b>
 
 <p>
-A gradual warm-up can prepare you for movement and help
-you transition into your training session.
+15 days
 </p>
 
 </div>
 
 
-<div class="knowledge-card reveal">
+<div
+class="badge"
+id="b4">
 
-<h3>Why Recovery Matters</h3>
+<div class="icon">
+🏆
+</div>
+
+<b>
+30 DAY FINISHER
+</b>
 
 <p>
-Training is only one part of progress. Rest, sleep and
-adequate nutrition also support adaptation.
+30 days
 </p>
 
 </div>
 
-
-<div class="knowledge-card reveal">
-
-<h3>Progressive Improvement</h3>
-
-<p>
-Instead of rushing, gradually improve your repetitions,
-control, technique or training difficulty.
-</p>
-
 </div>
-
-
-<div class="knowledge-card reveal">
-
-<h3>Consistency</h3>
-
-<p>
-A realistic routine that you can maintain is more useful
-than constantly chasing extreme challenges.
-</p>
-
-</div>
-
-
-<div class="knowledge-card reveal">
-
-<h3>Technique First</h3>
-
-<p>
-Learn the movement and control it before trying to make
-the exercise harder.
-</p>
-
-</div>
-
-
-<div class="knowledge-card reveal">
-
-<h3>Listen To Your Body</h3>
-
-<p>
-Normal training effort and pain are not the same thing.
-Stop and get appropriate help if something feels wrong.
-</p>
 
 </div>
 
@@ -2378,138 +2448,74 @@ Stop and get appropriate help if something feels wrong.
 
 
 
-<!-- =========================================================
-     STATS
-========================================================= -->
+<!-- =========================
+     MEMBERSHIP
+========================= -->
 
-<section class="stats">
+<section id="membership">
 
-<div class="stats-grid">
+<div class="container">
 
-<div class="stat reveal">
-
-<div
-class="stat-number"
-data-target="365">
-0
+<div class="kicker">
+MEMBERSHIP
 </div>
 
-<p>DAYS OF LEARNING</p>
+<h2 class="section-title">
 
-</div>
+ADVANCED ACCESS IS
+<span>COMING SOON.</span>
 
-
-<div class="stat reveal">
-
-<div
-class="stat-number"
-data-target="30">
-0
-</div>
-
-<p>DAY TRACKER</p>
-
-</div>
-
-
-<div class="stat reveal">
-
-<div
-class="stat-number"
-data-target="6">
-0
-</div>
-
-<p>TRAINING CATEGORIES</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     SOCIAL
-========================================================= -->
-
-<section class="social" id="social">
-
-<div class="social-content reveal">
-
-<div class="challenge-label">
-FOLLOW THE JOURNEY
-</div>
-
-<h2>
-FITNESS <span>N.B</span>
 </h2>
 
-<p>
-Training. Learning. Creating.
-Follow Nitesh's fitness journey and watch the progress.
-</p>
 
-
-<div class="social-buttons">
-
-<a
-href="https://youtube.com/@fitnessgym-v1r"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-primary">
-
-YOUTUBE
-
-</a>
-
-
-<a
-href="https://www.instagram.com/fitnessn.b/"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-outline">
-
-INSTAGRAM
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FINAL CTA
-========================================================= -->
-
-<section>
-
-<div class="challenge-box reveal">
-
-<div class="challenge-label">
-FITNESS N.B
-</div>
+<div class="coming">
 
 <h3>
-START SMALL.<br>
-KEEP IMPROVING.
+COMING SOON
 </h3>
 
 <p>
-Your fitness journey does not need to start perfectly.
-Start with what you can do, learn and improve over time.
+
+Paid membership and payment gateway are
+intentionally not active yet.
+
+Future members may get a full AI video library,
+structured programs, progress dashboard and
+additional training tools.
+
 </p>
 
-<br>
 
-<a href="#planner" class="btn btn-primary">
-BUILD MY PLAN
-</a>
+<div class="benefits">
+
+<span>
+AI VIDEO LIBRARY
+</span>
+
+<span>
+ADVANCED PROGRAMS
+</span>
+
+<span>
+PRO DASHBOARD
+</span>
+
+<span>
+MORE TRACKING
+</span>
+
+</div>
+
+
+<button
+class="btn primary"
+id="notify">
+
+NOTIFY ME
+
+</button>
+
+</div>
 
 </div>
 
@@ -2519,28 +2525,48 @@ BUILD MY PLAN
 
 
 
-<!-- =========================================================
+<!-- =========================
      FOOTER
-========================================================= -->
+========================= -->
 
 <footer>
 
-<p>
-<strong>Fitness <span>N.B</span></strong>
-| Nitesh Banjare
-</p>
+<div class="container footer-row">
 
-<p style="margin-top:10px;">
-© 2026 Fitness N.B. All rights reserved.
-</p>
+<div>
 
-<div class="footer-links">
+<b>
+FITNESS.N.B
+</b>
 
-<a href="#home">Home</a>
-<a href="#planner">Plan</a>
-<a href="#workouts">Workouts</a>
-<a href="#tracker">Tracker</a>
-<a href="#social">Social</a>
+<br>
+
+<small>
+Train • Learn • Improve
+</small>
+
+</div>
+
+
+<div class="socials">
+
+<a
+href="https://youtube.com/@fitnessgym-v1r"
+target="_blank">
+
+YouTube
+
+</a>
+
+<a
+href="https://www.instagram.com/fitnessn.b/"
+target="_blank">
+
+Instagram
+
+</a>
+
+</div>
 
 </div>
 
@@ -2548,28 +2574,67 @@ BUILD MY PLAN
 
 
 
-<!-- =========================================================
-     MODAL
-========================================================= -->
+<!-- =========================
+     LOGIN MODAL
+========================= -->
 
-<div class="modal" id="modal">
+<div
+class="modal"
+id="modal">
 
 <div class="modal-box">
 
-<button class="close" id="closeModal">
+<button
+class="close"
+id="close">
+
 ×
+
 </button>
 
-<h2 id="modalTitle">
-Details
+
+<h2>
+FITNESS N.B ACCOUNT
 </h2>
 
-<p id="modalText">
-Details will appear here.
+<p>
+Demo login UI.
+Real accounts need a backend/auth service.
 </p>
+
+
+<div class="login-grid">
+
+<input
+id="email"
+type="email"
+placeholder="Email">
+
+<input
+id="password"
+type="password"
+placeholder="Password">
+
+
+<button
+class="btn primary"
+id="demoLogin">
+
+LOGIN / CREATE DEMO
+
+</button>
 
 </div>
 
+</div>
+
+</div>
+
+
+
+<div
+class="toast"
+id="toast">
 </div>
 
 
@@ -2577,795 +2642,1353 @@ Details will appear here.
 <script>
 
 /* =========================================================
-   MOBILE MENU
+   EXERCISE DATABASE
 ========================================================= */
 
-const menuBtn =
-document.getElementById("menuBtn");
-
-const navLinks =
-document.getElementById("navLinks");
-
-menuBtn.addEventListener("click",()=>{
-
-    navLinks.classList.toggle("active");
-
-});
-
-document
-.querySelectorAll(".nav-links a")
-.forEach(link=>{
-
-    link.addEventListener("click",()=>{
-
-        navLinks.classList.remove("active");
-
-    });
-
-});
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-const modal =
-document.getElementById("modal");
-
-const modalTitle =
-document.getElementById("modalTitle");
-
-const modalText =
-document.getElementById("modalText");
-
-const closeModal =
-document.getElementById("closeModal");
-
-
-function openModal(title,text){
-
-    modalTitle.textContent=title;
-
-    modalText.textContent=text;
-
-    modal.classList.add("active");
-
-}
-
-
-function closeModalFunction(){
-
-    modal.classList.remove("active");
-
-}
-
-
-closeModal.addEventListener(
-"click",
-closeModalFunction
-);
-
-
-modal.addEventListener("click",event=>{
-
-    if(event.target===modal){
-
-        closeModalFunction();
-
-    }
-
-});
-
-
-document.addEventListener("keydown",event=>{
-
-    if(event.key==="Escape"){
-
-        closeModalFunction();
-
-    }
-
-});
-
-
-/* =========================================================
-   FITNESS PLANNER
-========================================================= */
-
-const generatePlan =
-document.getElementById("generatePlan");
-
-
-generatePlan.addEventListener("click",()=>{
-
-    const name =
-    document.getElementById("userName")
-    .value.trim();
-
-    const goal =
-    document.getElementById("goal")
-    .value;
-
-    const level =
-    document.getElementById("level")
-    .value;
-
-    const equipment =
-    document.getElementById("equipment")
-    .value;
-
-    const days =
-    Number(
-        document.getElementById("daysPerWeek")
-        .value
-    );
-
-
-    const planResult =
-    document.getElementById("planResult");
-
-    const planTitle =
-    document.getElementById("planTitle");
-
-    const planDescription =
-    document.getElementById("planDescription");
-
-    const planDays =
-    document.getElementById("planDays");
-
-
-    const goalNames = {
-
-        general:"General Fitness",
-
-        strength:"Strength Building",
-
-        calisthenics:"Calisthenics",
-
-        endurance:"Endurance",
-
-        mobility:"Mobility & Movement"
-
-    };
-
-
-    planTitle.textContent =
-    (name ? name + "'s " : "") +
-    "Sample " +
-    goalNames[goal] +
-    " Plan";
-
-
-    planDescription.textContent =
-    "Level: " +
-    level +
-    " • Equipment: " +
-    equipment +
-    " • Training days: " +
-    days;
-
-
-    planDays.innerHTML="";
-
-
-    let workouts=[];
-
-
-    if(goal==="strength"){
-
-        workouts=[
-            "Full Body Strength",
-            "Upper Body",
-            "Lower Body",
-            "Full Body Strength",
-            "Recovery"
-
-        ];
-
-    }
-    else if(goal==="calisthenics"){
-
-        workouts=[
-            "Push + Core",
-            "Pull Practice",
-            "Skill Practice",
-            "Legs + Core",
-            "Recovery"
-
-        ];
-
-    }
-    else if(goal==="endurance"){
-
-        workouts=[
-            "Full Body Circuit",
-            "Active Movement",
-            "Full Body Circuit",
-            "Cardio / Movement",
-            "Recovery"
-
-        ];
-
-    }
-    else if(goal==="mobility"){
-
-        workouts=[
-            "Mobility",
-            "Light Full Body",
-            "Mobility",
-            "Movement Practice",
-            "Recovery"
-
-        ];
-
-    }
-    else{
-
-        workouts=[
-            "Full Body",
-            "Recovery / Mobility",
-            "Full Body",
-            "Movement",
-            "Recovery"
-
-        ];
-
-    }
-
-
-    const dayNames=[
-        "MONDAY",
-        "TUESDAY",
-        "WEDNESDAY",
-        "THURSDAY",
-        "FRIDAY"
-    ];
-
-
-    for(let i=0;i<days;i++){
-
-        const div =
-        document.createElement("div");
-
-        div.className="plan-day";
-
-        div.innerHTML=`
-
-        <strong>${dayNames[i]}</strong>
-
-        <span>${workouts[i]}</span>
-
-        `;
-
-        planDays.appendChild(div);
-
-    }
-
-
-    planResult.classList.add("active");
-
-
-    planResult.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-});
-
-
-/* =========================================================
-   WORKOUT DATA
-========================================================= */
-
-const workoutData={
-
-    push:{
-        title:"PUSH TRAINING",
-        text:"Push training focuses on chest, shoulders and triceps. Choose a movement variation that matches your current ability and focus on controlled technique."
-    },
-
-    pull:{
-        title:"PULL TRAINING",
-        text:"Pull training focuses on pulling strength. Suitable options can include rows or assisted pulling movements depending on your equipment and ability."
-    },
-
-    legs:{
-        title:"LEG TRAINING",
-        text:"Leg training develops lower-body strength, balance and movement control. Use suitable movements and a comfortable range of motion."
-    },
-
-    core:{
-        title:"CORE TRAINING",
-        text:"Core training focuses on stability and control. Choose exercises you can perform with good technique instead of chasing long holds."
-    },
-
-    skills:{
-        title:"CALISTHENICS SKILLS",
-        text:"Skill training works best through gradual progressions. Break difficult movements into manageable steps and focus on technique."
-    },
-
-    recovery:{
-        title:"RECOVERY",
-        text:"Recovery is part of training. Rest, sleep, nutrition and normal movement all contribute to sustainable progress."
-    }
-
+const exercises = [
+
+{
+name:"Push-Up",
+cat:"PUSH",
+level:"Beginner",
+desc:"Controlled horizontal push for chest, shoulders and triceps.",
+type:"pushup",
+
+steps:[
+"Setup: hands under shoulders and body controlled.",
+"Lower slowly while keeping a stable body line.",
+"Push the floor away and return with control.",
+"Stop when technique starts to break down."
+]
+},
+
+{
+name:"Incline Push-Up",
+cat:"PUSH",
+level:"Beginner",
+desc:"Beginner-friendly pushing variation using an elevated surface.",
+type:"pushup",
+
+steps:[
+"Choose a stable elevated surface.",
+"Keep hands comfortable and body aligned.",
+"Lower under control.",
+"Press back to the starting position."
+]
+},
+
+{
+name:"Diamond Push-Up",
+cat:"PUSH",
+level:"Intermediate",
+desc:"Close-hand push-up variation emphasizing triceps.",
+type:"pushup",
+
+steps:[
+"Set hands closer than a normal push-up.",
+"Brace your trunk.",
+"Lower smoothly.",
+"Press up without rushing."
+]
+},
+
+{
+name:"Pike Push-Up",
+cat:"SHOULDERS",
+level:"Intermediate",
+desc:"Bodyweight shoulder-focused pressing progression.",
+type:"pushup",
+
+steps:[
+"Start in a comfortable pike position.",
+"Bend elbows under control.",
+"Move head toward the floor comfortably.",
+"Press back to the start."
+]
+},
+
+{
+name:"Pull-Up",
+cat:"PULL",
+level:"Intermediate",
+desc:"Upper-body pulling movement using a secure bar.",
+type:"pull",
+
+steps:[
+"Use a secure bodyweight-rated bar.",
+"Start from a controlled hang.",
+"Pull your body upward without swinging.",
+"Lower with control."
+]
+},
+
+{
+name:"Assisted Pull-Up",
+cat:"PULL",
+level:"Beginner",
+desc:"Pull-up progression with assistance.",
+type:"pull",
+
+steps:[
+"Use a safe assistance method.",
+"Keep the movement controlled.",
+"Pull toward the bar.",
+"Lower slowly and repeat."
+]
+},
+
+{
+name:"Australian Row",
+cat:"PULL",
+level:"Beginner",
+desc:"Horizontal pulling movement for back and arm strength.",
+type:"pull",
+
+steps:[
+"Use a secure setup.",
+"Keep your body controlled.",
+"Pull your chest toward the support.",
+"Lower slowly."
+]
+},
+
+{
+name:"Dead Hang",
+cat:"PULL",
+level:"Beginner",
+desc:"Grip and hanging practice with a secure setup.",
+type:"pull",
+
+steps:[
+"Check that the setup is secure.",
+"Grip comfortably.",
+"Keep the duration manageable.",
+"Stop if you feel pain or discomfort."
+]
+},
+
+{
+name:"Bodyweight Squat",
+cat:"LEGS",
+level:"Beginner",
+desc:"Foundational lower-body movement for control and balance.",
+type:"squat",
+
+steps:[
+"Stand with a comfortable stance.",
+"Sit down under control.",
+"Keep your movement comfortable.",
+"Stand tall without rushing."
+]
+},
+
+{
+name:"Reverse Lunge",
+cat:"LEGS",
+level:"Beginner",
+desc:"Single-leg movement for lower-body control.",
+type:"squat",
+
+steps:[
+"Stand tall with stable footing.",
+"Step back carefully.",
+"Lower under control.",
+"Return to standing and switch sides."
+]
+},
+
+{
+name:"Glute Bridge",
+cat:"LEGS",
+level:"Beginner",
+desc:"Hip-extension movement for the glutes.",
+type:"squat",
+
+steps:[
+"Lie comfortably on your back.",
+"Place feet firmly on the floor.",
+"Lift hips with control.",
+"Lower slowly."
+]
+},
+
+{
+name:"Calf Raise",
+cat:"LEGS",
+level:"Beginner",
+desc:"Simple lower-leg strengthening movement.",
+type:"squat",
+
+steps:[
+"Stand with stable support if needed.",
+"Rise onto the balls of your feet.",
+"Pause briefly.",
+"Lower under control."
+]
+},
+
+{
+name:"Plank",
+cat:"CORE",
+level:"Beginner",
+desc:"Isometric trunk-stability exercise.",
+type:"plank",
+
+steps:[
+"Set a stable plank position.",
+"Brace your trunk without holding your breath.",
+"Keep the position controlled.",
+"Finish before form deteriorates."
+]
+},
+
+{
+name:"Side Plank",
+cat:"CORE",
+level:"Beginner",
+desc:"Side-focused trunk stability movement.",
+type:"plank",
+
+steps:[
+"Set up on your side.",
+"Keep your body controlled.",
+"Hold a comfortable position.",
+"Switch sides."
+]
+},
+
+{
+name:"Dead Bug",
+cat:"CORE",
+level:"Beginner",
+desc:"Controlled core coordination movement.",
+type:"plank",
+
+steps:[
+"Lie comfortably on your back.",
+"Brace your trunk.",
+"Move opposite limbs slowly.",
+"Return to the start with control."
+]
+},
+
+{
+name:"Leg Raise",
+cat:"CORE",
+level:"Intermediate",
+desc:"Controlled lower-body movement for abdominal strength.",
+type:"plank",
+
+steps:[
+"Use a stable starting position.",
+"Move your legs with control.",
+"Avoid swinging.",
+"Lower slowly."
+]
+},
+
+{
+name:"Biceps Curl",
+cat:"ARMS",
+level:"Beginner",
+desc:"Dumbbell curl for the elbow flexors.",
+type:"curl",
+
+steps:[
+"Stand or sit in a stable position.",
+"Keep elbows controlled.",
+"Curl smoothly.",
+"Lower slowly."
+]
+},
+
+{
+name:"Hammer Curl",
+cat:"ARMS",
+level:"Beginner",
+desc:"Neutral-grip curl variation.",
+type:"curl",
+
+steps:[
+"Keep palms facing inward.",
+"Keep elbows near your sides.",
+"Curl without swinging.",
+"Lower under control."
+]
+},
+
+{
+name:"Triceps Extension",
+cat:"ARMS",
+level:"Beginner",
+desc:"Triceps-focused resistance movement.",
+type:"curl",
+
+steps:[
+"Use a manageable resistance.",
+"Keep the setup stable.",
+"Extend under control.",
+"Return slowly."
+]
+},
+
+{
+name:"Lateral Raise",
+cat:"SHOULDERS",
+level:"Beginner",
+desc:"Shoulder movement using light resistance.",
+type:"curl",
+
+steps:[
+"Use a manageable load.",
+"Raise arms smoothly.",
+"Avoid using momentum.",
+"Lower slowly."
+]
+},
+
+{
+name:"Handstand Progression",
+cat:"CALISTHENICS",
+level:"Advanced",
+desc:"Skill practice requiring controlled progression and a safe environment.",
+type:"skill",
+
+steps:[
+"Choose a safe practice space.",
+"Start with an appropriate progression.",
+"Keep attempts controlled.",
+"Use supervision or guidance when needed."
+]
+},
+
+{
+name:"Frog Stand",
+cat:"CALISTHENICS",
+level:"Beginner",
+desc:"Balance skill introducing arm-supported body control.",
+type:"skill",
+
+steps:[
+"Use a clear comfortable surface.",
+"Place hands securely.",
+"Shift weight gradually.",
+"Keep attempts short and controlled."
+]
+},
+
+{
+name:"Elbow Lever",
+cat:"CALISTHENICS",
+level:"Advanced",
+desc:"Advanced balance skill requiring progressive practice.",
+type:"skill",
+
+steps:[
+"Use a safe surface.",
+"Learn the balance position gradually.",
+"Keep attempts controlled.",
+"Stop if wrists or elbows hurt."
+]
+},
+
+{
+name:"Mobility Flow",
+cat:"MOBILITY",
+level:"Beginner",
+desc:"Gentle movement sequence for mobility.",
+type:"mobility",
+
+steps:[
+"Move through comfortable ranges.",
+"Keep breathing naturally.",
+"Do not force painful positions.",
+"Finish with relaxed movement."
+]
+},
+
+{
+name:"Jumping Jack",
+cat:"CONDITIONING",
+level:"Beginner",
+desc:"Simple full-body conditioning movement.",
+type:"jump",
+
+steps:[
+"Start standing comfortably.",
+"Move arms and legs rhythmically.",
+"Land softly.",
+"Adjust pace to your ability."
+]
+},
+
+{
+name:"Mountain Climber",
+cat:"CONDITIONING",
+level:"Intermediate",
+desc:"Dynamic conditioning movement.",
+type:"pushup",
+
+steps:[
+"Set a stable starting position.",
+"Drive one knee forward at a time.",
+"Keep movement controlled.",
+"Reduce speed if form breaks down."
+]
+},
+
+{
+name:"Wall Sit",
+cat:"LEGS",
+level:"Beginner",
+desc:"Isometric lower-body endurance movement.",
+type:"squat",
+
+steps:[
+"Use a stable wall.",
+"Lower to a comfortable position.",
+"Keep feet stable.",
+"Hold for a manageable time."
+]
+},
+
+{
+name:"Bird Dog",
+cat:"CORE",
+level:"Beginner",
+desc:"Core-control and coordination movement.",
+type:"plank",
+
+steps:[
+"Start on hands and knees.",
+"Extend opposite arm and leg slowly.",
+"Keep hips controlled.",
+"Return and switch sides."
+]
 };
 
 
-document
-.querySelectorAll(".workout-card")
-.forEach(card=>{
-
-    card.addEventListener("click",()=>{
-
-        const type =
-        card.dataset.workout;
-
-        openModal(
-            workoutData[type].title,
-            workoutData[type].text
-        );
-
-    });
-
-});
-
-
 /* =========================================================
-   EXERCISE BUTTONS
+   EXERCISE FILTER
 ========================================================= */
 
-document
-.querySelectorAll(".exercise-btn")
-.forEach(button=>{
+const grid =
+document.getElementById("exerciseGrid");
 
-    button.addEventListener("click",()=>{
+const chips =
+document.getElementById("chips");
 
-        openModal(
-            button.dataset.title,
-            button.dataset.text
-        );
+const search =
+document.getElementById("search");
 
-    });
+const cats =
+[
+"ALL",
+...new Set(
+    exercises.map(
+        e=>e.cat
+    )
+)
+];
 
-});
+let activeCat="ALL";
 
 
-/* =========================================================
-   DAILY CHALLENGE
-========================================================= */
+chips.innerHTML =
+cats.map(
+c=>`
 
-const challenges=[
+<button
+class="chip ${c==="ALL"?"active":""}"
+data-cat="${c}">
 
-{
-title:"Controlled Push Session",
-description:"Practice a suitable pushing movement with controlled repetitions.",
-difficulty:"TECHNIQUE",
-time:"10–20 MIN",
-details:"Choose a push movement that matches your ability. Focus on smooth, controlled repetitions and stop when your technique starts to break down."
-},
+${c}
 
-{
-title:"Pull Practice",
-description:"Work on a suitable pulling movement with controlled technique.",
-difficulty:"STRENGTH",
-time:"10–20 MIN",
-details:"Use a safe pulling variation such as a suitable row or assisted movement. Focus on control rather than chasing a number."
-},
+</button>
 
-{
-title:"Lower Body Session",
-description:"Train your lower body with controlled movements.",
-difficulty:"LOWER BODY",
-time:"10–20 MIN",
-details:"Choose suitable lower-body movements and focus on balance, control and a comfortable range of motion."
-},
+`
+).join("");
 
-{
-title:"Core Control",
-description:"Practice core stability with a movement you can control.",
-difficulty:"CONTROL",
-time:"5–15 MIN",
-details:"Choose a manageable core exercise and focus on maintaining good control throughout the movement."
-},
 
-{
-title:"Skill Practice",
-description:"Spend some time learning a suitable calisthenics progression.",
-difficulty:"SKILL",
-time:"10–20 MIN",
-details:"Practice a beginner-appropriate progression. Do not rush difficult skills. Technique and safe progressions come first."
-},
+chips.querySelectorAll(".chip")
+.forEach(
+b=>{
 
-{
-title:"Recovery Day",
-description:"Give your body time to recover.",
-difficulty:"RECOVERY",
-time:"EASY",
-details:"Use the day for normal movement, gentle mobility and recovery. Rest is part of a sustainable training routine."
+b.onclick=()=>{
+
+activeCat=b.dataset.cat;
+
+chips
+.querySelectorAll(".chip")
+.forEach(
+x=>x.classList.remove("active")
+);
+
+b.classList.add("active");
+
+renderExercises();
+
+};
+
+}
+);
+
+
+function renderExercises(){
+
+const q=
+search.value.toLowerCase();
+
+
+const list=
+exercises.filter(
+e=>
+
+(activeCat==="ALL" || e.cat===activeCat)
+
+&&
+
+(
+e.name.toLowerCase().includes(q)
+||
+e.desc.toLowerCase().includes(q)
+)
+
+);
+
+
+grid.innerHTML=
+
+list.map(
+
+e=>`
+
+<article class="exercise">
+
+<div class="exercise-head">
+
+<h3>
+${e.name}
+</h3>
+
+<small>
+${e.cat}
+</small>
+
+</div>
+
+
+<p>
+${e.desc}
+</p>
+
+
+<div class="tags">
+
+<span class="tag">
+${e.level}
+</span>
+
+<span class="tag">
+AI LESSON
+</span>
+
+</div>
+
+
+<button
+class="btn small"
+onclick="openAI('${e.name.replaceAll("'","&#39;")}')">
+
+WATCH AI VIDEO
+
+</button>
+
+</article>
+
+`
+
+).join("")
+
+||
+
+"<div class='card'>No exercise found.</div>";
+
 }
 
+
+search.oninput=
+renderExercises;
+
+renderExercises();
+
+
+
+/* =========================================================
+   AI VIDEO SYSTEM
+========================================================= */
+
+const aiSelect=
+document.getElementById("aiExercise");
+
+
+aiSelect.innerHTML=
+
+exercises.map(
+
+e=>`
+
+<option value="${e.name}">
+
+${e.name} — ${e.cat}
+
+</option>
+
+`
+
+).join("");
+
+
+let current=null;
+
+let stepIndex=0;
+
+let timer=0;
+
+let interval=null;
+
+let playing=false;
+
+
+const figure=
+document.getElementById("figure");
+
+const rep=
+document.getElementById("repLabel");
+
+const title=
+document.getElementById("videoTitle");
+
+const stepText=
+document.getElementById("videoStep");
+
+const timerText=
+document.getElementById("videoTimer");
+
+const desc=
+document.getElementById("aiDescription");
+
+const aiSteps=
+document.getElementById("aiSteps");
+
+const bar=
+document.getElementById("aiProgress");
+
+
+function openAI(name){
+
+aiSelect.value=name;
+
+document
+.getElementById("ai")
+.scrollIntoView({
+    behavior:"smooth"
+});
+
+generateLesson();
+
+}
+
+
+window.openAI=openAI;
+
+
+function generateLesson(){
+
+current=
+exercises.find(
+e=>e.name===aiSelect.value
+)
+||
+exercises[0];
+
+
+stepIndex=0;
+
+timer=0;
+
+playing=false;
+
+clearInterval(interval);
+
+
+figure.className=
+"figure "+current.type;
+
+
+title.textContent=
+current.name.toUpperCase();
+
+
+desc.textContent=
+current.desc;
+
+
+rep.textContent=
+"READY";
+
+
+timerText.textContent=
+"00:00";
+
+
+document.getElementById("playAI")
+.textContent=
+"▶ PLAY";
+
+
+updateLesson();
+
+}
+
+
+function updateLesson(){
+
+aiSteps.innerHTML=
+
+current.steps.map(
+
+(s,i)=>`
+
+<div
+class="step ${i===stepIndex?"active":""}">
+
+<b>
+0${i+1}
+</b>
+
+—
+
+${s}
+
+</div>
+
+`
+
+).join("");
+
+
+const labels=[
+"SETUP",
+"FORM",
+"CONTROL",
+"FINISH"
 ];
 
 
-const challengeIndex =
-new Date().getDate() %
-challenges.length;
+stepText.textContent=
 
-const todayChallenge =
-challenges[challengeIndex];
+`STEP ${String(stepIndex+1).padStart(2,"0")}
+ •
+${labels[stepIndex] || "COACH"}`;
 
 
-document.getElementById("challengeNumber")
+bar.style.width=
+
+(
+(stepIndex+1)
+/
+current.steps.length
+*
+100
+)
++
+"%";
+
+}
+
+
+function tick(){
+
+timer++;
+
+
+timerText.textContent=
+
+`${String(
+Math.floor(timer/60)
+).padStart(2,"0")}:${String(
+timer%60
+).padStart(2,"0")}`;
+
+
+rep.textContent=
+
+current.type==="pushup"
+||
+current.type==="squat"
+
+?
+
+"DEMO"
+
+:
+
+`STEP ${stepIndex+1}`;
+
+
+if(timer%4===0){
+
+stepIndex=
+(
+stepIndex+1
+)
+%
+current.steps.length;
+
+
+updateLesson();
+
+speakCurrent(false);
+
+}
+
+}
+
+
+function playAI(){
+
+if(!current)
+generateLesson();
+
+
+playing=!playing;
+
+
+if(playing){
+
+document.getElementById("playAI")
 .textContent=
-"CHALLENGE " +
-(challengeIndex+1);
+"❚❚ PAUSE";
 
 
-document.getElementById("challengeTitle")
+interval=
+setInterval(
+tick,
+1000
+);
+
+
+speakCurrent(false);
+
+}
+
+else{
+
+document.getElementById("playAI")
 .textContent=
-todayChallenge.title;
+"▶ PLAY";
 
 
-document.getElementById("challengeDescription")
-.textContent=
-todayChallenge.description;
+clearInterval(interval);
+
+}
+
+}
 
 
-document.getElementById("challengeDifficulty")
-.textContent=
-todayChallenge.difficulty;
+function speakCurrent(force=true){
+
+if(!("speechSynthesis" in window)){
+
+toast(
+"Speech is not supported in this browser."
+);
+
+return;
+
+}
 
 
-document.getElementById("challengeTime")
-.textContent=
-todayChallenge.time;
+if(force || playing){
+
+speechSynthesis.cancel();
+
+
+const u=
+new SpeechSynthesisUtterance(
+current.steps[stepIndex]
+);
+
+
+u.rate=.92;
+
+speechSynthesis.speak(u);
+
+}
+
+}
 
 
 document
-.getElementById("challengeDetails")
-.addEventListener("click",()=>{
+.getElementById("generateAI")
+.onclick=
+generateLesson;
 
-    openModal(
-        todayChallenge.title,
-        todayChallenge.details
-    );
 
-});
+document
+.getElementById("playAI")
+.onclick=
+playAI;
+
+
+document
+.getElementById("voiceBtn")
+.onclick=
+()=>speakCurrent(true);
+
+
+generateLesson();
+
+
+
+/* =========================================================
+   WORKOUT PLANNER
+========================================================= */
+
+document
+.getElementById("makePlan")
+.onclick=()=>{
+
+
+const goal=
+document.getElementById("goal").value;
+
+
+const level=
+document.getElementById("level").value;
+
+
+const freq=
++document.getElementById("freq").value;
+
+
+const sets=
+
+goal==="Mobility"
+
+?
+
+[
+"Mobility Flow",
+"Bird Dog",
+"Dead Bug"
+]
+
+:
+
+goal==="Calisthenics"
+
+?
+
+[
+"Push-Up",
+"Australian Row",
+"Squat",
+"Plank"
+]
+
+:
+
+[
+"Push-Up",
+"Bodyweight Squat",
+"Australian Row",
+"Plank"
+];
+
+
+const selected=
+sets.slice(
+0,
+Math.min(
+sets.length,
+freq
+)
+);
+
+
+document
+.getElementById("planResult")
+.classList.add("show");
+
+
+document
+.getElementById("planResult")
+.innerHTML=
+
+`
+
+<h3>
+${goal.toUpperCase()}
+•
+${level.toUpperCase()}
+</h3>
+
+<p style="color:#8d9aaa">
+
+Starter structure — keep technique
+controlled and adjust volume to your ability.
+
+</p>
+
+<div class="plan-list">
+
+${
+
+Array.from(
+{
+length:freq
+},
+(_,i)=>`
+
+<div class="plan-day">
+
+<b>
+DAY ${i+1}
+</b>
+
+<span>
+
+${selected[i%selected.length]}
+
+<br>
+
+${i%2
+?"Recovery / mobility"
+:"Main session"}
+
+</span>
+
+</div>
+
+`
+
+).join("")
+
+}
+
+</div>
+
+`;
+
+};
+
 
 
 /* =========================================================
    30 DAY TRACKER
 ========================================================= */
 
-const daysContainer =
-document.getElementById("days");
-
-const completedCount =
-document.getElementById("completedCount");
-
-const streakCount =
-document.getElementById("streakCount");
-
-const progressFill =
-document.getElementById("progressFill");
+const KEY=
+"fitnessNB_v4_tracker";
 
 
-let completedDays=
+let completed=
 JSON.parse(
-localStorage.getItem(
-"fitnessNBTracker"
-)
-)||[];
+localStorage.getItem(KEY)
+||
+"[]"
+);
+
+
+const days=
+document.getElementById("days");
 
 
 function renderTracker(){
 
-    daysContainer.innerHTML="";
+days.innerHTML=
+
+Array.from(
+{
+length:30
+},
+(_,i)=>`
+
+<div
+class="day ${completed.includes(i+1)?"done":""}"
+data-day="${i+1}">
+
+${i+1}
+
+</div>
+
+`
+
+).join("");
 
 
-    for(let i=1;i<=30;i++){
+days
+.querySelectorAll(".day")
+.forEach(
 
-        const day =
-        document.createElement("div");
+d=>
 
-        day.className="day";
+d.onclick=()=>{
 
-        day.textContent=i;
-
-
-        if(completedDays.includes(i)){
-
-            day.classList.add("completed");
-
-        }
+const n=
++d.dataset.day;
 
 
-        day.addEventListener("click",()=>{
+completed=
 
-            if(completedDays.includes(i)){
+completed.includes(n)
 
-                completedDays=
-                completedDays.filter(
-                    n=>n!==i
-                );
+?
 
-            }
-            else{
+completed.filter(
+x=>x!==n
+)
 
-                completedDays.push(i);
+:
 
-            }
-
-
-            completedDays.sort(
-                (a,b)=>a-b
-            );
+[
+...completed,
+n
+].sort(
+(a,b)=>a-b
+);
 
 
-            localStorage.setItem(
-                "fitnessNBTracker",
-                JSON.stringify(
-                    completedDays
-                )
-            );
+saveTracker();
+
+}
+
+);
 
 
-            renderTracker();
-
-        });
-
-
-        daysContainer.appendChild(day);
-
-    }
+document
+.getElementById("completed")
+.textContent=
+completed.length;
 
 
-    updateProgress();
+document
+.getElementById("trackerFill")
+.style.width=
+(completed.length/30*100)
++
+"%";
+
+
+let streak=0;
+
+
+for(
+let i=1;
+i<=30;
+i++
+){
+
+if(completed.includes(i))
+streak++;
+
+else
+break;
 
 }
 
 
-function updateProgress(){
-
-    const total =
-    completedDays.length;
-
-
-    completedCount.textContent=
-    total;
+document
+.getElementById("streak")
+.textContent=
+streak;
 
 
-    const percentage =
-    (total/30)*100;
+[
+[1,"b1"],
+[7,"b2"],
+[15,"b3"],
+[30,"b4"]
+]
+.forEach(
+([n,id])=>
 
+document
+.getElementById(id)
+.classList.toggle(
+"unlocked",
+completed.length>=n
+)
 
-    progressFill.style.width=
-    percentage+"%";
-
-
-    let streak=0;
-
-
-    for(let i=1;i<=30;i++){
-
-        if(
-            completedDays.includes(i)
-        ){
-
-            streak++;
-
-        }
-        else{
-
-            break;
-
-        }
-
-    }
-
-
-    streakCount.textContent=
-    streak;
-
-
-    updateBadges(total);
+);
 
 }
 
 
-function updateBadges(total){
+function saveTracker(){
 
-    document
-    .getElementById("badge1")
-    .classList.toggle(
-        "unlocked",
-        total>=1
-    );
+localStorage.setItem(
+KEY,
+JSON.stringify(completed)
+);
 
-
-    document
-    .getElementById("badge2")
-    .classList.toggle(
-        "unlocked",
-        total>=7
-    );
-
-
-    document
-    .getElementById("badge3")
-    .classList.toggle(
-        "unlocked",
-        total>=15
-    );
-
-
-    document
-    .getElementById("badge4")
-    .classList.toggle(
-        "unlocked",
-        total>=30
-    );
+renderTracker();
 
 }
+
+
+document
+.getElementById("reset")
+.onclick=()=>{
+
+if(
+confirm(
+"Reset your 30-day tracker?"
+)
+){
+
+completed=[];
+
+saveTracker();
+
+}
+
+};
 
 
 renderTracker();
 
 
-/* =========================================================
-   RESET TRACKER
-========================================================= */
-
-document
-.getElementById("resetTracker")
-.addEventListener("click",()=>{
-
-    const answer=
-    confirm(
-        "Reset your 30-day progress?"
-    );
-
-
-    if(!answer)return;
-
-
-    completedDays=[];
-
-
-    localStorage.removeItem(
-        "fitnessNBTracker"
-    );
-
-
-    renderTracker();
-
-});
-
 
 /* =========================================================
-   REVEAL ANIMATION
+   LOGIN
 ========================================================= */
 
-const revealElements =
-document.querySelectorAll(".reveal");
+const modal=
+document.getElementById("modal");
 
 
-const observer =
-new IntersectionObserver(
-entries=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target
-            .classList
-            .add("show");
-
-            observer.unobserve(
-                entry.target
-            );
-
-        }
-
-    });
-
-},
-{
-    threshold:.12
-});
+const toastBox=
+document.getElementById("toast");
 
 
-revealElements.forEach(element=>{
+function toast(msg){
 
-    observer.observe(element);
+toastBox.textContent=msg;
 
-});
+toastBox.classList.add("show");
 
 
-/* =========================================================
-   STATS ANIMATION
-========================================================= */
-
-const statNumbers =
-document.querySelectorAll(
-".stat-number"
+setTimeout(
+()=>toastBox.classList.remove("show"),
+2500
 );
-
-let statsStarted=false;
-
-
-function animateStats(){
-
-    if(statsStarted)return;
-
-    statsStarted=true;
-
-
-    statNumbers.forEach(stat=>{
-
-        const target =
-        Number(
-            stat.dataset.target
-        );
-
-        let current=0;
-
-        const increment =
-        Math.max(
-            1,
-            Math.ceil(target/60)
-        );
-
-
-        const timer =
-        setInterval(()=>{
-
-            current+=increment;
-
-
-            if(current>=target){
-
-                current=target;
-
-                clearInterval(timer);
-
-            }
-
-
-            stat.textContent=
-            current;
-
-        },25);
-
-    });
 
 }
 
 
-const statsSection =
-document.querySelector(".stats");
+document
+.getElementById("loginBtn")
+.onclick=
+()=>modal.classList.add("show");
 
 
-const statsObserver =
-new IntersectionObserver(
-entries=>{
-
-    if(
-        entries[0].isIntersecting
-    ){
-
-        animateStats();
-
-        statsObserver.disconnect();
-
-    }
-
-});
+document
+.getElementById("close")
+.onclick=
+()=>modal.classList.remove("show");
 
 
-statsObserver.observe(statsSection);
+modal.onclick=e=>{
+
+if(e.target===modal)
+
+modal.classList.remove("show");
+
+};
+
+
+document
+.getElementById("demoLogin")
+.onclick=()=>{
+
+
+const email=
+document.getElementById("email")
+.value;
+
+
+if(!email){
+
+toast(
+"Enter an email first."
+);
+
+return;
+
+}
+
+
+localStorage.setItem(
+"fitnessNB_demoUser",
+email
+);
+
+
+modal.classList.remove("show");
+
+
+toast(
+"Demo account saved on this browser."
+);
+
+};
+
+
+
+/* =========================================================
+   COMING SOON
+========================================================= */
+
+document
+.getElementById("notify")
+.onclick=
+()=>toast(
+"Coming soon — notification system will be connected later."
+);
+
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+document
+.getElementById("menu")
+.onclick=
+()=>
+
+document
+.getElementById("nav")
+.classList.toggle("open");
+
+
+document
+.querySelectorAll(".nav a")
+.forEach(
+
+a=>
+
+a.onclick=
+()=>
+
+document
+.getElementById("nav")
+.classList.remove("open")
+
+);
 
 </script>
 
