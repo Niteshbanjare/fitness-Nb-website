@@ -1,739 +1,664 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fitness N.B | Upcoming Update</title>
+<meta name="theme-color" content="#0b0b0b">
+<title>Fitness N.B | AI Fitness Platform</title>
+<meta name="description" content="Fitness N.B - workouts, exercise guides, fitness tracking and calisthenics.">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+  --bg:#090909;
+  --panel:#141414;
+  --panel2:#1b1b1b;
+  --red:#ff303b;
+  --text:#f5f5f5;
+  --muted:#aaa;
+  --border:#2b2b2b;
 }
-
-html,body{
-    width:100%;
-    min-height:100%;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#050505;
-    color:white;
-    overflow-x:hidden;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.6;
 }
-
-/* =========================
-   INTRO ANIMATION
-========================= */
-
-#intro{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    background:#020305;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    transition:opacity 1s ease, visibility 1s ease;
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{
+  position:sticky;top:0;z-index:20;
+  background:#0b0b0bf2;border-bottom:1px solid var(--border);
+  padding:14px 5%;
 }
-
-#intro.hide{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-}
-
-.grid{
-    position:absolute;
-    inset:-50%;
-    background-image:
-        linear-gradient(rgba(0,220,255,.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,220,255,.08) 1px, transparent 1px);
-    background-size:45px 45px;
-    transform:perspective(500px) rotateX(60deg);
-    animation:gridMove 5s linear infinite;
-}
-
-@keyframes gridMove{
-    from{
-        transform:perspective(500px) rotateX(60deg) translateY(0);
-    }
-    to{
-        transform:perspective(500px) rotateX(60deg) translateY(45px);
-    }
-}
-
-.glow{
-    position:absolute;
-    width:300px;
-    height:300px;
-    border-radius:50%;
-    background:#00d9ff;
-    filter:blur(100px);
-    opacity:.18;
-    animation:glowPulse 2s ease-in-out infinite;
-}
-
-@keyframes glowPulse{
-    0%,100%{transform:scale(.8);opacity:.12}
-    50%{transform:scale(1.2);opacity:.25}
-}
-
-.intro-content{
-    position:relative;
-    z-index:3;
-    text-align:center;
-    width:90%;
-    max-width:700px;
-}
-
-.logo{
-    font-size:clamp(42px,9vw,90px);
-    font-weight:900;
-    letter-spacing:8px;
-    text-shadow:
-        0 0 10px #00d9ff,
-        0 0 30px rgba(0,217,255,.7);
-    animation:logoIn 2s ease forwards;
-}
-
-@keyframes logoIn{
-    0%{
-        opacity:0;
-        transform:scale(.5);
-        letter-spacing:25px;
-    }
-    100%{
-        opacity:1;
-        transform:scale(1);
-        letter-spacing:8px;
-    }
-}
-
-.creator{
-    margin-top:12px;
-    color:#00d9ff;
-    font-size:13px;
-    letter-spacing:5px;
-    opacity:0;
-    animation:fadeUp 1s ease 1s forwards;
-}
-
-.update-title{
-    margin-top:45px;
-    font-size:clamp(24px,5vw,48px);
-    font-weight:800;
-    opacity:0;
-    animation:fadeUp 1s ease 1.8s forwards;
-}
-
-.update-title span{
-    color:#00d9ff;
-}
-
-.loading-text{
-    margin-top:20px;
-    color:#aaa;
-    opacity:0;
-    animation:fadeUp 1s ease 2.4s forwards;
-}
-
-.progress-wrap{
-    width:100%;
-    height:5px;
-    background:#151515;
-    border-radius:20px;
-    margin-top:28px;
-    overflow:hidden;
-    opacity:0;
-    animation:fadeUp 1s ease 2.8s forwards;
-}
-
-.progress{
-    width:0%;
-    height:100%;
-    background:linear-gradient(90deg,#00d9ff,#0088ff);
-    box-shadow:0 0 15px #00d9ff;
-}
-
-.percent{
-    margin-top:10px;
-    font-size:12px;
-    color:#00d9ff;
-    opacity:0;
-    animation:fadeUp 1s ease 3s forwards;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* =========================
-   MAIN UPDATE PAGE
-========================= */
-
-#main{
-    min-height:100vh;
-    background:
-        radial-gradient(circle at 50% 0%,rgba(0,180,255,.12),transparent 35%),
-        #050505;
-}
-
-.nav{
-    height:75px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 7%;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(10px);
-}
-
-.nav-logo{
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:3px;
-}
-
-.nav-logo span{
-    color:#00d9ff;
-}
-
-.status{
-    padding:8px 14px;
-    border:1px solid rgba(0,217,255,.4);
-    border-radius:30px;
-    color:#00d9ff;
-    font-size:12px;
-}
-
+.nav{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:900}
+.logo span{color:var(--red)}
+nav{display:flex;gap:15px;flex-wrap:wrap}
+nav a{font-size:13px;color:#ddd}
+nav a:hover{color:var(--red)}
+.container{width:min(1120px,92%);margin:auto}
+section{padding:65px 0}
 .hero{
-    min-height:calc(100vh - 75px);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:70px 20px;
+  min-height:510px;display:flex;align-items:center;
+  background:radial-gradient(ellipse at 80% 40%,#511217 0%,#1b0b0d 30%,#090909 70%);
 }
-
-.container{
-    width:100%;
-    max-width:1000px;
-    text-align:center;
+.hero h1{font-size:clamp(38px,7vw,72px);line-height:1.06;margin:15px 0}
+.hero h1 span,.red{color:var(--red)}
+.hero p{color:#ccc;max-width:650px;margin-bottom:22px}
+.eyebrow{color:var(--red);font-size:12px;font-weight:bold;letter-spacing:3px}
+.btn{
+  display:inline-block;padding:12px 18px;border:0;border-radius:8px;
+  background:var(--red);color:white;font-weight:bold;margin:5px 5px 5px 0;
 }
-
-.badge{
-    display:inline-block;
-    padding:9px 16px;
-    border:1px solid rgba(0,217,255,.4);
-    border-radius:30px;
-    color:#00d9ff;
-    font-size:12px;
-    letter-spacing:2px;
-    margin-bottom:25px;
+.btn:hover{filter:brightness(1.12)}
+.btn.secondary{background:#252525;border:1px solid #444}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.section-title{font-size:clamp(27px,4vw,39px);margin-bottom:8px}
+.section-sub{color:var(--muted);margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:14px;padding:20px;min-width:0;
 }
-
-h1{
-    font-size:clamp(40px,8vw,78px);
-    line-height:1;
-    font-weight:900;
+.card h3{margin:8px 0}
+.card p,.muted{color:var(--muted);font-size:14px}
+.emoji{font-size:32px}
+.tag{display:inline-block;background:#351215;color:#ff969c;padding:4px 9px;border-radius:20px;font-size:11px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+input,select{
+  background:#171717;color:white;border:1px solid #393939;
+  border-radius:8px;padding:12px;width:100%;min-width:0;
 }
-
-h1 span{
-    color:#00d9ff;
+.controls input{flex:1;min-width:180px}
+.controls select{width:auto;flex:1}
+label{font-size:13px;color:#ccc;display:block;margin:12px 0 5px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-grid .full{grid-column:1/-1}
+.status{font-size:13px;color:#aaa;margin-top:12px;overflow-wrap:anywhere}
+.status.good{color:#8ee6a0}
+.status.bad{color:#ff8585}
+.progress{height:9px;background:#303030;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress div{height:100%;width:0;background:var(--red);transition:width .2s}
+.log{padding:12px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:10px;align-items:center}
+.log:last-child{border:0}
+.log button{padding:5px 9px}
+.notice{padding:14px;border:1px solid #5b3030;background:#211011;border-radius:9px;color:#e8bfc1;font-size:13px;margin-top:15px}
+.checklist{padding-left:20px;color:#ddd}
+.checklist li{margin:8px 0}
+footer{border-top:1px solid var(--border);padding:30px 5%;text-align:center;color:#aaa}
+footer a{color:var(--red);margin:0 8px}
+.hidden{display:none!important}
+#intro{
+  position:fixed;inset:0;z-index:100;background:#080808;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  animation:fadeOut .8s ease 2.5s forwards;
 }
-
-.subtitle{
-    max-width:650px;
-    margin:25px auto;
-    color:#aaa;
-    line-height:1.7;
-    font-size:16px;
+#intro h1{font-size:clamp(35px,8vw,65px)}
+#intro p{color:#aaa}
+.intro-line{height:4px;background:#292929;margin:20px auto;width:200px;overflow:hidden}
+.intro-line div{height:100%;background:var(--red);animation:load 2.5s linear forwards}
+@keyframes load{to{width:100%}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+@media(max-width:760px){
+  .grid{grid-template-columns:1fr 1fr}
+  header{padding:12px 4%}
+  nav{gap:10px}
+  nav a{font-size:12px}
+  section{padding:48px 0}
 }
-
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin:35px 0 60px;
-}
-
-.time-box{
-    min-width:100px;
-    padding:20px 15px;
-    background:#0b0b0b;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:15px;
-}
-
-.time-box strong{
-    display:block;
-    font-size:32px;
-    color:#00d9ff;
-}
-
-.time-box small{
-    color:#777;
-    letter-spacing:2px;
-}
-
-.section-title{
-    font-size:30px;
-    margin-bottom:25px;
-}
-
-.updates{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    text-align:left;
-}
-
-.update-card{
-    padding:22px;
-    background:linear-gradient(145deg,#0d0d0d,#080808);
-    border:1px solid rgba(255,255,255,.07);
-    border-radius:15px;
-    transition:.3s;
-}
-
-.update-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(0,217,255,.45);
-    box-shadow:0 0 25px rgba(0,217,255,.08);
-}
-
-.icon{
-    font-size:25px;
-    margin-bottom:10px;
-}
-
-.update-card h3{
-    margin-bottom:7px;
-}
-
-.update-card p{
-    color:#888;
-    font-size:14px;
-    line-height:1.6;
-}
-
-.note{
-    margin-top:50px;
-    padding:25px;
-    border-radius:15px;
-    background:rgba(0,217,255,.04);
-    border:1px solid rgba(0,217,255,.15);
-    color:#aaa;
-    line-height:1.7;
-}
-
-.note strong{
-    color:white;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#555;
-    font-size:13px;
-    border-top:1px solid rgba(255,255,255,.06);
-}
-
-/* MOBILE */
-
-@media(max-width:650px){
-
-    .nav{
-        padding:0 5%;
-    }
-
-    .status{
-        font-size:10px;
-    }
-
-    .updates{
-        grid-template-columns:1fr;
-    }
-
-    .time-box{
-        min-width:75px;
-        padding:15px 10px;
-    }
-
-    .time-box strong{
-        font-size:25px;
-    }
-
-    .hero{
-        padding-top:50px;
-    }
+@media(max-width:500px){
+  .grid,.form-grid{grid-template-columns:1fr}
+  .form-grid .full{grid-column:auto}
+  .hero{min-height:430px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     30 SECOND INTRO
-========================= -->
-
 <div id="intro">
+  <div>
+    <div class="logo">FITNESS <span>N.B</span></div>
+    <h1>BUILD YOUR <span class="red">STRENGTH.</span></h1>
+    <p>Your fitness journey starts here.</p>
+    <div class="intro-line"><div></div></div>
+  </div>
+</div>
 
-    <div class="grid"></div>
-    <div class="glow"></div>
+<header>
+  <div class="nav">
+    <a class="logo" href="#home">FITNESS <span>N.B</span></a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#coach">AI Coach</a>
+      <a href="#exercises">Exercises</a>
+      <a href="#tracker">Tracker</a>
+      <a href="#account">Account</a>
+      <a href="#membership">Membership</a>
+    </nav>
+  </div>
+</header>
 
-    <div class="intro-content">
+<main>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="eyebrow">YOUR FITNESS. YOUR JOURNEY.</div>
+    <h1>TRAIN SMART.<br><span>GET STRONGER.</span></h1>
+    <p>
+      Explore gym workouts, dumbbell exercises, bodyweight training,
+      calisthenics and fitness guidance in one place.
+    </p>
+    <a class="btn" href="#exercises">Explore Exercises</a>
+    <a class="btn secondary" href="#coach">Open AI Coach</a>
+    <p class="muted" style="margin-top:18px">Start where you are. Improve step by step.</p>
+  </div>
+</section>
 
-        <div class="logo">FITNESS N.B</div>
-
-        <div class="creator">
-            NITESH BANJARE • FITNESS CREATOR
-        </div>
-
-        <div class="update-title">
-            <span>UPCOMING</span> UPDATE
-        </div>
-
-        <div class="loading-text" id="loadingText">
-            Preparing the next version...
-        </div>
-
-        <div class="progress-wrap">
-            <div class="progress" id="progress"></div>
-        </div>
-
-        <div class="percent" id="percent">
-            0%
-        </div>
-
+<section id="coach">
+  <div class="container">
+    <div class="eyebrow">TRAINING GUIDANCE</div>
+    <h2 class="section-title">AI Coach <span class="red">Guide</span></h2>
+    <p class="section-sub">
+      Free built-in guidance. No paid AI API required.
+    </p>
+    <div class="grid">
+      <article class="card">
+        <div class="emoji">🏋️</div>
+        <h3>Gym Training</h3>
+        <p>Learn how to plan workouts with machines, barbells and dumbbells.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">💪</div>
+        <h3>Home Workout</h3>
+        <p>Bodyweight, dumbbell and resistance-band exercise guidance.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🤸</div>
+        <h3>Calisthenics</h3>
+        <p>Build a foundation with push-ups, assisted pull-ups and controlled progressions.</p>
+      </article>
     </div>
 
-</div>
+    <div class="card" style="margin-top:18px">
+      <h3>Ask the Fitness Guide</h3>
+      <p>Choose a topic to see guidance from the built-in library.</p>
+      <div class="controls">
+        <select id="coachTopic" aria-label="Choose a fitness topic">
+          <option value="beginner">Beginner workout</option>
+          <option value="muscle">Strength and muscle</option>
+          <option value="home">Home dumbbell workout</option>
+          <option value="calisthenics">Calisthenics basics</option>
+          <option value="recovery">Rest and recovery</option>
+          <option value="form">Exercise form and safety</option>
+        </select>
+        <button class="btn" onclick="showCoach()">Show Guidance</button>
+      </div>
+      <div id="coachAnswer" class="notice">
+        Choose a topic and press Show Guidance.
+      </div>
+    </div>
+  </div>
+</section>
 
+<section id="exercises">
+  <div class="container">
+    <div class="eyebrow">EXERCISE LIBRARY</div>
+    <h2 class="section-title">Explore <span class="red">Exercises</span></h2>
+    <p class="section-sub">
+      Gym, home dumbbells, resistance bands and bodyweight training.
+    </p>
+    <div class="controls">
+      <input id="exerciseSearch" placeholder="Search exercise..." oninput="renderExercises()">
+      <select id="exerciseCategory" onchange="renderExercises()">
+        <option value="all">All categories</option>
+        <option value="gym">Gym</option>
+        <option value="dumbbell">Dumbbells</option>
+        <option value="bodyweight">Bodyweight</option>
+        <option value="legs">Legs</option>
+        <option value="core">Core</option>
+        <option value="mobility">Mobility</option>
+      </select>
+    </div>
+    <div id="exerciseGrid" class="grid"></div>
+    <p class="status">Exercise tutorials open a YouTube search. Check technique with a qualified coach when possible.</p>
+  </div>
+</section>
 
-<!-- =========================
-     MAIN PAGE
-========================= -->
+<section id="video-coach">
+  <div class="container">
+    <div class="eyebrow">MOVEMENT LEARNING</div>
+    <h2 class="section-title">3D / Video <span class="red">Form Coach</span></h2>
+    <p class="section-sub">Learn movement and compare your technique with demonstrations.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="emoji">🧍</div>
+        <h3>3D Form Demonstrations</h3>
+        <p>3D exercise animation can be added here as a separate media asset. This first version does not include a working 3D animation engine.</p>
+        <span class="tag">3D ENGINE COMING SOON</span>
+      </div>
+      <div class="card">
+        <div class="emoji">🎥</div>
+        <h3>Exercise Video Tutorials</h3>
+        <p>Find visual demonstrations for the movement you want to learn.</p>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=proper+exercise+form+tutorial">Browse Tutorials</a>
+      </div>
+      <div class="card">
+        <div class="emoji">📷</div>
+        <h3>Camera Form Checker</h3>
+        <p>Automatic camera-based pose analysis is not enabled in this version. It needs pose-detection code and camera permission.</p>
+        <span class="tag">COMING SOON</span>
+      </div>
+    </div>
+    <div class="notice">
+      A demonstration video or 3D animation cannot check your personal form by itself.
+      Stop an exercise if you feel pain, and seek qualified help if you are unsure about technique.
+    </div>
+  </div>
+</section>
 
-<div id="main">
+<section id="tracker">
+  <div class="container">
+    <div class="eyebrow">YOUR DAILY PROGRESS</div>
+    <h2 class="section-title">Workout <span class="red">Tracker</span></h2>
+    <p class="section-sub">Add a workout and mark it complete.</p>
 
-    <nav class="nav">
-
-        <div class="nav-logo">
-            FITNESS <span>N.B</span>
+    <div class="grid">
+      <div class="card">
+        <h3>Add Workout</h3>
+        <label for="workoutName">Exercise name</label>
+        <input id="workoutName" placeholder="e.g. Push-ups">
+        <div class="form-grid">
+          <div>
+            <label for="workoutSets">Sets</label>
+            <input id="workoutSets" type="number" min="1" max="100" value="3">
+          </div>
+          <div>
+            <label for="workoutReps">Reps</label>
+            <input id="workoutReps" type="number" min="1" max="1000" value="10">
+          </div>
         </div>
+        <button class="btn" style="margin-top:15px" onclick="addWorkout()">Add Workout</button>
+        <p id="trackerStatus" class="status">Sign in to sync workouts online. Without login, this browser can save them locally.</p>
+      </div>
 
-        <div class="status">
-            🚧 UPDATE MODE
+      <div class="card">
+        <h3>Today's Progress</h3>
+        <div style="font-size:38px;font-weight:900" id="progressNumber">0%</div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <p id="progressText" class="muted">0 of 0 workouts completed</p>
+        <p class="muted" style="margin-top:12px">Online sync requires the database setup in Step 3.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>Workout List</h3>
+      <div id="workoutList" style="margin-top:10px"></div>
+      <button class="btn secondary" onclick="refreshWorkouts()">Refresh</button>
+    </div>
+  </div>
+</section>
+
+<section id="account">
+  <div class="container">
+    <div class="eyebrow">YOUR ACCOUNT</div>
+    <h2 class="section-title">Login / <span class="red">Signup</span></h2>
+    <p class="section-sub">Create an account to prepare for online workout syncing.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Account</h3>
+        <label for="authEmail">Email</label>
+        <input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com">
+        <label for="authPassword">Password</label>
+        <input id="authPassword" type="password" autocomplete="current-password" minlength="6" placeholder="At least 6 characters">
+        <button class="btn" onclick="signUp()">Sign Up</button>
+        <button class="btn secondary" onclick="signIn()">Login</button>
+        <button class="btn secondary" onclick="signOut()">Logout</button>
+        <p id="authStatus" class="status">Connect Supabase to activate accounts.</p>
+      </div>
+      <div class="card">
+        <h3>Account Status</h3>
+        <p id="accountStatus" class="muted">Not connected.</p>
+        <div class="notice">
+          Never share your password. Only use the Supabase public anon/publishable key in this page.
+          Never put a service-role or secret key in public website code.
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </nav>
+<section id="membership">
+  <div class="container">
+    <div class="eyebrow">FITNESS N.B MEMBERSHIP</div>
+    <h2 class="section-title">Free now. <span class="red">Premium later.</span></h2>
+    <p class="section-sub">Membership and payment processing have not been activated.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">FREE</span>
+        <h3>Free Fitness</h3>
+        <p>Exercise library, built-in fitness guidance and basic workout tracking.</p>
+        <a class="btn" href="#exercises">Start Exploring</a>
+      </div>
+      <div class="card">
+        <span class="tag">COMING SOON</span>
+        <h3>Premium Membership</h3>
+        <p>Paid plans can be introduced after secure payment verification and terms are configured.</p>
+        <button class="btn secondary" disabled>Coming Soon</button>
+      </div>
+      <div class="card">
+        <span class="tag">SECURE SETUP REQUIRED</span>
+        <h3>Payment System</h3>
+        <p>No payment is collected by this page. Payment integration needs a verified backend workflow.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section id="social">
+  <div class="container">
+    <div class="eyebrow">FOLLOW THE JOURNEY</div>
+    <h2 class="section-title">Fitness N.B <span class="red">Socials</span></h2>
+    <p class="section-sub">Follow workouts and calisthenics progress.</p>
+    <a class="btn" href="https://www.youtube.com/@fitnessgym-v1r" target="_blank" rel="noopener">YouTube</a>
+    <a class="btn secondary" href="https://www.instagram.com/fitness.n.b/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</section>
+</main>
 
-    <section class="hero">
-
-        <div class="container">
-
-            <div class="badge">
-                🚀 SOMETHING BIG IS COMING
-            </div>
-
-            <h1>
-                FITNESS <span>N.B</span>
-            </h1>
-
-            <p class="subtitle">
-                We are currently working on a major update.
-                The next version of Fitness N.B will bring a
-                better experience, new features and a completely
-                upgraded platform.
-            </p>
-
-
-            <!-- COUNTDOWN -->
-
-            <div class="countdown">
-
-                <div class="time-box">
-                    <strong id="days">21</strong>
-                    <small>DAYS</small>
-                </div>
-
-                <div class="time-box">
-                    <strong id="hours">00</strong>
-                    <small>HOURS</small>
-                </div>
-
-                <div class="time-box">
-                    <strong id="minutes">00</strong>
-                    <small>MINUTES</small>
-                </div>
-
-                <div class="time-box">
-                    <strong id="seconds">00</strong>
-                    <small>SECONDS</small>
-                </div>
-
-            </div>
-
-
-            <h2 class="section-title">
-                Upcoming Updates
-            </h2>
-
-
-            <div class="updates">
-
-                <div class="update-card">
-                    <div class="icon">🤖</div>
-                    <h3>AI Video Coach</h3>
-                    <p>
-                        A more powerful AI-based workout
-                        video and coaching experience.
-                    </p>
-                </div>
-
-
-                <div class="update-card">
-                    <div class="icon">🔐</div>
-                    <h3>Login & Signup</h3>
-                    <p>
-                        A proper user account system with
-                        secure authentication.
-                    </p>
-                </div>
-
-
-                <div class="update-card">
-                    <div class="icon">📊</div>
-                    <h3>Advanced Tracker</h3>
-                    <p>
-                        Track your workout journey,
-                        progress and activity more easily.
-                    </p>
-                </div>
-
-
-                <div class="update-card">
-                    <div class="icon">💳</div>
-                    <h3>Membership</h3>
-                    <p>
-                        Premium Fitness N.B programs and
-                        membership features are coming.
-                    </p>
-                </div>
-
-
-                <div class="update-card">
-                    <div class="icon">⚡</div>
-                    <h3>Better Performance</h3>
-                    <p>
-                        Faster pages, smoother animations
-                        and an improved overall experience.
-                    </p>
-                </div>
-
-
-                <div class="update-card">
-                    <div class="icon">📱</div>
-                    <h3>Mobile Experience</h3>
-                    <p>
-                        Better mobile layout and improved
-                        experience on smaller screens.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="note">
-
-                <strong>See you in 3 weeks.</strong><br>
-
-                Fitness N.B is temporarily in update mode
-                while we work on the next version.
-
-                <br><br>
-
-                Until then, keep training, keep learning,
-                and keep improving. 💪
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <footer>
-        © 2026 Fitness N.B • Built by Nitesh Banjare
-    </footer>
-
-</div>
-
+<footer>
+  <div class="logo">FITNESS <span>N.B</span></div>
+  <p>Train smart. Stay consistent. Keep learning.</p>
+  <p style="margin-top:10px">© <span id="year"></span> Fitness N.B</p>
+</footer>
 
 <script>
+/*
+  SUPABASE SETUP:
+  Replace these placeholders with your project's URL and public anon/publishable key.
+  Do not add the service-role key here.
+*/
+const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLIC_ANON_KEY";
 
-/* =====================================
-   30 SECOND INTRO
-===================================== */
+let supabaseClient = null;
+let currentUser = null;
+let workouts = [];
+const LOCAL_KEY = "fitnessNB_workouts_v2";
 
-const intro = document.getElementById("intro");
-const progress = document.getElementById("progress");
-const percent = document.getElementById("percent");
-const loadingText = document.getElementById("loadingText");
-
-let startTime = Date.now();
-
-const introDuration = 30000;
-
-const messages = [
-    "Preparing the next version...",
-    "Upgrading Fitness N.B...",
-    "Building new features...",
-    "Improving the experience...",
-    "Almost ready..."
+const exerciseData = [
+  {name:"Bench Press",cat:"gym",level:"Intermediate",desc:"Chest and triceps strength.",query:"bench press proper form"},
+  {name:"Lat Pulldown",cat:"gym",level:"Beginner",desc:"Back and upper-body pulling.",query:"lat pulldown proper form"},
+  {name:"Seated Cable Row",cat:"gym",level:"Beginner",desc:"Back strength and control.",query:"seated cable row proper form"},
+  {name:"Leg Press",cat:"gym",level:"Beginner",desc:"Train your lower body with controlled reps.",query:"leg press proper form"},
+  {name:"Dumbbell Curl",cat:"dumbbell",level:"Beginner",desc:"Biceps with controlled movement.",query:"dumbbell curl proper form"},
+  {name:"Dumbbell Shoulder Press",cat:"dumbbell",level:"Beginner",desc:"Shoulders and triceps.",query:"dumbbell shoulder press form"},
+  {name:"Dumbbell Row",cat:"dumbbell",level:"Beginner",desc:"Back exercise using a dumbbell.",query:"one arm dumbbell row form"},
+  {name:"Dumbbell Romanian Deadlift",cat:"dumbbell",level:"Intermediate",desc:"Hip hinge for hamstrings and glutes.",query:"dumbbell romanian deadlift form"},
+  {name:"Push-ups",cat:"bodyweight",level:"Beginner",desc:"Chest, shoulders and triceps.",query:"push up proper form beginner"},
+  {name:"Pull-ups",cat:"bodyweight",level:"Intermediate",desc:"Back and arm pulling strength.",query:"pull up proper form"},
+  {name:"Plank",cat:"core",level:"Beginner",desc:"Practise controlled core stability.",query:"plank proper form"},
+  {name:"Dead Bug",cat:"core",level:"Beginner",desc:"Core control and coordination.",query:"dead bug exercise proper form"},
+  {name:"Bodyweight Squat",cat:"legs",level:"Beginner",desc:"Legs and hips using bodyweight.",query:"bodyweight squat proper form"},
+  {name:"Reverse Lunge",cat:"legs",level:"Beginner",desc:"Train legs and balance.",query:"reverse lunge proper form"},
+  {name:"Glute Bridge",cat:"legs",level:"Beginner",desc:"Glute and hip extension.",query:"glute bridge proper form"},
+  {name:"Calf Raise",cat:"legs",level:"Beginner",desc:"Calf strength and control.",query:"standing calf raise proper form"},
+  {name:"Hip Mobility",cat:"mobility",level:"Beginner",desc:"Gentle hip movement practice.",query:"beginner hip mobility routine"},
+  {name:"Shoulder Mobility",cat:"mobility",level:"Beginner",desc:"Gentle shoulder range-of-motion drills.",query:"beginner shoulder mobility routine"},
+  {name:"Resistance Band Row",cat:"dumbbell",level:"Beginner",desc:"An alternative pulling exercise using a band.",query:"resistance band row proper form"},
+  {name:"Pike Push-up",cat:"bodyweight",level:"Intermediate",desc:"A bodyweight shoulder-strength progression.",query:"pike push up proper form"}
 ];
 
-function runIntro(){
-
-    const elapsed = Date.now() - startTime;
-
-    let value = Math.min(
-        (elapsed / introDuration) * 100,
-        100
-    );
-
-    progress.style.width = value + "%";
-    percent.textContent = Math.floor(value) + "%";
-
-    const messageIndex =
-        Math.min(
-            Math.floor(value / 20),
-            messages.length - 1
-        );
-
-    loadingText.textContent =
-        messages[messageIndex];
-
-    if(elapsed < introDuration){
-
-        requestAnimationFrame(runIntro);
-
-    }else{
-
-        progress.style.width = "100%";
-        percent.textContent = "100%";
-
-        setTimeout(() => {
-            intro.classList.add("hide");
-        },500);
-
-    }
+function renderExercises(){
+  const q = document.getElementById("exerciseSearch").value.trim().toLowerCase();
+  const cat = document.getElementById("exerciseCategory").value;
+  const filtered = exerciseData.filter(e =>
+    (cat === "all" || e.cat === cat) &&
+    (e.name.toLowerCase().includes(q) || e.desc.toLowerCase().includes(q))
+  );
+  const grid = document.getElementById("exerciseGrid");
+  if(!filtered.length){
+    grid.innerHTML = '<div class="card"><p>No exercises found. Try another search.</p></div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(e => `
+    <article class="card">
+      <span class="tag">${escapeHTML(e.level)}</span>
+      <h3>${escapeHTML(e.name)}</h3>
+      <p>${escapeHTML(e.desc)}</p>
+      <p style="margin-top:10px">Category: ${escapeHTML(e.cat)}</p>
+      <a class="btn" target="_blank" rel="noopener"
+        href="https://www.youtube.com/results?search_query=${encodeURIComponent(e.query)}">Watch Tutorial</a>
+      <button class="btn secondary" onclick="addExerciseToTracker('${encodeURIComponent(e.name)}')">Track Workout</button>
+    </article>`).join("");
 }
 
-runIntro();
-
-
-/* =====================================
-   3 WEEK COUNTDOWN
-===================================== */
-
-/*
-   First visit = 21 days.
-   Date is saved in browser localStorage.
-*/
-
-let updateStart =
-    localStorage.getItem("fitnessNB_updateStart");
-
-if(!updateStart){
-
-    updateStart = Date.now();
-
-    localStorage.setItem(
-        "fitnessNB_updateStart",
-        updateStart
-    );
+const coachGuides = {
+  beginner:"Start with 2–3 comfortable full-body sessions per week. Learn the technique first, begin with easy variations, and allow recovery between hard sessions.",
+  muscle:"Build strength gradually with controlled repetitions, suitable resistance, enough food, sleep and consistent practice. Increase difficulty only when your current technique is stable.",
+  home:"A simple home session can include bodyweight squats, incline push-ups, dumbbell rows and light dumbbell presses. Choose weights you can control safely.",
+  calisthenics:"Build a foundation with incline push-ups, assisted pull-ups, squats and hollow-body practice. Progress gradually; do not force advanced skills before mastering the basics.",
+  recovery:"Take rest days, sleep consistently, drink water and avoid training hard through pain. Recovery is part of training, not wasted time.",
+  form:"Move in a controlled range, avoid jerking or bouncing, and choose a difficulty you can manage. Videos provide examples but cannot confirm that your own technique is correct."
+};
+function showCoach(){
+  const topic = document.getElementById("coachTopic").value;
+  document.getElementById("coachAnswer").textContent = coachGuides[topic] || coachGuides.beginner;
 }
 
-const endDate =
-    Number(updateStart) +
-    (21 * 24 * 60 * 60 * 1000);
-
-
-function updateCountdown(){
-
-    const now = Date.now();
-
-    let difference = endDate - now;
-
-    if(difference <= 0){
-
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-
-        return;
-    }
-
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-    const hours =
-        Math.floor(
-            (difference /
-            (1000 * 60 * 60)) % 24
-        );
-
-    const minutes =
-        Math.floor(
-            (difference /
-            (1000 * 60)) % 60
-        );
-
-    const seconds =
-        Math.floor(
-            (difference /
-            1000) % 60
-        );
-
-
-    document.getElementById("days")
-        .textContent =
-        String(days).padStart(2,"0");
-
-    document.getElementById("hours")
-        .textContent =
-        String(hours).padStart(2,"0");
-
-    document.getElementById("minutes")
-        .textContent =
-        String(minutes).padStart(2,"0");
-
-    document.getElementById("seconds")
-        .textContent =
-        String(seconds).padStart(2,"0");
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+function setStatus(id,msg,kind=""){
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = "status " + kind;
+}
+function loadLocal(){
+  try{
+    const value = JSON.parse(localStorage.getItem(LOCAL_KEY) || "[]");
+    return Array.isArray(value) ? value : [];
+  }catch(e){return []}
+}
+function saveLocal(){
+  localStorage.setItem(LOCAL_KEY,JSON.stringify(workouts));
+}
+function validPositive(value){
+  return Number.isInteger(Number(value)) && Number(value) > 0;
 }
 
-updateCountdown();
+async function initSupabase(){
+  if(!window.supabase || SUPABASE_URL.startsWith("YOUR_") ||
+     SUPABASE_ANON_KEY.startsWith("YOUR_")){
+    document.getElementById("accountStatus").textContent =
+      "Not connected yet. Complete Supabase setup to activate online accounts.";
+    workouts = loadLocal();
+    renderWorkouts();
+    return;
+  }
+  try{
+    supabaseClient = window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+    const {data,error} = await supabaseClient.auth.getSession();
+    if(error) throw error;
+    currentUser = data.session ? data.session.user : null;
+    supabaseClient.auth.onAuthStateChange((_event,session)=>{
+      currentUser = session ? session.user : null;
+      updateAccountStatus();
+      if(currentUser) loadOnlineWorkouts();
+      else {workouts=loadLocal();renderWorkouts();}
+    });
+    updateAccountStatus();
+    if(currentUser) await loadOnlineWorkouts();
+    else {workouts=loadLocal();renderWorkouts();}
+  }catch(err){
+    setStatus("authStatus","Connection error: "+err.message,"bad");
+    workouts=loadLocal();
+    renderWorkouts();
+  }
+}
+function updateAccountStatus(){
+  document.getElementById("accountStatus").textContent = currentUser
+    ? "Signed in as "+currentUser.email
+    : (supabaseClient ? "Not signed in." : "Not connected.");
+  if(supabaseClient && !currentUser){
+    setStatus("authStatus","Supabase connected. Sign up or log in.");
+  }
+}
+async function signUp(){
+  if(!supabaseClient) return setStatus("authStatus","Connect Supabase first.");
+  const email=document.getElementById("authEmail").value.trim();
+  const password=document.getElementById("authPassword").value;
+  if(!email || password.length<6)
+    return setStatus("authStatus","Enter a valid email and a password of at least 6 characters.","bad");
+  const {data,error}=await supabaseClient.auth.signUp({email,password});
+  if(error) return setStatus("authStatus",error.message,"bad");
+  setStatus("authStatus",data.session
+    ? "Account created. You are signed in."
+    : "Signup submitted. Check your email to confirm your account.","good");
+}
+async function signIn(){
+  if(!supabaseClient) return setStatus("authStatus","Connect Supabase first.");
+  const email=document.getElementById("authEmail").value.trim();
+  const password=document.getElementById("authPassword").value;
+  if(!email || !password) return setStatus("authStatus","Enter email and password.","bad");
+  const {error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error) return setStatus("authStatus",error.message,"bad");
+  setStatus("authStatus","Login successful.","good");
+}
+async function signOut(){
+  if(!supabaseClient || !currentUser)
+    return setStatus("authStatus","You are not signed in.");
+  const {error}=await supabaseClient.auth.signOut();
+  if(error) return setStatus("authStatus",error.message,"bad");
+  currentUser=null;
+  workouts=loadLocal();
+  renderWorkouts();
+  updateAccountStatus();
+  setStatus("authStatus","Logged out.","good");
+}
 
-setInterval(updateCountdown,1000);
+async function loadOnlineWorkouts(){
+  if(!supabaseClient || !currentUser) return;
+  const {data,error}=await supabaseClient.from("workout_logs")
+    .select("id,activity,sets,reps,done,created_at")
+    .eq("user_id",currentUser.id)
+    .order("created_at",{ascending:false})
+    .limit(100);
+  if(error){
+    setStatus("trackerStatus","Online database error: "+error.message,"bad");
+    return;
+  }
+  workouts=(data || []).map(row=>({
+    id:row.id,name:row.activity,sets:row.sets,reps:row.reps,
+    done:row.done,created_at:row.created_at,online:true
+  }));
+  renderWorkouts();
+  setStatus("trackerStatus","Your workouts are synced with your account.","good");
+}
 
+async function addWorkout(){
+  const name=document.getElementById("workoutName").value.trim();
+  const sets=Number(document.getElementById("workoutSets").value);
+  const reps=Number(document.getElementById("workoutReps").value);
+  if(!name) return setStatus("trackerStatus","Enter an exercise name.","bad");
+  if(!validPositive(sets)||!validPositive(reps)||sets>100||reps>1000)
+    return setStatus("trackerStatus","Enter valid positive sets and reps.","bad");
+
+  if(supabaseClient && currentUser){
+    const {error}=await supabaseClient.from("workout_logs").insert({
+      user_id:currentUser.id,activity:name,sets,reps,done:false
+    });
+    if(error) return setStatus("trackerStatus","Could not save online: "+error.message,"bad");
+    document.getElementById("workoutName").value="";
+    await loadOnlineWorkouts();
+    return;
+  }
+  workouts.unshift({
+    id:Date.now().toString()+Math.random().toString(16).slice(2),
+    name,sets,reps,done:false,created_at:new Date().toISOString()
+  });
+  saveLocal();
+  renderWorkouts();
+  document.getElementById("workoutName").value="";
+  setStatus("trackerStatus","Saved in this browser only. Log in after database setup to sync online.");
+}
+
+async function addExerciseToTracker(encodedName){
+  document.getElementById("workoutName").value=decodeURIComponent(encodedName);
+  document.getElementById("workoutSets").value=3;
+  document.getElementById("workoutReps").value=10;
+  document.getElementById("tracker").scrollIntoView({behavior:"smooth"});
+}
+
+async function toggleWorkout(id){
+  const item=workouts.find(w=>String(w.id)===String(id));
+  if(!item) return;
+  if(item.online && supabaseClient && currentUser){
+    const {error}=await supabaseClient.from("workout_logs")
+      .update({done:!item.done}).eq("id",item.id).eq("user_id",currentUser.id);
+    if(error) return setStatus("trackerStatus","Update failed: "+error.message,"bad");
+    await loadOnlineWorkouts();
+  }else{
+    item.done=!item.done;
+    saveLocal();
+    renderWorkouts();
+  }
+}
+async function deleteWorkout(id){
+  const item=workouts.find(w=>String(w.id)===String(id));
+  if(!item) return;
+  if(item.online && supabaseClient && currentUser){
+    const {error}=await supabaseClient.from("workout_logs").delete()
+      .eq("id",item.id).eq("user_id",currentUser.id);
+    if(error) return setStatus("trackerStatus","Delete failed: "+error.message,"bad");
+    await loadOnlineWorkouts();
+  }else{
+    workouts=workouts.filter(w=>String(w.id)!==String(id));
+    saveLocal();
+    renderWorkouts();
+  }
+}
+function renderWorkouts(){
+  const list=document.getElementById("workoutList");
+  const total=workouts.length;
+  const completed=workouts.filter(w=>w.done).length;
+  const pct=total ? Math.round(completed/total*100) : 0;
+  document.getElementById("progressNumber").textContent=pct+"%";
+  document.getElementById("progressBar").style.width=pct+"%";
+  document.getElementById("progressText").textContent=
+    completed+" of "+total+" workouts completed";
+
+  if(!total){
+    list.innerHTML='<p class="muted">No workouts yet. Add your first exercise above.</p>';
+    return;
+  }
+  list.innerHTML=workouts.map(w=>`
+    <div class="log">
+      <div>
+        <strong>${escapeHTML(w.name)}</strong>
+        <div class="muted">${w.sets} sets × ${w.reps} reps ${w.done?"· Completed":"· Not completed"}</div>
+        ${w.online?'<span class="tag">ONLINE</span>':'<span class="tag">THIS BROWSER</span>'}
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <button class="btn secondary" onclick="toggleWorkout('${String(w.id).replace(/'/g,"")}')">${w.done?"Undo":"Done"}</button>
+        <button class="btn secondary" onclick="deleteWorkout('${String(w.id).replace(/'/g,"")}')">Delete</button>
+      </div>
+    </div>`).join("");
+}
+async function refreshWorkouts(){
+  if(supabaseClient && currentUser) await loadOnlineWorkouts();
+  else {workouts=loadLocal();renderWorkouts();}
+}
+
+document.getElementById("year").textContent=new Date().getFullYear();
+renderExercises();
+showCoach();
+initSupabase();
 </script>
-
 </body>
 </html>
